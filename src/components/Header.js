@@ -1,9 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-function Header(props) {
+function Header() {
     return (
         <header>
-            <h1>UHFC 2022</h1>
+            <div className='innerCon'>
+                <h1 id='mainTitle' className='title'><Link to={"/"}>UHFC <strong>ARCHIVE</strong> 2022</Link></h1>
+                <ul className='topMenu'>
+                    <li><Link to={"/main"}>HOME</Link></li>
+                    <li>UHFC</li>
+                    <li>PLAYERS</li>
+                    <li>MATCHES</li>
+                </ul>
+            </div>
         </header>
     );
 }

@@ -1,0 +1,34 @@
+.Intro {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+.Intro>div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.Intro p, .Intro strong, .Intro a {
+    font-family: 'Ubuntu', sans-serif;
+    transition: all ease 1s 0.5s;
+    color: transparent;    
+}
+.Intro p.on, .Intro a.on {
+    color: #333
+}
+.Intro p {
+    text-align: right;
+    font-size: 12px;
+}
+.Intro p.on strong {
+    color: var(--blue-color);
+}
+.Intro a {
+    font-size: 18px;
+    display: block;
+    text-align: right;
+}
+.Intro h1 {
+    text-align: center;
+}

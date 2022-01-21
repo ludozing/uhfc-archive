@@ -1,4 +1,117 @@
-.App {
+@font-face {
+  font-family: 'RIDIBatang';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'DungGeunMo';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+:root {
+  --blue-color: #043db7;
+  --yellow-color: #feb913;
+  --yellow-outline:
+    -1px -1px 0 var(--yellow-color),
+    1px -1px 0 var(--yellow-color),
+    -1px 1px 0 var(--yellow-color),
+    1px 1px 0 var(--yellow-color);
+  --blue-outline:
+    -1px -1px 0 var(--blue-color),
+    1px -1px 0 var(--blue-color),
+    -1px 1px 0 var(--blue-color),
+    1px 1px 0 var(--blue-color);
+}
+* { padding: 0; margin: 0; box-sizing: border-box; }
+a { text-decoration: none; color: inherit; }
+li { list-style: none; }
+body {
+  font-family: "RIDIBatang", Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+}
+.innerCon {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition: 0.4s;
+  text-shadow: var(--yellow-outline)
+}
+header>div {
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.title {
+  font-family: 'DungGeunMo';
+  font-size: 35px;
+}
+#mainTitle {
+  color: var(--blue-color);
+}
+#mainTitle strong {
+  color: var(--yellow-color);
+  text-shadow: var(--blue-outline);
+}
+#mainTitle:hover {
+  color: var(--yellow-color);
+  text-shadow: var(--blue-outline);
+}
+#mainTitle:hover strong {
+  color: var(--blue-color);
+  text-shadow: var(--yellow-outline);
+}
+.topMenu {
+  display: flex;
+  align-items: center;
+  font-family: 'Ubuntu', sans-serif;
+  font-weight: bolder;
+  font-size: 20px;
+}
+.topMenu li {
+  padding: 0 10px;
+  transition: 0.4s;
+  color: var(--yellow-color);
+  text-shadow: var(--blue-outline);
+}
+.topMenu li:hover {
+  transform: scale(1.1);
+  color: var(--blue-color);
+  text-shadow: var(--yellow-outline);
+}
+footer {
+  width: 100%;
+  background-color: #444;
+  color: #fff;
+}
+footer>div {
+  height: 200px;
+  padding-top: 50px;
   text-align: center;
 }
-
+footer .contact a {
+  margin: 0 10px;
+  transition: 0.4s;
+  font-family: 'Ubuntu', sans-serif;
+}
+footer .contact a:hover {
+  color: var(--yellow-color);
+}
+.content {
+  width: 100%;
+  min-height: calc(100vh - 200px);
+}
+.content>div{
+  padding-top: 100px;
+}
