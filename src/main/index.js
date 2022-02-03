@@ -3,7 +3,7 @@ import './MainPage.scss'
 
 function MainPage() {
     return (
-        <div id="MainPage">
+        <div id="mainPage">
             
         </div>
     );

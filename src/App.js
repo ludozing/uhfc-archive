@@ -3,6 +3,8 @@ import './App.css';
 import Footer from './components/Footer';
 import { Route, Routes } from 'react-router-dom';
 import MainPage from './main';
+import AdminLogin from './admin';
+import Timeline from './timeline';
 
 function App() {
   return (
@@ -10,10 +12,11 @@ function App() {
       <Header />
       <div className='content'>
         <Routes>
-          <Route path={"/"} element={<MainPage />}/>
+          <Route path={"/"} element={<MainPage/>}/>
+          <Route path={"/timeline/*"} element={<Timeline/>} />
           <Route path={"/"} />
           <Route path={"/"} />
-          <Route path={"/"} />
+          <Route path={"/admin"} element={<AdminLogin/>}/>
         </Routes>
       </div>
       <Footer />

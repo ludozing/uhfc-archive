@@ -108,6 +108,9 @@ footer .contact a {
 footer .contact a:hover {
   color: var(--yellow-color);
 }
+.forAdmin {
+  font-family: 'DungGeunMo';
+}
 .content {
   width: 100%;
   min-height: calc(100vh - 200px);

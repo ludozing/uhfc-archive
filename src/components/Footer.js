@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Footer() {
     return (
@@ -10,6 +11,9 @@ function Footer() {
                     <a href="https://instagram.com/statelyblu" target="_blank">INSTAGRAM</a>
                     <a href="https://twitter.com/statelyblu" target="_blank">TWITTER</a>
                     <a href="mailto:statelyblu@gmail.com">E-MAIL</a>
+                </div>
+                <div className='forAdmin'>
+                    <Link to={"/main/admin"}>ADMIN</Link>
                 </div>
             </div>
         </footer>
