@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import MainPage from './main';
 import AdminLogin from './admin';
 import Timeline from './timeline';
+import MatchesPage from './matches';
 
 function App() {
   return (

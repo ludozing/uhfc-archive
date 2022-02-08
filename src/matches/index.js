@@ -9,14 +9,14 @@ function MatchesPage(props) {
         <div className='matchesPage innerCon'>
             <h2 className='contentTitle'>MATCH RESULTS</h2>
             <ul className='matchPageMenu'>
-                <li><Link to={"/"}>K리그1</Link></li>
-                <li><Link to={"/acl"}>ACL</Link></li>
-                <li><Link to={"/facup"}>FA컵</Link></li>
+                <li><Link to={"/main/matches/kleague1"}>K리그1</Link></li>
+                <li><Link to={"/main/matches/acl"}>ACL</Link></li>
+                <li><Link to={"/main/matches/facup"}>FA컵</Link></li>
             </ul>
             <Routes>
-                <Route path={"/"} element={<KLeague1Matches/>}/>
-                <Route path={"/acl"} element={<ACLMatches/>}/>
-                <Route path={"/facup"} element={<FACupMatches/>}/>
+                <Route path={"/kleague1/:id"} element={<KLeague1Matches/>}/>
+                <Route path={"/acl/:id"} element={<ACLMatches/>}/>
+                <Route path={"/facup/:id"} element={<FACupMatches/>}/>
             </Routes>
         </div>
     );
