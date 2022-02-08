@@ -18,7 +18,7 @@ function TimelineList(props) {
     if(!events) return null;
     return (
         <div className='timeline innerCon'>
-            <h2>TIMELINE</h2>
+            <h2 className='contentTitle'>TIMELINE</h2>
             <ul>
                 {events.map(data => {
                     console.log(typeof data.date)

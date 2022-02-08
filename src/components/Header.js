@@ -10,7 +10,7 @@ function Header() {
                     <li><Link to={"/main"}>HOME</Link></li>
                     <li><Link to={"/main/timeline"}>TIMELINE</Link></li>
                     <li>PLAYERS</li>
-                    <li>MATCHES</li>
+                    <li><Link to={"/main/matches"}>MATCHES</Link></li>
                 </ul>
             </div>
         </header>

@@ -15,7 +15,7 @@ function App() {
           <Route path={"/"} element={<MainPage/>}/>
           <Route path={"/timeline/*"} element={<Timeline/>} />
           <Route path={"/"} />
-          <Route path={"/"} />
+          <Route path={"/matches/*"} element={<MatchesPage/>} />
           <Route path={"/admin"} element={<AdminLogin/>}/>
         </Routes>
       </div>
