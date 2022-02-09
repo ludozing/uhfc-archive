@@ -6,6 +6,7 @@ import MainPage from './main';
 import AdminLogin from './admin';
 import Timeline from './timeline';
 import MatchesPage from './matches';
+import PlayersPage from './players';
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
         <Routes>
           <Route path={"/"} element={<MainPage/>}/>
           <Route path={"/timeline/*"} element={<Timeline/>} />
-          <Route path={"/"} />
+          <Route path={"/players/*"} element={<PlayersPage/>} />
           <Route path={"/matches/*"} element={<MatchesPage/>} />
           <Route path={"/admin"} element={<AdminLogin/>}/>
         </Routes>

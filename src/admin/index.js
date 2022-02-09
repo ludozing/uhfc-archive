@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './AdminLogin.scss';
 import { Table, TableBody, TableCell, TableRow } from '@material-ui/core';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 function AdminLogin(props) {
     const [ putPw, setPutPw ] = useState({
@@ -12,7 +12,7 @@ function AdminLogin(props) {
         e.preventDefault();
         if(putPw.pw.length < 4) {
             const clickedValue = e.target.value;
-            if (clickedValue!=undefined){
+            if (clickedValue!==undefined){
                 setPutPw({
                     ...putPw,
                     pw: putPw.pw + clickedValue})
@@ -45,7 +45,7 @@ function AdminLogin(props) {
             console.error(err)
         })
     }
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     return (
         <div className='adminLoginPw'>

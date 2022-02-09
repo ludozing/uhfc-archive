@@ -9,7 +9,7 @@ function Header() {
                 <ul className='topMenu'>
                     <li><Link to={"/main"}>HOME</Link></li>
                     <li><Link to={"/main/timeline"}>TIMELINE</Link></li>
-                    <li>PLAYERS</li>
+                    <li><Link to={"/main/players"}>PLAYERS</Link></li>
                     <li><Link to={"/main/matches"}>MATCHES</Link></li>
                 </ul>
             </div>

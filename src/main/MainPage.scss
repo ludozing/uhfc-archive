@@ -1,38 +1,19 @@
-#mainPageFrame {
+#mainPage {
     padding: 0;
     width: 100%;
     height: 100vh;
     position: relative;
-    overflow: hidden;
-    #mainPage {
-        width: 500%;
+    div {
+        width: 100%;
         height: 100vh;
-        display: flex;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    >div {
         position: absolute;
         left: 0;
         top: 0;
-        transition: 0.2s;
-        > div {
-            width: 100%;
-            height: 100vh;
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            &.bgImg01 {
-                background-image: url(http://localhost:3000/images/bgImg01.jpg);
-            }
-            &.bgImg02 {
-                background-image: url(http://localhost:3000/images/bgImg02.jpg);
-            }
-            &.bgImg03 {
-                background-image: url(http://localhost:3000/images/bgImg03.jpg);
-            }
-            &.bgImg04 {
-                background-image: url(http://localhost:3000/images/bgImg04.jpg);
-            }
-            &.bgImg05 {
-                background-image: url(http://localhost:3000/images/bgImg05.jpg);
-            }
-        }
+        z-index: -1;
     }
 }
