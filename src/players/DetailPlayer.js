@@ -2,7 +2,7 @@ import React from 'react';
 
 function DetailPlayer(props) {
     return (
-        <div>
+        <div className='contentArea'>
             
         </div>
     );

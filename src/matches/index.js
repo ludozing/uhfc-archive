@@ -6,9 +6,9 @@ import FACupMatches from './FACupMatches';
 
 function MatchesPage(props) {
     return (
-        <div className='matchesPage innerCon'>
+        <div className='matchesPage contentArea'>
             <h2 className='contentTitle'>MATCH RESULTS</h2>
-            <ul className='matchPageMenu'>
+            <ul className='matchPageMenu subMenu'>
                 <li><Link to={"/main/matches/kleague1"}>K리그1</Link></li>
                 <li><Link to={"/main/matches/acl"}>ACL</Link></li>
                 <li><Link to={"/main/matches/facup"}>FA컵</Link></li>

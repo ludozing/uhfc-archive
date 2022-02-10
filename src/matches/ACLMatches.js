@@ -2,9 +2,9 @@ import React from 'react';
 
 const ACLMatches = () => {
     return (
-        <div>
-            <h3>ACL</h3>
-            <ul>
+        <div className='contentArea'>
+            <h3 className='deptTitle'>ACL</h3>
+            <ul className='miniMenu'>
                 <li>Group Stage</li>
             </ul>
         </div>

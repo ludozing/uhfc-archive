@@ -2,7 +2,7 @@ import React from 'react';
 
 function UpdateMatchResults(props) {
     return (
-        <div>
+        <div className='contentArea'>
             
         </div>
     );

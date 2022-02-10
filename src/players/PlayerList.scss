@@ -1,0 +1,55 @@
+@font-face {
+    font-family: 'Vitro_core';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/Vitro_core.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.playerListUl {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+.uniform {
+    width: 200px;
+    height: 200px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    position: relative;
+    text-align: center;
+    font-family: 'Vitro_core';
+    transition: 0.5s;
+    .plyrName {
+        position: absolute;
+        left: 50%;
+        top: 20%;
+        transform: translateX(-50%);
+        font-size: 20px;
+    }
+    .plyrNum {
+        position: absolute;
+        left: 50%;
+        top: 30%;
+        transform: translateX(-50%);
+        font-size: 64px;
+    }
+    &.forGk {
+        background-image: url(./images/uniform_gk.png);
+        &:hover {
+            background-image: url(./images/uniform_gk_hov.png);
+        }
+        >p {
+            color: var(--blue-color);
+        }
+    }
+    &.forFp {
+        &:hover {
+            background-image: url(./images/uniform_fp_hov.png);
+        }
+        background-image: url(./images/uniform_fp.png);
+        >p {
+            color: #fff;
+        }
+    }
+}

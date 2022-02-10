@@ -2,7 +2,7 @@ import React from 'react';
 
 function DetailTimeline(props) {
     return (
-        <div>
+        <div className='contentArea'>
             
         </div>
     );

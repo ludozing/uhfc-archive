@@ -14,6 +14,9 @@
 :root {
   --blue-color: #043db7;
   --yellow-color: #feb913;
+  --blue-color-td: hsl(221, 90%, 40%);
+  --yellow-color-td: hsl(42, 90%, 40%);
+  --red-color-td: hsl(0, 90%, 47%);
   --yellow-outline:
     -1px -1px 0 var(--yellow-color),
     1px -1px 0 var(--yellow-color),
@@ -91,6 +94,77 @@ header>div {
   color: var(--blue-color);
   text-shadow: var(--yellow-outline);
 }
+
+/* 컨텐트 영역 */
+.contentArea {
+  width: 70%;
+  min-width: 800px;
+  margin: 0 auto;
+}
+.contentTitle {
+  text-align: center;
+  width: 500px;
+  margin: 20px auto;
+  background-color: var(--blue-color);
+  color: #fff;
+  height: 40px;
+  line-height: 40px;
+  transform: skew(-15deg);
+}
+.subMenu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.subMenu li {
+  padding: 0 4px;
+  margin: 0 2px;
+  min-width: 60px;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  font-size: 13px;
+  border: 1px solid var(--yellow-color);
+  border-radius: 8px;
+  cursor: pointer;
+}
+.subMenu li:hover {
+  background-color: var(--blue-color);
+  color: #fff;
+}
+.deptTitle {
+  text-align: center;
+  width: 300px;
+  margin: 16px auto;
+  background-color: var(--yellow-color);
+  color: #fff;
+  height: 40px;
+  line-height: 40px;
+  transform: skew(-15deg);
+}
+.miniMenu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.miniMenu li {
+  padding: 0 4px;
+  margin: 0 2px;
+  min-width: 50px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  font-size: 11px;
+  border: 1px solid var(--yellow-color);
+  border-radius: 6px;
+  cursor: pointer;
+}
+.miniMenu li:hover {
+  background-color: var(--yellow-color);
+  color: #fff;
+}
+/* /컨텐트 영역 */
+
 footer {
   width: 100%;
   background-color: #444;

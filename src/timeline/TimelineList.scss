@@ -1,7 +1,44 @@
-.timelineLi {
+.timelinePageMenu {
+    flex-wrap: wrap;
+}
+.timelineUl {
+    margin: 20px 0;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 70%;
-    margin: 0 auto;
+    flex-direction: column;
+    justify-content: start;
+    .timelineLi {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        .e_date {
+            width: 120px;
+        }
+        .e_dept {
+            width: 80px;
+            color: #fff;
+            text-align: center;
+            height: 24px;
+            line-height: 24px;
+            &.e_video{
+                background-color: var(--red-color-td);
+            }
+            &.e_article{
+                background-color: var(--blue-color-td);
+            }
+            &.e_notice{
+                background-color: var(--yellow-color-td);
+            }
+        }
+        .e_title {
+            padding: 0 10px;
+            font-weight: bold;
+            width: calc(100% - 200px);
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
 }
