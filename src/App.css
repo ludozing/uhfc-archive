@@ -128,7 +128,7 @@ header>div {
   border-radius: 8px;
   cursor: pointer;
 }
-.subMenu li:hover {
+.subMenu li:hover, .subMenu li.on {
   background-color: var(--blue-color);
   color: #fff;
 }

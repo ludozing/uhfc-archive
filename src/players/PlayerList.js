@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useState } from 'react';
 import useAsync from '../hooks/useAsync';
 import './PlayerList.scss'
 
@@ -9,27 +9,43 @@ async function getPlayers(){
     )
     return response.data;
 }
-
 function PlayerList(props) {
     const state = useAsync(getPlayers);
     const {loading, error, data: players} = state;
+    const defaultState = {
+        GK: false,
+        DF: false,
+        MF: false,
+        FW: false
+    }
+    const [ filtered, setFiltered] = useState(defaultState)
+    function onFiltered(props){
+        return(
+            setFiltered({
+                ...defaultState, [props]:true
+            })
+        )
+    }
+    let {GK,DF,MF,FW} = filtered;
     if(loading) return <div>로딩중...</div>
     if(error) return <div>페이지를 나타낼 수 없습니다.</div>
     if(!players) return null;
     return (
         <div className='contentArea'>
             <ul className='subMenu'>
-                <li>ALL</li>
-                <li>GK</li>
-                <li>DF</li>
-                <li>MF</li>
-                <li>FW</li>
+                <li key={"ALL"} onClick={()=> setFiltered(defaultState)} className={
+                    !GK&&!DF&&!MF&&!FW? "on":""
+                    }>ALL</li>
+                <li key="GK" onClick={()=> onFiltered("GK")} className={GK? "on":""}>GK</li>
+                <li key="DF" onClick={()=> onFiltered("DF")} className={DF? "on":""}>DF</li>
+                <li key="MF" onClick={()=> onFiltered("MF")} className={MF? "on":""}>MF</li>
+                <li key="FW" onClick={()=> onFiltered("FW")} className={FW? "on":""}>FW</li>
             </ul>
             <ul className='playerListUl'>
                     {players.map(data => {
                         if (data.position=='GK')
                         return(
-                            <li>
+                            <li key={data.b_no}>
                                 <a href={`/main/player/detail/${data.b_no}`}>
                                     <div className='uniform forGk'>
                                         <p className='plyrName'>{data.k_name}</p>
@@ -40,7 +56,7 @@ function PlayerList(props) {
                         )
                         else
                         return(
-                            <li>
+                            <li key={data.b_no}>
                                 <a href={`/main/player/detail/${data.b_no}`}>
                                     <div className='uniform forFp'>
                                         <p className='plyrName'>{data.k_name}</p>
