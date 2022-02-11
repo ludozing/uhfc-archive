@@ -18,7 +18,7 @@ function PlayerList(props) {
         MF: false,
         FW: false
     }
-    const [ filtered, setFiltered] = useState(defaultState)
+    const [ filtered, setFiltered] = useState(defaultState);
     function onFiltered(props){
         return(
             setFiltered({
@@ -43,28 +43,82 @@ function PlayerList(props) {
             </ul>
             <ul className='playerListUl'>
                     {players.map(data => {
-                        if (data.position=='GK')
-                        return(
-                            <li key={data.b_no}>
-                                <a href={`/main/player/detail/${data.b_no}`}>
-                                    <div className='uniform forGk'>
-                                        <p className='plyrName'>{data.k_name}</p>
-                                        <p className='plyrNum'>{data.b_no}</p>
-                                    </div>
-                                </a>
-                            </li>
-                        )
-                        else
-                        return(
-                            <li key={data.b_no}>
-                                <a href={`/main/player/detail/${data.b_no}`}>
-                                    <div className='uniform forFp'>
-                                        <p className='plyrName'>{data.k_name}</p>
-                                        <p className='plyrNum'>{data.b_no}</p>
-                                    </div>
-                                </a>
-                            </li>
-                        )
+                        if(GK) {
+                            if(data.position==='GK')
+                            return(
+                                <li key={data.b_no}>
+                                    <a href={`/main/player/detail/${data.b_no}`}>
+                                        <div className='uniform forGk'>
+                                            <p className='plyrName'>{data.k_name}</p>
+                                            <p className='plyrNum'>{data.b_no}</p>
+                                        </div>
+                                    </a>
+                                </li>
+                            )
+                        }
+                        else if(DF) {
+                            if(data.position==='DF')
+                            return(
+                                <li key={data.b_no}>
+                                    <a href={`/main/player/detail/${data.b_no}`}>
+                                        <div className='uniform forFp'>
+                                            <p className='plyrName'>{data.k_name}</p>
+                                            <p className='plyrNum'>{data.b_no}</p>
+                                        </div>
+                                    </a>
+                                </li>
+                            )
+                        }
+                        else if(MF) {
+                            if(data.position==='MF')
+                            return(
+                                <li key={data.b_no}>
+                                    <a href={`/main/player/detail/${data.b_no}`}>
+                                        <div className='uniform forFp'>
+                                            <p className='plyrName'>{data.k_name}</p>
+                                            <p className='plyrNum'>{data.b_no}</p>
+                                        </div>
+                                    </a>
+                                </li>
+                            )
+                        }
+                        else if(FW) {
+                            if(data.position==='FW')
+                            return(
+                                <li key={data.b_no}>
+                                    <a href={`/main/player/detail/${data.b_no}`}>
+                                        <div className='uniform forFp'>
+                                            <p className='plyrName'>{data.k_name}</p>
+                                            <p className='plyrNum'>{data.b_no}</p>
+                                        </div>
+                                    </a>
+                                </li>
+                            )
+                        }
+                        else {
+                            if(data.position==='GK')
+                            return(
+                                <li key={data.b_no}>
+                                    <a href={`/main/player/detail/${data.b_no}`}>
+                                        <div className='uniform forGk'>
+                                            <p className='plyrName'>{data.k_name}</p>
+                                            <p className='plyrNum'>{data.b_no}</p>
+                                        </div>
+                                    </a>
+                                </li>
+                            )
+                            else
+                            return(
+                                <li key={data.b_no}>
+                                    <a href={`/main/player/detail/${data.b_no}`}>
+                                        <div className='uniform forFp'>
+                                            <p className='plyrName'>{data.k_name}</p>
+                                            <p className='plyrNum'>{data.b_no}</p>
+                                        </div>
+                                    </a>
+                                </li>
+                            )
+                        }
                     })}
             </ul>
         </div>

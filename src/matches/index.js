@@ -1,34 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, Routes, Route } from 'react-router-dom';
 import KLeague1Matches from './KLeague1Matches';
 import ACLMatches from './ACLMatches';
 import FACupMatches from './FACupMatches';
 
-let filter = {
-    isKL1: false,
-    isACL: false,
-    isFAC: false
-}
-console.log(filter.isKL1)
-function onClick(props){
-    return(
-        filter = {    
-            isKL1: false,
-            isACL: false,
-            isFAC: false
-        }
-        // filter.props = true
-    )
-}
-
 function MatchesPage(props) {
+    const defaultState = {
+        KL1: false,
+        ACL: false,
+        FAC: false
+    }
+    const [ clicked, setClicked ] = useState(defaultState);
+    function onClicked(props){
+        return(
+            setClicked({
+                ...defaultState, [props]: true
+            })
+        )
+    }
+    let {KL1, ACL, FAC} = clicked;
     return (
         <div className='matchesPage contentArea'>
             <h2 className='contentTitle'>MATCH RESULTS</h2>
             <ul className='matchPageMenu subMenu'>
-                <li><Link to={"/main/matches/kleague1"} onClick={onClick("isKL1")}>K리그1</Link></li>
-                <li><Link to={"/main/matches/acl"}>ACL</Link></li>
-                <li><Link to={"/main/matches/facup"}>FA컵</Link></li>
+                <li onClick={() => onClicked("KL1")} className={KL1? "on":""}>
+                    <Link to={"/main/matches/kleague1"}>K리그1</Link>
+                </li>
+                <li onClick={() => onClicked("ACL")} className={ACL? "on":""}>
+                    <Link to={"/main/matches/acl"}>ACL</Link>
+                </li>
+                <li onClick={() => onClicked("FAC")} className={FAC? "on":""}>
+                    <Link to={"/main/matches/facup"}>FA컵</Link>
+                </li>
             </ul>
             <Routes>
                 <Route path={"/kleague1/*"} element={<KLeague1Matches/>}/>

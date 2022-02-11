@@ -49,7 +49,7 @@ header {
   left: 0;
   width: 100%;
   transition: 0.4s;
-  text-shadow: var(--yellow-outline)
+  text-shadow: var(--yellow-outline);
 }
 header>div {
   height: 100px;
