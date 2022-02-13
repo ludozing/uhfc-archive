@@ -47,7 +47,7 @@ function PlayerList(props) {
                             if(data.position==='GK')
                             return(
                                 <li key={data.b_no}>
-                                    <a href={`/main/player/detail/${data.b_no}`}>
+                                    <a href={`/main/players/detail/${data.b_no}`}>
                                         <div className='uniform forGk'>
                                             <p className='plyrName'>{data.k_name}</p>
                                             <p className='plyrNum'>{data.b_no}</p>
@@ -60,7 +60,7 @@ function PlayerList(props) {
                             if(data.position==='DF')
                             return(
                                 <li key={data.b_no}>
-                                    <a href={`/main/player/detail/${data.b_no}`}>
+                                    <a href={`/main/players/detail/${data.b_no}`}>
                                         <div className='uniform forFp'>
                                             <p className='plyrName'>{data.k_name}</p>
                                             <p className='plyrNum'>{data.b_no}</p>
@@ -73,7 +73,7 @@ function PlayerList(props) {
                             if(data.position==='MF')
                             return(
                                 <li key={data.b_no}>
-                                    <a href={`/main/player/detail/${data.b_no}`}>
+                                    <a href={`/main/players/detail/${data.b_no}`}>
                                         <div className='uniform forFp'>
                                             <p className='plyrName'>{data.k_name}</p>
                                             <p className='plyrNum'>{data.b_no}</p>
@@ -86,7 +86,7 @@ function PlayerList(props) {
                             if(data.position==='FW')
                             return(
                                 <li key={data.b_no}>
-                                    <a href={`/main/player/detail/${data.b_no}`}>
+                                    <a href={`/main/players/detail/${data.b_no}`}>
                                         <div className='uniform forFp'>
                                             <p className='plyrName'>{data.k_name}</p>
                                             <p className='plyrNum'>{data.b_no}</p>
@@ -99,7 +99,7 @@ function PlayerList(props) {
                             if(data.position==='GK')
                             return(
                                 <li key={data.b_no}>
-                                    <a href={`/main/player/detail/${data.b_no}`}>
+                                    <a href={`/main/players/detail/${data.b_no}`}>
                                         <div className='uniform forGk'>
                                             <p className='plyrName'>{data.k_name}</p>
                                             <p className='plyrNum'>{data.b_no}</p>
@@ -110,7 +110,7 @@ function PlayerList(props) {
                             else
                             return(
                                 <li key={data.b_no}>
-                                    <a href={`/main/player/detail/${data.b_no}`}>
+                                    <a href={`/main/players/detail/${data.b_no}`}>
                                         <div className='uniform forFp'>
                                             <p className='plyrName'>{data.k_name}</p>
                                             <p className='plyrNum'>{data.b_no}</p>

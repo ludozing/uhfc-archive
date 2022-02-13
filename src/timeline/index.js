@@ -1,13 +1,13 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import DetailTimeline from './DetailTimeline';
 import TimelineList from './TimelineList';
+import UpdateTimeline from './UpdateTimeline';
 
 function Timeline(props) {
     return (
             <Routes>
                 <Route path={"/"} element={<TimelineList/>} />
-                <Route path={"/:id"} element={<DetailTimeline/>} />
+                <Route path={"/:id"} element={<UpdateTimeline/>} />
             </Routes>
     );
 }
