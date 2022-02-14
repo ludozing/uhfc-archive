@@ -1,4 +1,5 @@
 import Header from './components/Header';
+import Header2 from './components/Header2';
 import './App.css';
 import Footer from './components/Footer';
 import { Route, Routes } from 'react-router-dom';
@@ -11,7 +12,10 @@ import PlayersPage from './players';
 function App() {
   return (
     <div className="App">
-      <Header />
+      <Routes>
+        <Route path={"/"} element={<Header/>}/>
+        <Route path={"/*"} element={<Header2/>}/>
+      </Routes>
       <div className='content'>
         <Routes>
           <Route path={"/"} element={<MainPage/>}/>

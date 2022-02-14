@@ -1,5 +1,6 @@
 .timelinePageMenu {
-    flex-wrap: wrap;
+    // flex-wrap: wrap;
+    min-width: 920px;
 }
 .timelineUl {
     margin: 20px 0;
@@ -19,8 +20,17 @@
         border-right: 1px solid #eee;
         border-radius: 0 0 10px 0;
         .e_date {
-            width: 120px;
-            text-align: center;
+            width: 140px;
+            display: flex;
+            align-items: center;
+            padding-right: 10px;
+            span {
+                display: block;
+                text-align: right;
+                &.e_year { width: 40%; }
+                &.e_month { width: 30%; }
+                &.e_day { width: 30%; }
+            }
         }
         .e_dept {
             width: 80px;
@@ -37,9 +47,9 @@
             }
         }
         .e_title {
-            padding: 0 10px;
+            padding: 0 20px;
             font-weight: bold;
-            width: calc(100% - 200px);
+            width: calc(100% - 220px);
             &:hover {
                 text-decoration: underline;
             }

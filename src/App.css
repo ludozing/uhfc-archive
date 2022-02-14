@@ -51,6 +51,10 @@ header {
   transition: 0.4s;
   text-shadow: var(--yellow-outline);
 }
+header.bg {
+  background-color: #fff;
+  border-bottom: 0.1px solid #ccc;
+}
 header>div {
   height: 100px;
   display: flex;
@@ -96,9 +100,17 @@ header>div {
 }
 
 /* 컨텐트 영역 */
+.content {
+  width: 100%;
+  min-height: calc(100vh - 200px);
+}
+.content>div{
+  padding-top: 100px;
+  padding-bottom: 40px;
+}
 .contentArea {
   width: 70%;
-  min-width: 800px;
+  min-width: 900px;
   margin: 0 auto;
 }
 .contentTitle {
@@ -185,11 +197,4 @@ footer .contact a:hover {
 }
 .forAdmin {
   font-family: 'DungGeunMo';
-}
-.content {
-  width: 100%;
-  min-height: calc(100vh - 200px);
-}
-.content>div{
-  padding-top: 100px;
 }

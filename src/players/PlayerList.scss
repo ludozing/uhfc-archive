@@ -53,3 +53,135 @@
         }
     }
 }
+
+// DetailPlayer
+.playerDetail {
+    position: relative;
+    .backToList {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        font-family: 'RIDIBatang';
+    }
+    .deptTitle {
+        position: relative;
+        // color: var(--blue-color);
+        .status {
+            position: absolute;
+            top: 50%;
+            left: 15%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            width: 70px;
+            height: 30px;
+            justify-content: center;
+            align-items: center;
+            img {
+                transform: skew(15deg);
+                width: 30px;
+                height: 30px;
+                margin: 0 4px;
+            }
+            .u22 {
+                display: block;
+                width: 30px;
+                height: 20px;
+                transform: skew(15deg);
+                line-height: 20px;
+                font-size: 10px;
+                background-color: var(--blue-color);
+                border-radius: 10px;
+                color: #fff;
+                font-family: 'san-serif';
+            }
+        }
+    }
+}
+.playerInfoArea {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .picArea {
+        width: 500px;
+        height: 500px;
+        img {
+            width: 100%;
+        }
+    }
+    .descArea {
+        width: 380px;
+        height: 500px;
+        table.MuiTable-root {
+            height: 100%;
+            width: 100%;
+            .MuiTableBody-root {
+                .MuiTableRow-root {
+                    .dp_dept {
+                        background-color: #ccc;
+                        width: 25%;
+                        text-align: center;
+                    }
+                    .dp_value {
+                        text-align: center;
+                        border-bottom: 0.1px solid #ccc;
+                    }
+                }
+            }
+        }
+    }
+}
+.playerEventsArea {
+    width: 100%;
+    table.MuiTable-root {
+        border-spacing: 1px;
+        border-collapse: separate;
+        width: 100%;
+        height: auto;
+        .peTh {
+            background-color: #ccc;
+            th {
+                text-align: center;
+                &.pe_date {
+                    width: 16%;
+                }
+                &.pe_dept {
+                    width: 10%;
+                }
+            }
+        }
+        .peTb {
+            width: 100%;
+            height: auto;
+            tr {
+                height: 40px;
+                border-bottom: 1px solid #ccc;
+                .MuiTableCell-root {
+                    height: 40px;
+                    &:first-child{
+                        .e_date {
+                            display: flex;
+                            align-items: center;
+                            padding: 0 10px;
+                            span {
+                                display: block;
+                                text-align: right;
+                                &.e_year { width: 40%; }
+                                &.e_month { width: 30%; }
+                                &.e_day { width: 30%; }
+                            }
+                        }
+                    }
+                    &.pe_dept {
+                        font-weight: bold;
+                        text-align: center;
+                    }
+                    &:last-child {
+                        padding: 0 10px;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+}

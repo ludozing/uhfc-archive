@@ -51,13 +51,20 @@ function TimelineList(props) {
                 {events.map(data => {
                     let k_date = new Date(+new Date(data.date) + 3240 * 10000).toISOString().split("T")[0];
                     let dateData = k_date.split("-");
-                    let e_date = dateData[0]+"년 "+dateData[1]+"월 "+dateData[2]+"일"
+                    let e_year = dateData[0]+"년";
+                    let e_month = (dateData[1].charAt(0)==='0'? dateData[1].charAt(1):dateData[1])+"월";
+                    let e_day = (dateData[2].charAt(0)==='0'? dateData[2].charAt(1):dateData[2])+"일"        
+                    let e_date = <p className='e_date'>
+                        <span className='e_year'>{e_year}</span>
+                        <span className='e_month'>{e_month}</span>
+                        <span className='e_day'>{e_day}</span>
+                    </p>
                     if(ALL){
                         switch(data.dept){
                             case "video":
                                 return(
                                     <li key={data.no} className='timelineLi'>
-                                        <p className='e_date'>{e_date}</p>
+                                        {e_date}
                                         <p className='e_dept e_video'>[VIDEO]</p>
                                         <p className='e_title'><a href={data.refer_vid} target="_blank" rel="noreferrer">{data.title}</a></p>
                                     </li>
@@ -65,7 +72,7 @@ function TimelineList(props) {
                             case "article":
                                 return(
                                     <li key={data.no} className='timelineLi'>
-                                        <p className='e_date'>{e_date}</p>
+                                        {e_date}
                                         <p className='e_dept e_article'>[ARTICLE]</p>
                                         <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                     </li>
@@ -73,7 +80,7 @@ function TimelineList(props) {
                             case "notice":
                                 return(
                                     <li key={data.no} className='timelineLi'>
-                                        <p className='e_date'>{e_date}</p>
+                                        {e_date}
                                         <p className='e_dept e_notice'>[NOTICE]</p>
                                         <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                     </li>
@@ -88,7 +95,7 @@ function TimelineList(props) {
                                 case "video":
                                     return(
                                         <li key={data.no} className='timelineLi'>
-                                            <p className='e_date'>{e_date}</p>
+                                            {e_date}
                                             <p className='e_dept e_video'>[VIDEO]</p>
                                             <p className='e_title'><a href={data.refer_vid} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
@@ -96,7 +103,7 @@ function TimelineList(props) {
                                 case "article":
                                     return(
                                         <li key={data.no} className='timelineLi'>
-                                            <p className='e_date'>{e_date}</p>
+                                            {e_date}
                                             <p className='e_dept e_article'>[ARTICLE]</p>
                                             <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
@@ -104,7 +111,7 @@ function TimelineList(props) {
                                 case "notice":
                                     return(
                                         <li key={data.no} className='timelineLi'>
-                                            <p className='e_date'>{e_date}</p>
+                                            {e_date}
                                             <p className='e_dept e_notice'>[NOTICE]</p>
                                             <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
@@ -120,7 +127,7 @@ function TimelineList(props) {
                                 case "video":
                                     return(
                                         <li key={data.no} className='timelineLi'>
-                                            <p className='e_date'>{e_date}</p>
+                                            {e_date}
                                             <p className='e_dept e_video'>[VIDEO]</p>
                                             <p className='e_title'><a href={data.refer_vid} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
@@ -128,7 +135,7 @@ function TimelineList(props) {
                                 case "article":
                                     return(
                                         <li key={data.no} className='timelineLi'>
-                                            <p className='e_date'>{e_date}</p>
+                                            {e_date}
                                             <p className='e_dept e_article'>[ARTICLE]</p>
                                             <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
@@ -136,7 +143,7 @@ function TimelineList(props) {
                                 case "notice":
                                     return(
                                         <li key={data.no} className='timelineLi'>
-                                            <p className='e_date'>{e_date}</p>
+                                            {e_date}
                                             <p className='e_dept e_notice'>[NOTICE]</p>
                                             <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
@@ -152,7 +159,7 @@ function TimelineList(props) {
                                 case "video":
                                     return(
                                         <li key={data.no} className='timelineLi'>
-                                            <p className='e_date'>{e_date}</p>
+                                            {e_date}
                                             <p className='e_dept e_video'>[VIDEO]</p>
                                             <p className='e_title'><a href={data.refer_vid} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
@@ -160,7 +167,7 @@ function TimelineList(props) {
                                 case "article":
                                     return(
                                         <li key={data.no} className='timelineLi'>
-                                            <p className='e_date'>{e_date}</p>
+                                            {e_date}
                                             <p className='e_dept e_article'>[ARTICLE]</p>
                                             <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
@@ -168,7 +175,7 @@ function TimelineList(props) {
                                 case "notice":
                                     return(
                                         <li key={data.no} className='timelineLi'>
-                                            <p className='e_date'>{e_date}</p>
+                                            {e_date}
                                             <p className='e_dept e_notice'>[NOTICE]</p>
                                             <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
@@ -184,7 +191,7 @@ function TimelineList(props) {
                                 case "video":
                                     return(
                                         <li key={data.no} className='timelineLi'>
-                                            <p className='e_date'>{e_date}</p>
+                                            {e_date}
                                             <p className='e_dept e_video'>[VIDEO]</p>
                                             <p className='e_title'><a href={data.refer_vid} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
@@ -192,7 +199,7 @@ function TimelineList(props) {
                                 case "article":
                                     return(
                                         <li key={data.no} className='timelineLi'>
-                                            <p className='e_date'>{e_date}</p>
+                                            {e_date}
                                             <p className='e_dept e_article'>[ARTICLE]</p>
                                             <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
@@ -200,7 +207,7 @@ function TimelineList(props) {
                                 case "notice":
                                     return(
                                         <li key={data.no} className='timelineLi'>
-                                            <p className='e_date'>{e_date}</p>
+                                            {e_date}
                                             <p className='e_dept e_notice'>[NOTICE]</p>
                                             <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
@@ -216,7 +223,7 @@ function TimelineList(props) {
                                 case "video":
                                     return(
                                         <li key={data.no} className='timelineLi'>
-                                            <p className='e_date'>{e_date}</p>
+                                            {e_date}
                                             <p className='e_dept e_video'>[VIDEO]</p>
                                             <p className='e_title'><a href={data.refer_vid} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
@@ -224,7 +231,7 @@ function TimelineList(props) {
                                 case "article":
                                     return(
                                         <li key={data.no} className='timelineLi'>
-                                            <p className='e_date'>{e_date}</p>
+                                            {e_date}
                                             <p className='e_dept e_article'>[ARTICLE]</p>
                                             <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
@@ -232,7 +239,7 @@ function TimelineList(props) {
                                 case "notice":
                                     return(
                                         <li key={data.no} className='timelineLi'>
-                                            <p className='e_date'>{e_date}</p>
+                                            {e_date}
                                             <p className='e_dept e_notice'>[NOTICE]</p>
                                             <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
@@ -248,7 +255,7 @@ function TimelineList(props) {
                                 case "video":
                                     return(
                                         <li key={data.no} className='timelineLi'>
-                                            <p className='e_date'>{e_date}</p>
+                                            {e_date}
                                             <p className='e_dept e_video'>[VIDEO]</p>
                                             <p className='e_title'><a href={data.refer_vid} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
@@ -256,7 +263,7 @@ function TimelineList(props) {
                                 case "article":
                                     return(
                                         <li key={data.no} className='timelineLi'>
-                                            <p className='e_date'>{e_date}</p>
+                                            {e_date}
                                             <p className='e_dept e_article'>[ARTICLE]</p>
                                             <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
@@ -264,7 +271,7 @@ function TimelineList(props) {
                                 case "notice":
                                     return(
                                         <li key={data.no} className='timelineLi'>
-                                            <p className='e_date'>{e_date}</p>
+                                            {e_date}
                                             <p className='e_dept e_notice'>[NOTICE]</p>
                                             <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
@@ -280,7 +287,7 @@ function TimelineList(props) {
                                 case "video":
                                     return(
                                         <li key={data.no} className='timelineLi'>
-                                            <p className='e_date'>{e_date}</p>
+                                            {e_date}
                                             <p className='e_dept e_video'>[VIDEO]</p>
                                             <p className='e_title'><a href={data.refer_vid} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
@@ -288,7 +295,7 @@ function TimelineList(props) {
                                 case "article":
                                     return(
                                         <li key={data.no} className='timelineLi'>
-                                            <p className='e_date'>{e_date}</p>
+                                            {e_date}
                                             <p className='e_dept e_article'>[ARTICLE]</p>
                                             <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
@@ -296,7 +303,7 @@ function TimelineList(props) {
                                 case "notice":
                                     return(
                                         <li key={data.no} className='timelineLi'>
-                                            <p className='e_date'>{e_date}</p>
+                                            {e_date}
                                             <p className='e_dept e_notice'>[NOTICE]</p>
                                             <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
@@ -312,7 +319,7 @@ function TimelineList(props) {
                                 case "video":
                                     return(
                                         <li key={data.no} className='timelineLi'>
-                                            <p className='e_date'>{e_date}</p>
+                                            {e_date}
                                             <p className='e_dept e_video'>[VIDEO]</p>
                                             <p className='e_title'><a href={data.refer_vid} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
@@ -320,7 +327,7 @@ function TimelineList(props) {
                                 case "article":
                                     return(
                                         <li key={data.no} className='timelineLi'>
-                                            <p className='e_date'>{e_date}</p>
+                                            {e_date}
                                             <p className='e_dept e_article'>[ARTICLE]</p>
                                             <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
@@ -328,7 +335,7 @@ function TimelineList(props) {
                                 case "notice":
                                     return(
                                         <li key={data.no} className='timelineLi'>
-                                            <p className='e_date'>{e_date}</p>
+                                            {e_date}
                                             <p className='e_dept e_notice'>[NOTICE]</p>
                                             <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
@@ -344,7 +351,7 @@ function TimelineList(props) {
                                 case "video":
                                     return(
                                         <li key={data.no} className='timelineLi'>
-                                            <p className='e_date'>{e_date}</p>
+                                            {e_date}
                                             <p className='e_dept e_video'>[VIDEO]</p>
                                             <p className='e_title'><a href={data.refer_vid} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
@@ -352,7 +359,7 @@ function TimelineList(props) {
                                 case "article":
                                     return(
                                         <li key={data.no} className='timelineLi'>
-                                            <p className='e_date'>{e_date}</p>
+                                            {e_date}
                                             <p className='e_dept e_article'>[ARTICLE]</p>
                                             <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
@@ -360,7 +367,7 @@ function TimelineList(props) {
                                 case "notice":
                                     return(
                                         <li key={data.no} className='timelineLi'>
-                                            <p className='e_date'>{e_date}</p>
+                                            {e_date}
                                             <p className='e_dept e_notice'>[NOTICE]</p>
                                             <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
@@ -376,7 +383,7 @@ function TimelineList(props) {
                                 case "video":
                                     return(
                                         <li key={data.no} className='timelineLi'>
-                                            <p className='e_date'>{e_date}</p>
+                                            {e_date}
                                             <p className='e_dept e_video'>[VIDEO]</p>
                                             <p className='e_title'><a href={data.refer_vid} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
@@ -384,7 +391,7 @@ function TimelineList(props) {
                                 case "article":
                                     return(
                                         <li key={data.no} className='timelineLi'>
-                                            <p className='e_date'>{e_date}</p>
+                                            {e_date}
                                             <p className='e_dept e_article'>[ARTICLE]</p>
                                             <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
@@ -392,7 +399,7 @@ function TimelineList(props) {
                                 case "notice":
                                     return(
                                         <li key={data.no} className='timelineLi'>
-                                            <p className='e_date'>{e_date}</p>
+                                            {e_date}
                                             <p className='e_dept e_notice'>[NOTICE]</p>
                                             <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
@@ -408,7 +415,7 @@ function TimelineList(props) {
                                 case "video":
                                     return(
                                         <li key={data.no} className='timelineLi'>
-                                            <p className='e_date'>{e_date}</p>
+                                            {e_date}
                                             <p className='e_dept e_video'>[VIDEO]</p>
                                             <p className='e_title'><a href={data.refer_vid} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
@@ -416,7 +423,7 @@ function TimelineList(props) {
                                 case "article":
                                     return(
                                         <li key={data.no} className='timelineLi'>
-                                            <p className='e_date'>{e_date}</p>
+                                            {e_date}
                                             <p className='e_dept e_article'>[ARTICLE]</p>
                                             <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
@@ -424,7 +431,7 @@ function TimelineList(props) {
                                 case "notice":
                                     return(
                                         <li key={data.no} className='timelineLi'>
-                                            <p className='e_date'>{e_date}</p>
+                                            {e_date}
                                             <p className='e_dept e_notice'>[NOTICE]</p>
                                             <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
@@ -440,7 +447,7 @@ function TimelineList(props) {
                                 case "video":
                                     return(
                                         <li key={data.no} className='timelineLi'>
-                                            <p className='e_date'>{e_date}</p>
+                                            {e_date}
                                             <p className='e_dept e_video'>[VIDEO]</p>
                                             <p className='e_title'><a href={data.refer_vid} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
@@ -448,7 +455,7 @@ function TimelineList(props) {
                                 case "article":
                                     return(
                                         <li key={data.no} className='timelineLi'>
-                                            <p className='e_date'>{e_date}</p>
+                                            {e_date}
                                             <p className='e_dept e_article'>[ARTICLE]</p>
                                             <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
@@ -456,7 +463,7 @@ function TimelineList(props) {
                                 case "notice":
                                     return(
                                         <li key={data.no} className='timelineLi'>
-                                            <p className='e_date'>{e_date}</p>
+                                            {e_date}
                                             <p className='e_dept e_notice'>[NOTICE]</p>
                                             <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
@@ -472,7 +479,7 @@ function TimelineList(props) {
                                 case "video":
                                     return(
                                         <li key={data.no} className='timelineLi'>
-                                            <p className='e_date'>{e_date}</p>
+                                            {e_date}
                                             <p className='e_dept e_video'>[VIDEO]</p>
                                             <p className='e_title'><a href={data.refer_vid} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
@@ -480,7 +487,7 @@ function TimelineList(props) {
                                 case "article":
                                     return(
                                         <li key={data.no} className='timelineLi'>
-                                            <p className='e_date'>{e_date}</p>
+                                            {e_date}
                                             <p className='e_dept e_article'>[ARTICLE]</p>
                                             <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
@@ -488,7 +495,7 @@ function TimelineList(props) {
                                 case "notice":
                                     return(
                                         <li key={data.no} className='timelineLi'>
-                                            <p className='e_date'>{e_date}</p>
+                                            {e_date}
                                             <p className='e_dept e_notice'>[NOTICE]</p>
                                             <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
