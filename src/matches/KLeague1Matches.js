@@ -35,7 +35,7 @@ const KLeague1Matches = () => {
                         )
                     })}
                 </select>
-                <span> 라운드 </span>
+                <span> 라운드</span>
             </div>
             <Routes>
                 <Route path={"/:id"} element={<MatchSituation_KL1/>} />
