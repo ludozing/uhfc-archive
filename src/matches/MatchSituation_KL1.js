@@ -6,7 +6,7 @@ import './MatchesPage.scss';
 import { useParams } from 'react-router-dom';
 
 
-function MatchSituation_KL1(props) {
+function MatchSituation_KL1() {
     const param = useParams();
     const {id} = param;
     // 선택된 라운드 정보 불러오기
