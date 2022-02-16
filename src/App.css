@@ -162,7 +162,7 @@ header>div {
 .miniMenu li {
   padding: 0 4px;
   margin: 0 2px;
-  min-width: 50px;
+  /* min-width: 50px; */
   height: 20px;
   line-height: 20px;
   text-align: center;
