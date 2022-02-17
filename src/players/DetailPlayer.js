@@ -37,10 +37,18 @@ function DetailPlayer(props) {
     if(!player) return null;
     return (
         <div className='contentArea playerDetail'>
-            <Button className='backToList' onClick={()=>navigate(-1)}>
+            <Button className='backToList' onClick={()=>navigate('..')}>
                 <FaUndoAlt style={{paddingRight: '4px'}}/> 목록으로
             </Button>
-            <h3 className='deptTitle'><span className='status'>{player[0].from_youth? <img src='/images/players/youth.png' alt="현대고 출신"/>:""}{player[0].u22player? <span className='u22'>U22</span>:""}</span>{player[0].real_name? player[0].real_name:player[0].k_name}</h3>
+            <h3 className='deptTitle'>
+                <span className='status'>
+                    {player[0].from_youth? <img src='/images/players/youth.png' alt="현대고 출신"/>:""}
+                    {player[0].u22player? <span className='u22'>U22</span>:""}
+                    {player[0].b_no === 72? <span className='captain'>주장</span>:""}
+                    {player[0].b_no === 16||player[0].b_no === 20||player[0].b_no === 23? <span className='captain'>부주장</span>:""}
+                </span>
+                {player[0].real_name? player[0].real_name:player[0].k_name}
+            </h3>
             <div className='playerInfoArea'>
                 <div className='picArea'>
                     {player[0].pic_url? <img src={player[0].pic_url} alt="선수 사진"/>:<img src='/images/players/preparing.png' alt="사진 준비 중"/>}

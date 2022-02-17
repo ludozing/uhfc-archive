@@ -10,6 +10,12 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: 'Vitro_core';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/Vitro_core.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 :root {
   --blue-color: #043db7;
@@ -110,7 +116,7 @@ header>div {
 }
 .contentArea {
   width: 70%;
-  min-width: 900px;
+  min-width: 1100px;
   margin: 0 auto;
 }
 .contentTitle {

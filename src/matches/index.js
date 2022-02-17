@@ -24,7 +24,7 @@ function MatchesPage(props) {
             <h2 className='contentTitle'>MATCH RESULTS</h2>
             <ul className='matchPageMenu subMenu'>
                 <li onClick={() => onClicked("KL1")} className={KL1? "on":""}>
-                    <Link to={"/main/matches/kleague1"}>K리그1</Link>
+                    <Link to={"/main/matches/kleague1/1"}>K리그1</Link>
                 </li>
                 <li onClick={() => onClicked("ACL")} className={ACL? "on":""}>
                     <Link to={"/main/matches/acl"}>ACL</Link>
