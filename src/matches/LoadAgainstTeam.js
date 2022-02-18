@@ -1,6 +1,6 @@
 import React from 'react';
 
-function LoadTeamLogo({teamName}) {
+function LoadAgainstTeam({teamName, goal, l_r, getTeamColor}) {
     let fileName;
     let teamColor;
     switch(teamName){
@@ -49,12 +49,16 @@ function LoadTeamLogo({teamName}) {
             teamColor = '#B81C22';
             break;
     }
+    getTeamColor(teamColor);
     return (
-        <div className = 'againstTeam'>
-            <img className='teamLogo' src={`/images/teams/${fileName}`} alt={teamName} />
-            <h4 className='teamName' style={{color: teamColor}}>{teamName}</h4>
+        <div className={`againstTeam ${l_r}`} style={{backgroundColor: teamColor}}>
+            <div className='teamArea'>
+                <img className='teamLogo' src={`/images/teams/${fileName}`} alt={teamName} />
+                <h4 className='teamName'>{teamName}</h4>
+            </div>
+            <p className='score'>{goal}</p>
         </div>
     );
 }
 
-export default LoadTeamLogo;
+export default LoadAgainstTeam;

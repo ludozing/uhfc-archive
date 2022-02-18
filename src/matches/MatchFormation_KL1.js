@@ -149,7 +149,7 @@ function MatchFormation_KL1() {
                     <tr>
                         <td className='null' colSpan={3}></td>
                         <td className='GK'><div className='positions'>
-                            <div className='startMem'>{lineup[0].GK_sta ? <StartPlyr b_no={lineup[0].GK_sta} className={' isCap={lineup[0].GK_sta_isCap}forGk'}/>:""}</div>
+                            <div className='startMem'>{lineup[0].GK_sta ? <StartPlyr b_no={lineup[0].GK_sta} className={'forGk'} isCap={lineup[0].GK_sta_isCap}/>:""}</div>
                             <div className='subMem'>{lineup[0].GK_sub ? <SubPlyr b_no={lineup[0].GK_sub} time={lineup[0].GK_sub_time}/>:""}</div>
                         </div></td>
                         <td className='null' colSpan={3}></td>

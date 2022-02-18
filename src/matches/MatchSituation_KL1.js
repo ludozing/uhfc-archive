@@ -1,8 +1,9 @@
+import { ForkRight, Gradient } from '@mui/icons-material';
 import axios from 'axios';
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import useAsync from '../hooks/useAsync';
-import LoadTeamLogo from './LoadTeamLogo';
+import LoadAgainstTeam from './LoadAgainstTeam';
 import './MatchesPage.scss';
 import MatchFormation_KL1 from './MatchFormation_KL1';
 
@@ -19,6 +20,11 @@ function MatchSituation_KL1() {
     }
     const state = useAsync(getResult);
     const {loading, error, data: result} = state;
+
+    // 하위 컴포넌트 LoadAgainstTeam에서 teamColor 받아오기
+    const [teamColor, setTeamColor] = useState('#fff');
+    const getTeamColor = (color) => setTeamColor(color);
+    
     if(loading) return <div>로딩중...</div>
     if(error) return <div>페이지를 나타낼 수 없습니다.</div>
     if(!result) return null;
@@ -30,47 +36,122 @@ function MatchSituation_KL1() {
             </h4>
             <div className='matchDetail'>                
                 <div className='formationArea'>
+                    <h4 className='sectionTitle'>Starting XI</h4>
                     <MatchFormation_KL1 />
                 </div>
                 <div className='matchResultArea'>
-                {!result[0].isAwaygame ?
-                        // 홈경기일 때
-                        <div className='matchResult'>
-                            {/* 울산 */}
-                            <div className='uhfc'>
-                                <img className='teamLogo' src='/images/teams/ulsanhyundai.svg' alt="울산 현대" />
-                                <h4 className='teamName'>울산 현대</h4>
+                    <h4 className='sectionTitle'>Match Result</h4>
+                    {!result[0].isAwaygame ?
+                            // 홈경기일 때
+                            <div className='matchResult'>
+                                {/* 울산 */}
+                                <div className='uhfc mrLeft'>
+                                    <div className='teamArea'>
+                                        <img className='teamLogo' src='/images/teams/ulsanhyundai.svg' alt="울산 현대" />
+                                        <h4 className='teamName'>울산 현대</h4>
+                                    </div>
+                                    <p className='score'>{result[0].gf}</p>
+                                </div>
+                                {/* 상대팀 */}
+                                <LoadAgainstTeam teamName={result[0].against} goal={result[0].ga} l_r={"mrRight"} getTeamColor={getTeamColor} />
                             </div>
-                            {/* 스코어 */}
-                            <div className='score'>
-                                <h4>
-                                    {result[0].gf} : {result[0].ga}
-                                </h4> 
+                        :
+                            // 원정 경기일 때
+                            <div className='matchResult'>
+                                {/* 상대팀 */}
+                                <LoadAgainstTeam teamName={result[0].against} goal={result[0].ga} l_r={"mrLeft"} getTeamColor={getTeamColor} />
+                                {/* 울산 */}
+                                <div className='uhfc mrRight'>
+                                    <div className='teamArea'>
+                                        <img className='teamLogo' src='/images/teams/ulsanhyundai.svg' alt="울산 현대" />
+                                        <h4 className='teamName'>울산 현대</h4>
+                                    </div>
+                                    <p className='score'>{result[0].gf}</p>
+                                </div>
                             </div>
-                            {/* 상대팀 */}
-                            <LoadTeamLogo teamName={result[0].against} />
-                        </div>
-                    :
-                        // 원정 경기일 때
-                        <div className='matchResult'>
-                            {/* 상대팀 */}
-                            <LoadTeamLogo teamName={result[0].against} />
-                            {/* 스코어 */}
-                            <div className='score'>
-                                <h4>
-                                    {result[0].ga} : {result[0].gf}
-                                </h4> 
-                            </div>
-                            {/* 울산 */}
-                            <div className='uhfc'>
-                                <img className='teamLogo' src='/images/teams/ulsanhyundai.svg' alt="울산 현대" />
-                                <h4 className='teamName'>울산 현대</h4>
-                            </div>
-                        </div>
-                }
-                    경기 결과 골, 어시스트
+                    }
+                    {/* 경기 결과 골, 어시스트 */}
+                    <div className='scoreRecordArea'>
+                        <ul>
+                            {
+                                result.map(data => {
+                                    // 울산 선수의 골일 경우
+                                    if(data.ulsanScorer) {
+                                        // 득점 선수 정보 출력
+                                        if(!data.isOG){
+                                            return (
+                                                <li className={!data.isAwaygame? 'gf atHome':'gf atAway'} key={data.dataId}>
+                                                    <a href={data.refer_vid} target="_blank" rel="noreferrer">
+                                                        <span className='scoredTime'>{data.ulsanScoredTime}</span>
+                                                        <span>{data.ulsanScorer}</span>
+                                                        {data.ulsanAssist ? <span className='assist'>(A: {data.ulsanAssist})</span>:''}
+                                                        {data.isPK ? <span className='isPK'></span>:''}
+                                                    </a>
+                                                </li>
+                                            )
+                                        }
+                                        // 울산 선수의 골이지만 자책골일 경우
+                                        else if(data.isOG){
+                                            return (
+                                                <li
+                                                    className={!data.isAwaygame? 'ga atAway':'ga atHome'}
+                                                    key={data.dataId}
+                                                    style={
+                                                        !data.isAwaygame ? {background: `linear-gradient(to left, ${teamColor} 45%, transparent)`}:{background: `linear-gradient(to right, ${teamColor} 45%, transparent)`}
+                                                    }
+                                                >
+                                                    <a href={data.refer_vid} target="_blank" rel="noreferrer">
+                                                        <span className='scoredTime'>{data.ulsanScoredTime}</span>
+                                                        <span>{data.ulsanScorer}</span>
+                                                        <span className='isOG'>(OG)</span>
+                                                    </a>
+                                                </li>
+                                            )
+                                        }
+                                    }
+                                    // 상대 선수의 골일 경우
+                                    if(data.againstScorer) {
+                                        // 득점 선수 정보 출력
+                                        if(!data.isOG){
+                                            return (
+                                                <li
+                                                    className={!data.isAwaygame? 'ga atAway':'ga atHome'}
+                                                    key={data.dataId}
+                                                    style={
+                                                        !data.isAwaygame ? {background: `linear-gradient(to left, ${teamColor} 45%, transparent)`}:{background: `linear-gradient(to right, ${teamColor} 45%, transparent)`}
+                                                    }
+                                                >
+                                                    <a href={data.refer_vid} target="_blank" rel="noreferrer">
+                                                        <span className='scoredTime'>{data.againstScoredTime}</span>
+                                                        <span>{data.againstScorer}</span>
+                                                        {data.againstAssist ? <span className='assist'>(A: {data.againstAssist})</span>:''}
+                                                        {data.isPK ? <span className='isPK'></span>:''}
+                                                    </a>
+                                                </li>
+                                            )
+                                        }
+                                        // 상대 선수의 골이지만 자책골일 경우
+                                        else if(data.isOG){
+                                            return(
+                                                <li className={!data.isAwaygame? 'gf atHome':'gf atAway'} key={data.dataId}>
+                                                    <a href={data.refer_vid} target="_blank" rel="noreferrer">
+                                                        <span className='scoredTime'>{data.againstScoredTime}</span>
+                                                        <span>{data.againstScorer}</span>
+                                                        <span className='isOG'>(OG)</span>
+                                                    </a>
+                                                </li>
+                                            )
+                                        }
+                                    }
+                                })
+                            }
+                        </ul>
+                    </div>
                 </div>
-                <div className='leagueTableArea'></div>
+                <div className='leagueTableArea'>
+                    <h4 className='sectionTitle'>League Table</h4>
+                    매치 위크 종료 순위 상황
+                </div>
             </div>
         </div>
     )

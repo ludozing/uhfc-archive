@@ -92,12 +92,22 @@
             display: flex;
             justify-content: space-between;
             position: relative;
+            .sectionTitle {
+                height: 30px;
+                line-height: 30px;
+                font-size: 16px;
+                color: #fff;
+                padding: 0 15px;
+            }
             .formationArea {
                 width: 500px;
-                height: 750px;
+                height: 800px;
+                .sectionTitle {
+                    background-color: var(--blue-color);
+                }
                 .pitch {
                     width: 100%;
-                    height: 100%;
+                    height: calc(100% - 30px);
                     background-image: url(./images/Football_field.svg.png);
                     background-position: center center;
                     background-repeat: no-repeat;
@@ -134,7 +144,7 @@
                                             }
                                             &.forGk {
                                                 background-image: url(./images/uniform_gk.png);
-                                                >p { color: var(--blue-color);}
+                                                >p { color: #000;}
                                             }
                                             .captain {
                                                 display: block;
@@ -215,24 +225,142 @@
                 }
             }
             .matchResultArea {
+                .sectionTitle {
+                    color: #333;
+                }
                 width: 450px;
                 background-color: #eee;
-                padding: 0 20px;
                 .matchResult {
-                    padding: 40px;
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
-                    .teamLogo {
-                        width: 100px;
-                    }
-                    .teamName {
-                        font-size: 20px;
-                        text-align: center;
-                    }
+                    height: 200px;
                     .uhfc {
+                        width: 50%;
+                        height: 100%;
+                        background-color: #003F98;
+                    }
+                    .againstTeam {
+                        width: 50%;
+                        height: 100%;
+                    }
+                    .mrLeft {
+                        position: relative;
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        border-radius: 0 20px 20px 0;
+                        .score {
+                            position: absolute;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            right: 10px;
+                        }
+                    }
+                    .mrRight {
+                        position: relative;
+                        display: flex;
+                        justify-content: flex-end;
+                        align-items: center;
+                        border-radius: 20px 0 0 20px;
+                        .score {
+                            position: absolute;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            left: 10px;
+                        }
+                    }
+                    .teamArea {
+                        width: 155px;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        .teamLogo {
+                            height: 100px;
+                            margin-bottom: 10px;
+                        }
                         .teamName {
-                            color: #003F98;
+                            font-size: 20px;
+                            text-align: center;
+                            color: #fff;
+                            font-family: var(--uniform-font);
+                        }
+                    }
+                    .score {
+                        width: 50px;
+                        height: 50px;
+                        line-height: 50px;
+                        font-family: var(--digital-font);
+                        font-size: 40px;
+                        border-radius: 8px;
+                        text-align: center;
+                        background-color: #ccc;
+                    }
+                }
+                .scoreRecordArea {
+                    >ul {
+                        li {
+                            height: 50px;
+                            position: relative;
+                            display: flex;
+                            align-items: center;
+                            padding: 0 20px;
+                            color: #fff;
+                            &.atHome {
+                                justify-content: flex-start;
+                            }
+                            &.atAway {
+                                justify-content: flex-end;
+                            }
+                            &.gf {
+                                &.atHome {
+                                    background: linear-gradient(to right, #003F98 45%, transparent);
+                                }
+                                &.atAway {
+                                    background: linear-gradient(to left, #003F98 45%, transparent);
+                                }
+                            }
+                            a {
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+                                span {
+                                    margin: 0 2px;
+                                }
+                                .isPK {
+                                    display: block;
+                                    width: 15px;
+                                    height: 15px;
+                                    background: url(./images/isPK.png);
+                                    background-size: contain;
+                                    background-repeat: no-repeat;
+                                    background-position: center center;
+                                }
+                                .assist {
+                                    font-size: 12px;
+                                    color: #eee;
+                                }
+                                .isOG {
+                                    font-size: 12px;
+                                    color: #ff4848;
+                                }
+                                .scoredTime {
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 50%;
+                                    transform: translate(-50%, -50%);
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    width: 50px;
+                                    height: 30px;
+                                    background-color: #ccc;
+                                    color: #333;
+                                    border-radius: 10px;
+                                    font-family: var(--digital-font);
+                                }
+                            }
                         }
                     }
                 }
@@ -240,6 +368,9 @@
             .leagueTableArea {
                 width: 150px;
                 background-color: #ccc;
+                .sectionTitle {
+                    background-color: var(--yellow-color);
+                }
             }
         }
     }
