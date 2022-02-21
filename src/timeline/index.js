@@ -7,7 +7,7 @@ function Timeline(props) {
     return (
             <Routes>
                 <Route path={"/"} element={<TimelineList/>} />
-                <Route path={"/:id"} element={<UpdateTimeline/>} />
+                <Route path={"/add"} element={<UpdateTimeline/>} />
             </Routes>
     );
 }

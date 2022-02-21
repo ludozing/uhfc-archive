@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import useAsync from '../hooks/useAsync';
 import './TimelineList.scss'
 
@@ -31,6 +32,7 @@ function TimelineList(props) {
     return (
         <div className='timeline contentArea'>
             <h2 className='contentTitle'>TIMELINE</h2>
+            {sessionStorage.admin_pw? <Link to={"/main/timeline/add"} className="forAdmin updateBtns" >UPDATE</Link>:""}
             <ul className='timelinePageMenu subMenu'>
                 <li key="ALL" onClick={()=>onFiltered("ALL")} className={ALL?"on":""}>전체</li>
                 <li key="laDEC" onClick={()=>onFiltered("laDEC")} className={laDEC?"on":""}>2021년 12월</li>
@@ -66,7 +68,7 @@ function TimelineList(props) {
                                     <li key={data.no} className='timelineLi'>
                                         {e_date}
                                         <p className='e_dept e_video'>[VIDEO]</p>
-                                        <p className='e_title'><a href={data.refer_vid} target="_blank" rel="noreferrer">{data.title}</a></p>
+                                        <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                     </li>
                                 )
                             case "article":
@@ -85,6 +87,14 @@ function TimelineList(props) {
                                         <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                     </li>
                                 )
+                            case "match":
+                                return(
+                                    <li key={data.no} className='timelineLi'>
+                                        {e_date}
+                                        <p className='e_dept e_match'>[MATCH]</p>
+                                        <p className='e_title'><a href={data.refer_url}>{data.title}</a></p>
+                                    </li>
+                                )
                             default:
                                 break;
                         }
@@ -97,7 +107,7 @@ function TimelineList(props) {
                                         <li key={data.no} className='timelineLi'>
                                             {e_date}
                                             <p className='e_dept e_video'>[VIDEO]</p>
-                                            <p className='e_title'><a href={data.refer_vid} target="_blank" rel="noreferrer">{data.title}</a></p>
+                                            <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
                                     )
                                 case "article":
@@ -114,6 +124,14 @@ function TimelineList(props) {
                                             {e_date}
                                             <p className='e_dept e_notice'>[NOTICE]</p>
                                             <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
+                                        </li>
+                                    )
+                                case "match":
+                                    return(
+                                        <li key={data.no} className='timelineLi'>
+                                            {e_date}
+                                            <p className='e_dept e_match'>[MATCH]</p>
+                                            <p className='e_title'><a href={data.refer_url}>{data.title}</a></p>
                                         </li>
                                     )
                                 default:
@@ -129,7 +147,7 @@ function TimelineList(props) {
                                         <li key={data.no} className='timelineLi'>
                                             {e_date}
                                             <p className='e_dept e_video'>[VIDEO]</p>
-                                            <p className='e_title'><a href={data.refer_vid} target="_blank" rel="noreferrer">{data.title}</a></p>
+                                            <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
                                     )
                                 case "article":
@@ -146,6 +164,14 @@ function TimelineList(props) {
                                             {e_date}
                                             <p className='e_dept e_notice'>[NOTICE]</p>
                                             <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
+                                        </li>
+                                    )
+                                case "match":
+                                    return(
+                                        <li key={data.no} className='timelineLi'>
+                                            {e_date}
+                                            <p className='e_dept e_match'>[MATCH]</p>
+                                            <p className='e_title'><a href={data.refer_url}>{data.title}</a></p>
                                         </li>
                                     )
                                 default:
@@ -161,7 +187,7 @@ function TimelineList(props) {
                                         <li key={data.no} className='timelineLi'>
                                             {e_date}
                                             <p className='e_dept e_video'>[VIDEO]</p>
-                                            <p className='e_title'><a href={data.refer_vid} target="_blank" rel="noreferrer">{data.title}</a></p>
+                                            <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
                                     )
                                 case "article":
@@ -178,6 +204,14 @@ function TimelineList(props) {
                                             {e_date}
                                             <p className='e_dept e_notice'>[NOTICE]</p>
                                             <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
+                                        </li>
+                                    )
+                                case "match":
+                                    return(
+                                        <li key={data.no} className='timelineLi'>
+                                            {e_date}
+                                            <p className='e_dept e_match'>[MATCH]</p>
+                                            <p className='e_title'><a href={data.refer_url}>{data.title}</a></p>
                                         </li>
                                     )
                                 default:
@@ -193,7 +227,7 @@ function TimelineList(props) {
                                         <li key={data.no} className='timelineLi'>
                                             {e_date}
                                             <p className='e_dept e_video'>[VIDEO]</p>
-                                            <p className='e_title'><a href={data.refer_vid} target="_blank" rel="noreferrer">{data.title}</a></p>
+                                            <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
                                     )
                                 case "article":
@@ -210,6 +244,14 @@ function TimelineList(props) {
                                             {e_date}
                                             <p className='e_dept e_notice'>[NOTICE]</p>
                                             <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
+                                        </li>
+                                    )
+                                case "match":
+                                    return(
+                                        <li key={data.no} className='timelineLi'>
+                                            {e_date}
+                                            <p className='e_dept e_match'>[MATCH]</p>
+                                            <p className='e_title'><a href={data.refer_url}>{data.title}</a></p>
                                         </li>
                                     )
                                 default:
@@ -225,7 +267,7 @@ function TimelineList(props) {
                                         <li key={data.no} className='timelineLi'>
                                             {e_date}
                                             <p className='e_dept e_video'>[VIDEO]</p>
-                                            <p className='e_title'><a href={data.refer_vid} target="_blank" rel="noreferrer">{data.title}</a></p>
+                                            <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
                                     )
                                 case "article":
@@ -242,6 +284,14 @@ function TimelineList(props) {
                                             {e_date}
                                             <p className='e_dept e_notice'>[NOTICE]</p>
                                             <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
+                                        </li>
+                                    )
+                                case "match":
+                                    return(
+                                        <li key={data.no} className='timelineLi'>
+                                            {e_date}
+                                            <p className='e_dept e_match'>[MATCH]</p>
+                                            <p className='e_title'><a href={data.refer_url}>{data.title}</a></p>
                                         </li>
                                     )
                                 default:
@@ -257,7 +307,7 @@ function TimelineList(props) {
                                         <li key={data.no} className='timelineLi'>
                                             {e_date}
                                             <p className='e_dept e_video'>[VIDEO]</p>
-                                            <p className='e_title'><a href={data.refer_vid} target="_blank" rel="noreferrer">{data.title}</a></p>
+                                            <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
                                     )
                                 case "article":
@@ -274,6 +324,14 @@ function TimelineList(props) {
                                             {e_date}
                                             <p className='e_dept e_notice'>[NOTICE]</p>
                                             <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
+                                        </li>
+                                    )
+                                case "match":
+                                    return(
+                                        <li key={data.no} className='timelineLi'>
+                                            {e_date}
+                                            <p className='e_dept e_match'>[MATCH]</p>
+                                            <p className='e_title'><a href={data.refer_url}>{data.title}</a></p>
                                         </li>
                                     )
                                 default:
@@ -289,7 +347,7 @@ function TimelineList(props) {
                                         <li key={data.no} className='timelineLi'>
                                             {e_date}
                                             <p className='e_dept e_video'>[VIDEO]</p>
-                                            <p className='e_title'><a href={data.refer_vid} target="_blank" rel="noreferrer">{data.title}</a></p>
+                                            <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
                                     )
                                 case "article":
@@ -306,6 +364,14 @@ function TimelineList(props) {
                                             {e_date}
                                             <p className='e_dept e_notice'>[NOTICE]</p>
                                             <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
+                                        </li>
+                                    )
+                                case "match":
+                                    return(
+                                        <li key={data.no} className='timelineLi'>
+                                            {e_date}
+                                            <p className='e_dept e_match'>[MATCH]</p>
+                                            <p className='e_title'><a href={data.refer_url}>{data.title}</a></p>
                                         </li>
                                     )
                                 default:
@@ -321,7 +387,7 @@ function TimelineList(props) {
                                         <li key={data.no} className='timelineLi'>
                                             {e_date}
                                             <p className='e_dept e_video'>[VIDEO]</p>
-                                            <p className='e_title'><a href={data.refer_vid} target="_blank" rel="noreferrer">{data.title}</a></p>
+                                            <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
                                     )
                                 case "article":
@@ -338,6 +404,14 @@ function TimelineList(props) {
                                             {e_date}
                                             <p className='e_dept e_notice'>[NOTICE]</p>
                                             <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
+                                        </li>
+                                    )
+                                case "match":
+                                    return(
+                                        <li key={data.no} className='timelineLi'>
+                                            {e_date}
+                                            <p className='e_dept e_match'>[MATCH]</p>
+                                            <p className='e_title'><a href={data.refer_url}>{data.title}</a></p>
                                         </li>
                                     )
                                 default:
@@ -353,7 +427,7 @@ function TimelineList(props) {
                                         <li key={data.no} className='timelineLi'>
                                             {e_date}
                                             <p className='e_dept e_video'>[VIDEO]</p>
-                                            <p className='e_title'><a href={data.refer_vid} target="_blank" rel="noreferrer">{data.title}</a></p>
+                                            <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
                                     )
                                 case "article":
@@ -370,6 +444,14 @@ function TimelineList(props) {
                                             {e_date}
                                             <p className='e_dept e_notice'>[NOTICE]</p>
                                             <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
+                                        </li>
+                                    )
+                                case "match":
+                                    return(
+                                        <li key={data.no} className='timelineLi'>
+                                            {e_date}
+                                            <p className='e_dept e_match'>[MATCH]</p>
+                                            <p className='e_title'><a href={data.refer_url}>{data.title}</a></p>
                                         </li>
                                     )
                                 default:
@@ -385,7 +467,7 @@ function TimelineList(props) {
                                         <li key={data.no} className='timelineLi'>
                                             {e_date}
                                             <p className='e_dept e_video'>[VIDEO]</p>
-                                            <p className='e_title'><a href={data.refer_vid} target="_blank" rel="noreferrer">{data.title}</a></p>
+                                            <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
                                     )
                                 case "article":
@@ -402,6 +484,14 @@ function TimelineList(props) {
                                             {e_date}
                                             <p className='e_dept e_notice'>[NOTICE]</p>
                                             <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
+                                        </li>
+                                    )
+                                case "match":
+                                    return(
+                                        <li key={data.no} className='timelineLi'>
+                                            {e_date}
+                                            <p className='e_dept e_match'>[MATCH]</p>
+                                            <p className='e_title'><a href={data.refer_url}>{data.title}</a></p>
                                         </li>
                                     )
                                 default:
@@ -417,7 +507,7 @@ function TimelineList(props) {
                                         <li key={data.no} className='timelineLi'>
                                             {e_date}
                                             <p className='e_dept e_video'>[VIDEO]</p>
-                                            <p className='e_title'><a href={data.refer_vid} target="_blank" rel="noreferrer">{data.title}</a></p>
+                                            <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
                                     )
                                 case "article":
@@ -434,6 +524,14 @@ function TimelineList(props) {
                                             {e_date}
                                             <p className='e_dept e_notice'>[NOTICE]</p>
                                             <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
+                                        </li>
+                                    )
+                                case "match":
+                                    return(
+                                        <li key={data.no} className='timelineLi'>
+                                            {e_date}
+                                            <p className='e_dept e_match'>[MATCH]</p>
+                                            <p className='e_title'><a href={data.refer_url}>{data.title}</a></p>
                                         </li>
                                     )
                                 default:
@@ -449,7 +547,7 @@ function TimelineList(props) {
                                         <li key={data.no} className='timelineLi'>
                                             {e_date}
                                             <p className='e_dept e_video'>[VIDEO]</p>
-                                            <p className='e_title'><a href={data.refer_vid} target="_blank" rel="noreferrer">{data.title}</a></p>
+                                            <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
                                     )
                                 case "article":
@@ -466,6 +564,14 @@ function TimelineList(props) {
                                             {e_date}
                                             <p className='e_dept e_notice'>[NOTICE]</p>
                                             <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
+                                        </li>
+                                    )
+                                case "match":
+                                    return(
+                                        <li key={data.no} className='timelineLi'>
+                                            {e_date}
+                                            <p className='e_dept e_match'>[MATCH]</p>
+                                            <p className='e_title'><a href={data.refer_url}>{data.title}</a></p>
                                         </li>
                                     )
                                 default:
@@ -481,7 +587,7 @@ function TimelineList(props) {
                                         <li key={data.no} className='timelineLi'>
                                             {e_date}
                                             <p className='e_dept e_video'>[VIDEO]</p>
-                                            <p className='e_title'><a href={data.refer_vid} target="_blank" rel="noreferrer">{data.title}</a></p>
+                                            <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
                                         </li>
                                     )
                                 case "article":
@@ -498,6 +604,14 @@ function TimelineList(props) {
                                             {e_date}
                                             <p className='e_dept e_notice'>[NOTICE]</p>
                                             <p className='e_title'><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></p>
+                                        </li>
+                                    )
+                                case "match":
+                                    return(
+                                        <li key={data.no} className='timelineLi'>
+                                            {e_date}
+                                            <p className='e_dept e_match'>[MATCH]</p>
+                                            <p className='e_title'><a href={data.refer_url}>{data.title}</a></p>
                                         </li>
                                     )
                                 default:

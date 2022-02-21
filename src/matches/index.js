@@ -3,6 +3,7 @@ import { Link, Routes, Route } from 'react-router-dom';
 import KLeague1Matches from './KLeague1Matches';
 import ACLMatches from './ACLMatches';
 import FACupMatches from './FACupMatches';
+import './MatchesPage.scss';
 
 function MatchesPage(props) {
     const defaultState = {

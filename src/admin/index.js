@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './AdminLogin.scss';
 import { Table, TableBody, TableCell, TableRow } from '@material-ui/core';
 import axios from 'axios';
-// import { useNavigate } from 'react-router-dom';
 
 function AdminLogin(props) {
     const [ putPw, setPutPw ] = useState({
@@ -32,14 +31,24 @@ function AdminLogin(props) {
     const onSubmit = (e) => {
         e.preventDefault();
         tryLogin();
-        // setPutPw('');
+        // setPutPw({pw:''});
         // navigate(-1);
-        console.log(putPw)
+        // console.log(putPw)
     }
     const tryLogin = () => {
-        axios.post("http://localhost:8080/adminChk", putPw)
+        axios.post("http://localhost:8080/adminChk", null, {
+            params: {
+                'admin_pw': putPw.pw
+            }
+        })
         .then(res => {
-            console.log(res);
+            if(res.data===Number(putPw.pw)){
+                sessionStorage.setItem('admin_pw', putPw.pw);
+                // console.log(sessionStorage);
+            }else {
+                alert('입력하신 비밀번호가 일치하지 않습니다.')
+            }
+            document.location.href = '/main'
         })
         .catch(err => {
             console.error(err)

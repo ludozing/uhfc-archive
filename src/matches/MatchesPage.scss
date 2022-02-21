@@ -99,6 +99,7 @@
                 color: #fff;
                 padding: 0 15px;
             }
+            // Starting XI 섹션
             .formationArea {
                 width: 500px;
                 height: 800px;
@@ -224,12 +225,18 @@
                     }
                 }
             }
+            // MatchResult 섹션
             .matchResultArea {
+                width: 448px;
+                // background-color: #eee;
                 .sectionTitle {
-                    color: #333;
+                    color: #fff;
+                    background-color: black;
                 }
-                width: 450px;
-                background-color: #eee;
+                .videoArea {
+                    width: 448px;
+                    height: 252px;
+                }
                 .matchResult {
                     display: flex;
                     justify-content: space-between;
@@ -306,7 +313,10 @@
                             display: flex;
                             align-items: center;
                             padding: 0 20px;
-                            color: #fff;
+                            margin: 2px 0;
+                            background-color: #eee;
+                            font-size: 12px;
+                            &.gf, &.ga { color: #fff; }
                             &.atHome {
                                 justify-content: flex-start;
                             }
@@ -329,47 +339,103 @@
                                     margin: 0 2px;
                                 }
                                 .isPK {
-                                    display: block;
-                                    width: 15px;
-                                    height: 15px;
                                     background: url(./images/isPK.png);
-                                    background-size: contain;
-                                    background-repeat: no-repeat;
-                                    background-position: center center;
                                 }
                                 .assist {
-                                    font-size: 12px;
+                                    font-size: 10px;
                                     color: #eee;
                                 }
                                 .isOG {
-                                    font-size: 12px;
+                                    font-size: 10px;
                                     color: #ff4848;
                                 }
-                                .scoredTime {
-                                    position: absolute;
-                                    top: 50%;
-                                    left: 50%;
-                                    transform: translate(-50%, -50%);
-                                    display: flex;
-                                    justify-content: center;
-                                    align-items: center;
-                                    width: 50px;
-                                    height: 30px;
-                                    background-color: #ccc;
-                                    color: #333;
-                                    border-radius: 10px;
-                                    font-family: var(--digital-font);
-                                }
                             }
+                            .recordedTime {
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%);
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                width: 50px;
+                                height: 30px;
+                                background-color: #ccc;
+                                color: #333;
+                                border-radius: 10px;
+                                font-family: var(--digital-font);
+                            }
+                            span.icons {
+                                display: block;
+                                width: 15px;
+                                height: 15px;
+                                background-size: contain;
+                                background-repeat: no-repeat;
+                                background-position: center center;
+                            }
+                            .yellowcard { background: url(./images/yellowcard.png); }
+                            .secondYellowcard { background: url(./images/secondyellow.png); }
+                            .redcard { background: url(./images/redcard.png); }
+                            .substitution { background: url(./images/sub_icon.jpg); margin: 0 4px;}
+                            .subOut { color: #888; font-size: 10px; }
                         }
                     }
                 }
             }
+            // LeagueTable 섹션
             .leagueTableArea {
-                width: 150px;
-                background-color: #ccc;
+                width: 152px;
+                height: 800px;
                 .sectionTitle {
                     background-color: var(--yellow-color);
+                }
+                .leagueTable {
+                    width: 100%;
+                    li {
+                        width: 100%;
+                        height: calc(770px / 12);
+                        display: flex;
+                        // justify-content: space-between;
+                        align-items: center;
+                        padding: 5px 10px;
+                        // border: 5px solid transparent;
+                        .teamLogo {
+                            width: 50%;
+                            height: 50px;
+                            border-radius: 50%;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            img {
+                                height: 80%;
+                            }
+                        }
+                        .pointsArea {
+                            width: 50%;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            color: #eee;
+                            .points {
+                                font-size: 24px;
+                                font-family: var(--uniform-font);
+                            }
+                        }
+                        &.uhfc {
+                            position: relative;
+                            &::after {
+                                content: "";
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                display: block;
+                                width: 100%;
+                                height: 100%;
+                                border: 5px solid var(--yellow-color);
+                                box-sizing: border-box;
+                            }
+                        }
+                    }
                 }
             }
         }

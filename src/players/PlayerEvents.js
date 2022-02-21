@@ -38,14 +38,14 @@ function PlayerEvents({plyr_b_no}) {
                         <TableRow key={data.no}>
                             <TableCell>{e_date}</TableCell>
                             <TableCell className='pe_dept' style={{color: 'var(--red-color-td)'}}>[VIDEO]</TableCell>
-                            <TableCell><a href={data.refer_vid} target="_blank" rel="noreferrer">{data.title}</a></TableCell>
+                            <TableCell><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></TableCell>
                         </TableRow>
                     )
                 case "article":
                     return(
                         <TableRow key={data.no}>
                             <TableCell>{e_date}</TableCell>
-                            <TableCell className='pe_dept' style={{color: 'var(--blue-color-td)'}}>[ARTICLE]</TableCell>
+                            <TableCell className='pe_dept' style={{color: '#555'}}>[ARTICLE]</TableCell>
                             <TableCell><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></TableCell>
                         </TableRow>
                     )
@@ -55,6 +55,14 @@ function PlayerEvents({plyr_b_no}) {
                             <TableCell>{e_date}</TableCell>
                             <TableCell className='pe_dept' style={{color: 'var(--yellow-color-td)'}}>[NOTICE]</TableCell>
                             <TableCell><a href={data.refer_url} target="_blank" rel="noreferrer">{data.title}</a></TableCell>
+                        </TableRow>
+                    )
+                case "match":
+                    return(
+                        <TableRow key={data.no}>
+                            <TableCell>{e_date}</TableCell>
+                            <TableCell className='pe_dept' style={{color: 'var(--blue-color-td)'}}>[MATCH]</TableCell>
+                            <TableCell><a href={data.refer_url}>{data.title}</a></TableCell>
                         </TableRow>
                     )
                 default:

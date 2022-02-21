@@ -42,6 +42,15 @@ function MainPage() {
                     items.map((item, i)=><Item key={i} item={item} />)
                 }
             </Carousel>
+            {sessionStorage.admin_pw? 
+                <div id='admin_config'>
+                    <h3>ADMIN CONSOLE</h3>
+                    <div className='a_config'>
+                        <a href='#'>Update TIMELINE</a>
+                        <a href='#'>Update MATCHES</a>
+                    </div>
+                </div>
+            :""}
         </div>
     );
 }

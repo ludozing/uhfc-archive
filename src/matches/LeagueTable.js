@@ -17,15 +17,36 @@ function LeagueTable({round}) {
     if(!table) return null;
     return (
         <ul className='leagueTable'>
-            <li>
-                <p className='rank'></p>
-                <div className='teamLogo'>
-                    <img src={}/>
-                </div>
-                <p className='points'></p>
-            </li>
+            {
+                table.map(data => {
+                    if(data.team==="울산 현대"){
+                        return(
+                            <li key={data.dataId} className='uhfc' style={{backgroundColor: `${data.color}`}}>
+                                <div className='teamLogo'>
+                                    <img src={data.logo_url} alt={data.team}/>
+                                </div>
+                                <div className='pointsArea'>
+                                    <p className='points'>{data.points}</p>
+                                </div>
+                            </li>
+                        )
+                    }else {
+                        return(
+                            <li key={data.dataId} style={{backgroundColor: `${data.color}`}}>
+                                <div className='teamLogo'>
+                                    <img src={data.logo_url} alt={data.team}/>
+                                </div>
+                                <div className='pointsArea'>
+                                    <p className='points'>{data.points}</p>
+                                </div>
+                            </li>
+                        )
+                    }
+                })
+
+            }
         </ul>
     );
 }
 
-export default LeagueTable;{round}
+export default LeagueTable;

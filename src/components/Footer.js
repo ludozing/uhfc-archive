@@ -13,7 +13,11 @@ function Footer() {
                     <a href="mailto:statelyblu@gmail.com">E-MAIL</a>
                 </div>
                 <div className='forAdmin'>
-                    <Link to={"/main/admin"}>ADMIN</Link>
+                    {sessionStorage.admin_pw?
+                        <button className='admOut' onClick={()=>{sessionStorage.clear(); document.location.href = '/main'}}>ADM-OUT</button>
+                        :
+                        <Link to={"/main/admin"}>ADM-IN</Link>
+                    }
                 </div>
             </div>
         </footer>
