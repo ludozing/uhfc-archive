@@ -74,7 +74,7 @@ function MatchSituation_KL1() {
                             </div>
                     }
                     {/* 경기 결과 골, 어시스트 */}
-                    <div className='scoreRecordArea'>
+                    <div className='matchSituationArea'>
                         <ul>
                             {
                                 result.map(data => {
