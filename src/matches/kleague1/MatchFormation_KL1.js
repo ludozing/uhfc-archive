@@ -1,10 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import useAsync from '../hooks/useAsync';
-import StartPlyr from './StartPlyr';
-import './MatchesPage.scss';
+import useAsync from '../../hooks/useAsync';
+import StartPlyr from '../comps/StartPlyr';
 import { useParams } from 'react-router-dom';
-import SubPlyr from './SubPlyr';
+import SubPlyr from '../comps/SubPlyr';
 
 function MatchFormation_KL1() {
     const param = useParams();

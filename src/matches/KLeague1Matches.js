@@ -2,8 +2,7 @@ import React, { useRef } from 'react';
 import axios from 'axios';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import useAsync from '../hooks/useAsync';
-import MatchSituation_KL1 from './MatchSituation_KL1';
-import './MatchesPage.scss';
+import MatchSituation_KL1 from './kleague1/MatchSituation_KL1';
 
 // K리그 경기 결과를 받아와서 라운드 선택 li로 뿌려준다.
 async function getMatches(){

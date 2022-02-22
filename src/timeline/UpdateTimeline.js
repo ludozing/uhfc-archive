@@ -18,7 +18,6 @@ function UpdateTimeline() {
             ...formData,
             [name]: value
         })
-        console.log(formData)
     }
     const onSubmit = (e) => {
         e.preventDefault();

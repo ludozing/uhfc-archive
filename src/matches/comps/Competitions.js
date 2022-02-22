@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { Link, Routes, Route } from 'react-router-dom';
-import KLeague1Matches from './KLeague1Matches';
-import ACLMatches from './ACLMatches';
-import FACupMatches from './FACupMatches';
-import './MatchesPage.scss';
+import KLeague1Matches from '../KLeague1Matches';
+import ACLMatches from '../ACLMatches';
+import FACupMatches from '../FACupMatches';
 
 function Competitions(props) {
     const defaultState = {

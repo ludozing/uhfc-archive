@@ -1,10 +1,9 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import useAsync from '../hooks/useAsync';
+import useAsync from '../../hooks/useAsync';
 import LeagueTable from './LeagueTable';
-import LoadAgainstTeam from './LoadAgainstTeam';
-import './MatchesPage.scss';
+import LoadAgainstTeam from '../comps/LoadAgainstTeam';
 import MatchFormation_KL1 from './MatchFormation_KL1';
 
 

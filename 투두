@@ -4,4 +4,40 @@
 ; 4. 리그테이블 영역 완성하기
 ; 5. session 굴려서 로그인 만들기
 ; 6. event 입력 폼 만들기
-7. matchsituation 업데이트 폼 만들기
+7. matchresults 업데이트 폼 만들기
+
+7-1. matchformation 업데이트 폼 만들기 => submit(value: "다음") 클릭시 matchsituation 폼으로 넘어가기
+    matchLineup 테이블로 연결되므로, 
+7-2. matchsituation 업데이트 폼 만들기
+7-3. leaguetable 업데이트 폼 만들기
+
+
+
+
+
+
+
+GK_sta: '', GK_sta_isCap: false, GK_sub_time: '', GK_sub: '',
+LB_sta: '', LB_sta_isCap: false, LB_sub_time: '', LB_sub: '',
+LCD_sta: '', LCD_sta_isCap: false, LCD_sub_time: '', LCD_sub: '',
+CD_sta: '', CD_sta_isCap: false, CD_sub_time: '', CD_sub: '',
+RCD_sta: '', RCD_sta_isCap: false, RCD_sub_time: '', RCD_sub: '',
+RB_sta: '', RB_sta_isCap: false, RB_sub_time: '', RB_sub: '',
+LWB_sta: '', LWB_sta_isCap: false, LWB_sub_time: '', LWB_sub: '',
+LDM_sta: '', LDM_sta_isCap: false, LDM_sub_time: '', LDM_sub: '',
+CDM_sta: '', CDM_sta_isCap: false, CDM_sub_time: '', CDM_sub: '',
+RDM_sta: '', RDM_sta_isCap: false, RDM_sub_time: '', RDM_sub: '',
+RWB_sta: '', RWB_sta_isCap: false, RWB_sub_time: '', RWB_sub: '',
+LM_sta: '', LM_sta_isCap: false, LM_sub_time: '', LM_sub: '',
+LCM_sta: '', LCM_sta_isCap: false, LCM_sub_time: '', LCM_sub: '',
+CM_sta: '', CM_sta_isCap: false, CM_sub_time: '', CM_sub: '',
+RCM_sta: '', RCM_sta_isCap: false, RCM_sub_time: '', RCM_sub: '',
+RM_sta: '', RM_sta_isCap: false, RM_sub_time: '', RM_sub: '',
+LW_sta: '', LW_sta_isCap: false, LW_sub_time: '', LW_sub: '',
+LAM_sta: '', LAM_sta_isCap: false, LAM_sub_time: '', LAM_sub: '',
+CAM_sta: '', CAM_sta_isCap: false, CAM_sub_time: '', CAM_sub: '',
+RAM_sta: '', RAM_sta_isCap: false, RAM_sub_time: '', RAM_sub: '',
+RW_sta: '', RW_sta_isCap: false, RW_sub_time: '', RW_sub: '',
+LF_sta: '', LF_sta_isCap: false, LF_sub_time: '', LF_sub: '',
+CF_sta: '', CF_sta_isCap: false, CF_sub_time: '', CF_sub: '',
+RF_sta: '', RF_sta_isCap: false, RF_sub_time: '', RF_sub: ''

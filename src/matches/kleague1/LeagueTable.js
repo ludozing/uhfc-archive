@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import useAsync from '../hooks/useAsync';
+import useAsync from '../../hooks/useAsync';
 
 function LeagueTable({round}) {
     async function getTable(){

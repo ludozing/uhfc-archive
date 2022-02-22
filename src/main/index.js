@@ -46,8 +46,8 @@ function MainPage() {
                 <div id='admin_config'>
                     <h3>ADMIN CONSOLE</h3>
                     <div className='a_config'>
-                        <a href='#'>Update TIMELINE</a>
-                        <a href='#'>Update MATCHES</a>
+                        <a href='/main/timeline/add'>Update TIMELINE</a>
+                        <a href='/main/matches/update'>Update MATCHES</a>
                     </div>
                 </div>
             :""}
