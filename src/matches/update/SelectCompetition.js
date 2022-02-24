@@ -50,6 +50,7 @@ function SelectCompetition(props) {
     // 다음 단계로 넘어가기
     const navigate = useNavigate();
     function onSubmit(e){
+        e.preventDefault();
         if(kl1){
             navigate(`/main/matches/update/kleague1/${kl1Round}`);
         }

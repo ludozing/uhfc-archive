@@ -75,6 +75,11 @@ div.competitions {
                     width: 30px;
                     height: 30px;
                     text-align: center;
+                    &::-webkit-outer-spin-button,
+                    &::-webkit-inner-spin-button {
+                        -webkit-appearance: none;
+                        margin: 0;
+                    }
                 }
             }
             .subInputs {
@@ -91,7 +96,7 @@ div.competitions {
                     display: flex;
                     justify-content: space-evenly;
                     .subTimeInput {
-                        width: 20px;
+                        width: 30px;
                         height: 20px;
                         text-align: center;
                     }
@@ -99,6 +104,11 @@ div.competitions {
                         width: 30px;
                         height: 20px;
                         text-align: center;
+                        &::-webkit-outer-spin-button,
+                        &::-webkit-inner-spin-button {
+                            -webkit-appearance: none;
+                            margin: 0;
+                        }    
                     }
                 }
             }

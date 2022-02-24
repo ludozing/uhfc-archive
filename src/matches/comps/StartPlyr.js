@@ -19,7 +19,7 @@ function StartPlyr({b_no, className, isCap}) {
         <a href={`/main/players/detail/${player[0].b_no}`}>
             <div className={`sta uniform ${className}`}>
                 <p className='plyrNum'>{player[0].b_no}</p>
-                {isCap==='1' ? <span className='captain'></span>:""}
+                {isCap ? <span className='captain'></span>:""}
                 {player[0].u22player ? <span className='u22plyr'>U22</span>:""}
             </div>
             <p className='luPlyrName'>{player[0].k_name}</p>
