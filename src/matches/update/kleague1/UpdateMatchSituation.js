@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import UpdateMS from './UpdateMS';
 
 function UpdateMatchSituation_KL1({round}) {
     const navigate = useNavigate();
@@ -69,7 +70,7 @@ function UpdateMatchSituation_KL1({round}) {
                 </tr>
             );
         }
-        console.log(list_arr);
+        // console.log(list_arr);
         return list_arr;
     }
     // value를 입력받은 sitList(객체)들을 한 곳에 모아 전송하기 위한 배열 선언
@@ -122,6 +123,7 @@ function UpdateMatchSituation_KL1({round}) {
     }
     return (
         <div className='matchResultArea'>
+            <UpdateMS />
             <form onSubmit={onSubmit}>
                 <div className='matchResult'>
                     경기 총 결과

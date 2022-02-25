@@ -1,10 +1,10 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import useAsync from '../../hooks/useAsync';
 import LeagueTable from './LeagueTable';
-import LoadAgainstTeam from '../comps/LoadAgainstTeam';
 import MatchFormation_KL1 from './MatchFormation_KL1';
+import { VscLinkExternal } from 'react-icons/vsc';
 
 
 function MatchSituation_KL1() {
@@ -20,10 +20,10 @@ function MatchSituation_KL1() {
     const state = useAsync(getResult);
     const {loading, error, data: result} = state;
 
-    // 하위 컴포넌트 LoadAgainstTeam에서 teamColor 받아오기
-    const [teamColor, setTeamColor] = useState('#fff');
-    const getTeamColor = (color) => setTeamColor(color);
-    
+    // useEffect(() => {
+    //     return () => setLoading(false);
+    //   }, []);
+      
     if(loading) return <div>로딩중...</div>
     if(error) return <div>페이지를 나타낼 수 없습니다.</div>
     if(!result) return null;
@@ -55,13 +55,25 @@ function MatchSituation_KL1() {
                                     <p className='score'>{result[0].gf}</p>
                                 </div>
                                 {/* 상대팀 */}
-                                <LoadAgainstTeam teamName={result[0].against} goal={result[0].ga} l_r={"mrRight"} getTeamColor={getTeamColor} />
+                                <div className='againstTeam mrRight' style={{backgroundColor: result[0].color}}>
+                                    <div className='teamArea'>
+                                        <img className='teamLogo' src={result[0].logo_url} alt={result[0].against} />
+                                        <h4 className='teamName'>{result[0].against}</h4>
+                                    </div>
+                                    <p className='score'>{result[0].ga}</p>
+                                </div>
                             </div>
                         :
                             // 원정 경기일 때
                             <div className='matchResult'>
                                 {/* 상대팀 */}
-                                <LoadAgainstTeam teamName={result[0].against} goal={result[0].ga} l_r={"mrLeft"} getTeamColor={getTeamColor} />
+                                <div className='againstTeam mrLeft' style={{backgroundColor: result[0].color}}>
+                                    <div className='teamArea'>
+                                        <img className='teamLogo' src={result[0].logo_url} alt={result[0].against} />
+                                        <h4 className='teamName'>{result[0].against}</h4>
+                                    </div>
+                                    <p className='score'>{result[0].ga}</p>
+                                </div>
                                 {/* 울산 */}
                                 <div className='uhfc mrRight'>
                                     <div className='teamArea'>
@@ -72,23 +84,24 @@ function MatchSituation_KL1() {
                                 </div>
                             </div>
                     }
-                    {/* 경기 결과 골, 어시스트 */}
+                    {/* 경기 상황 세부 기록 */}
                     <div className='matchSituationArea'>
                         <ul>
                             {
                                 result.map(data => {
                                     // 골 상황
                                     // 울산 선수의 골일 경우
-                                    if(data.ulsanScorer) {
+                                    if(data.isUlsan && data.scorer) {
                                         // 득점 선수 정보 출력
                                         if(!data.isOG){
                                             return (
                                                 <li className={!data.isAwaygame? 'gf atHome':'gf atAway'} key={data.dataId}>
                                                     <a href={data.refer_vid} target="_blank" rel="noreferrer">
                                                         <span className='recordedTime'>{data.recordedTime}</span>
-                                                        <span>{data.ulsanScorer}</span>
-                                                        {data.ulsanAssist ? <span className='assist'>(A: {data.ulsanAssist})</span>:''}
+                                                        <span>{data.scorer}</span>
+                                                        {data.assist ? <span className='assist'>(A: {data.assist})</span>:''}
                                                         {data.isPK ? <span className='isPK icons'></span>:''}
+                                                        {data.refer_vid? <span className='externalLinkIcon'><VscLinkExternal/></span>:''}
                                                     </a>
                                                 </li>
                                             )
@@ -100,20 +113,21 @@ function MatchSituation_KL1() {
                                                     className={!data.isAwaygame? 'ga atAway':'ga atHome'}
                                                     key={data.dataId}
                                                     style={
-                                                        !data.isAwaygame ? {background: `linear-gradient(to left, ${teamColor} 45%, transparent)`}:{background: `linear-gradient(to right, ${teamColor} 45%, transparent)`}
+                                                        !data.isAwaygame ? {background: `linear-gradient(to left, ${result[0].color} 45%, transparent)`}:{background: `linear-gradient(to right, ${result[0].color} 45%, transparent)`}
                                                     }
                                                 >
                                                     <a href={data.refer_vid} target="_blank" rel="noreferrer">
                                                         <span className='recordedTime'>{data.recordedTime}</span>
-                                                        <span>{data.ulsanScorer}</span>
+                                                        <span>{data.scorer}</span>
                                                         <span className='isOG'>(OG)</span>
+                                                        {data.refer_vid? <span className='externalLinkIcon'><VscLinkExternal/></span>:''}
                                                     </a>
                                                 </li>
                                             )
                                         }
                                     }
                                     // 상대 선수의 골일 경우
-                                    if(data.againstScorer) {
+                                    if(!data.isUlsan && data.scorer) {
                                         // 득점 선수 정보 출력
                                         if(!data.isOG){
                                             return (
@@ -121,14 +135,15 @@ function MatchSituation_KL1() {
                                                     className={!data.isAwaygame? 'ga atAway':'ga atHome'}
                                                     key={data.dataId}
                                                     style={
-                                                        !data.isAwaygame ? {background: `linear-gradient(to left, ${teamColor} 45%, transparent)`}:{background: `linear-gradient(to right, ${teamColor} 45%, transparent)`}
+                                                        !data.isAwaygame ? {background: `linear-gradient(to left, ${result[0].color} 45%, transparent)`}:{background: `linear-gradient(to right, ${result[0].color} 45%, transparent)`}
                                                     }
                                                 >
                                                     <a href={data.refer_vid} target="_blank" rel="noreferrer">
                                                         <span className='recordedTime'>{data.recordedTime}</span>
-                                                        <span>{data.againstScorer}</span>
-                                                        {data.againstAssist ? <span className='assist'>(A: {data.againstAssist})</span>:''}
+                                                        <span>{data.scorer}</span>
+                                                        {data.assist ? <span className='assist'>(A: {data.assist})</span>:''}
                                                         {data.isPK ? <span className='isPK icons'></span>:''}
+                                                        {data.refer_vid? <span className='externalLinkIcon'><VscLinkExternal/></span>:''}
                                                     </a>
                                                 </li>
                                             )
@@ -139,8 +154,9 @@ function MatchSituation_KL1() {
                                                 <li className={!data.isAwaygame? 'gf atHome':'gf atAway'} key={data.dataId}>
                                                     <a href={data.refer_vid} target="_blank" rel="noreferrer">
                                                         <span className='recordedTime'>{data.recordedTime}</span>
-                                                        <span>{data.againstScorer}</span>
+                                                        <span>{data.scorer}</span>
                                                         <span className='isOG'>(OG)</span>
+                                                        {data.refer_vid? <span className='externalLinkIcon'><VscLinkExternal/></span>:''}
                                                     </a>
                                                 </li>
                                             )
@@ -148,77 +164,95 @@ function MatchSituation_KL1() {
                                     }
                                     // 경고 상황
                                     // 울산 선수의 경고
-                                    if(data.ulsanYellowcard) {
+                                    if(data.isUlsan && data.yellowcard) {
                                         return(
                                             <li className={!data.isAwaygame? 'atHome':'atAway'} key={data.dataId}>
-                                                <span className='recordedTime'>{data.recordedTime}</span>
-                                                {!data.isSecondYellow?
-                                                    // 첫 번째 경고일 때
-                                                    <span className='yellowcard icons'></span>
-                                                    :
-                                                    // 두 번째 경고일 때
-                                                    <span className='secondYellowcard icons'></span>
-                                                }
-                                                <span>{data.ulsanYellowcard}</span>
+                                                <a href={data.refer_vid} target="_blank" rel="noreferrer">
+                                                    <span className='recordedTime'>{data.recordedTime}</span>
+                                                    {!data.isSecond?
+                                                        // 첫 번째 경고일 때
+                                                        <span className='yellowcard icons'></span>
+                                                        :
+                                                        // 두 번째 경고일 때
+                                                        <span className='secondYellowcard icons'></span>
+                                                    }
+                                                    <span>{data.yellowcard}</span>
+                                                    {data.refer_vid? <span className='externalLinkIcon'><VscLinkExternal/></span>:''}
+                                                </a>
                                             </li>
                                         )
                                     }
                                     // 울산 선수의 퇴장
-                                    if(data.ulsanRedcard) {
+                                    if(data.isUlsan && data.redcard) {
                                         return(
                                             <li className={!data.isAwaygame? 'atHome':'atAway'} key={data.dataId}>
-                                                <span className='recordedTime'>{data.recordedTime}</span>
-                                                <span className='redcard icons'></span>
-                                                <span>{data.ulsanRedcard}</span>
+                                                <a href={data.refer_vid} target="_blank" rel="noreferrer">
+                                                    <span className='recordedTime'>{data.recordedTime}</span>
+                                                    <span className='redcard icons'></span>
+                                                    <span>{data.redcard}</span>
+                                                    {data.refer_vid? <span className='externalLinkIcon'><VscLinkExternal/></span>:''}
+                                                </a>
                                             </li>
                                         )
                                     }
                                     // 상대 선수의 경고
-                                    if(data.againstYellowcard) {
+                                    if(!data.isUlsan && data.yellowcard) {
                                         return(
                                             <li className={!data.isAwaygame? 'atAway':'atHome'} key={data.dataId}>
-                                                <span className='recordedTime'>{data.recordedTime}</span>
-                                                {!data.isSecondYellow?
-                                                    // 첫 번째 경고일 때
-                                                    <span className='yellowcard icons'></span>
-                                                    :
-                                                    // 두 번째 경고일 때
-                                                    <span className='secondYellowcard icons'></span>
-                                                }
-                                                <span>{data.againstYellowcard}</span>
+                                                <a href={data.refer_vid} target="_blank" rel="noreferrer">
+                                                    <span className='recordedTime'>{data.recordedTime}</span>
+                                                    {!data.isSecond?
+                                                        // 첫 번째 경고일 때
+                                                        <span className='yellowcard icons'></span>
+                                                        :
+                                                        // 두 번째 경고일 때
+                                                        <span className='secondYellowcard icons'></span>
+                                                    }
+                                                    <span>{data.yellowcard}</span>
+                                                    {data.refer_vid? <span className='externalLinkIcon'><VscLinkExternal/></span>:''}
+                                                </a>
                                             </li>
                                         )
                                     }
                                     // 상대 선수의 퇴장
-                                    if(data.againstRedcard) {
+                                    if(!data.isUlsan && data.redcard) {
                                         return(
                                             <li className={!data.isAwaygame? 'atAway':'atHome'} key={data.dataId}>
-                                                <span className='recordedTime'>{data.recordedTime}</span>
-                                                <span className='redcard icons'></span>
-                                                <span>{data.againstRedcard}</span>
+                                                <a href={data.refer_vid} target="_blank" rel="noreferrer">
+                                                    <span className='recordedTime'>{data.recordedTime}</span>
+                                                    <span className='redcard icons'></span>
+                                                    <span>{data.redcard}</span>
+                                                    {data.refer_vid? <span className='externalLinkIcon'><VscLinkExternal/></span>:''}
+                                                </a>
                                             </li>
                                         )
                                     }
                                     // 교체 상황
                                     // 울산 선수의 교체
-                                    if(data.ulsanSubIn) {
+                                    if(data.isUlsan && data.subOut) {
                                         return(
                                             <li className={!data.isAwaygame? 'atHome':'atAway'} key={data.dataId}>
-                                                <span className='recordedTime'>{data.recordedTime}</span>
-                                                {data.ulsanSubIn? <span className='subIn'>IN: {data.ulsanSubIn}</span>:''}
-                                                <span className='substitution icons'></span>
-                                                <span className='subOut'>OUT: {data.ulsanSubOut}</span>
+                                                <a href={data.refer_vid} target="_blank" rel="noreferrer">
+                                                    <span className='recordedTime'>{data.recordedTime}</span>
+                                                    {data.subIn? <span className='subIn'>IN: {data.subIn}</span>:''}
+                                                    <span className='substitution icons'></span>
+                                                    <span className='subOut'>OUT: {data.subOut}</span>
+                                                    {data.refer_vid? <span className='externalLinkIcon'><VscLinkExternal/></span>:''}
+                                                </a>
                                             </li>
                                         )
                                     }
                                     // 상대 선수의 교체
-                                    if(data.againstSubIn) {
+                                    if(!data.isUlsan && data.subOut) {
                                         return(
                                             <li className={!data.isAwaygame? 'atAway':'atHome'} key={data.dataId}>
-                                                <span className='recordedTime'>{data.recordedTime}</span>
-                                                {data.againstSubIn? <span className='subIn'>IN: {data.againstSubIn}</span>:''}
-                                                <span className='substitution icons'></span>
-                                                <span className='subOut'>OUT: {data.againstSubOut}</span>
+                                                <a href={data.refer_vid} target="_blank" rel="noreferrer">
+                                                    <span className='recordedTime'>{data.recordedTime}</span>
+                                                    {data.subIn? <span className='subIn'>IN: {data.subIn}</span>:''}
+                                                    <span className='substitution icons'></span>
+                                                    <span className='subOut'>OUT: {data.subOut}</span>
+                                                    {data.refer_vid? <span className='externalLinkIcon'><VscLinkExternal/></span>:''}
+                                                </a>
                                             </li>
                                         )
                                     }

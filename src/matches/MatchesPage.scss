@@ -1,41 +1,4 @@
 .MatchesPage_KL1 {
-    position: relative;
-    .chooseR {
-        position: absolute;
-        top: 0%;
-        right: 0%;
-        // margin: 20px;
-        height: 40px;
-        display: flex;
-        // justify-content: center;
-        align-items: flex-end;
-        color: var(--yellow-color-td);
-        select {
-            border: none;
-            border-bottom: 1px solid var(--yellow-color);
-            padding: 0 8px;
-            color: var(--yellow-color-td);
-            // text-align: center;
-        }
-        input[type="submit"] {
-            background-color: var(--yellow-color-td);
-            color: #fff;
-            font-size: 12px;
-            width: 40px;
-            height: 24px;
-            margin: 0 4px;
-            outline: none;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            &:hover {
-                background-color: var(--yellow-color);
-            }
-            &:active {
-                background-color: var(--yellow-color-td);
-            }
-        }
-    }
     .roundNav {
         display: flex;
         justify-content: center;
@@ -337,6 +300,11 @@
                                 align-items: center;
                                 span {
                                     margin: 0 2px;
+                                    &.externalLinkIcon {
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                    }
                                 }
                                 .isPK {
                                     background: url(./images/isPK.png);

@@ -25,23 +25,6 @@ const KLeague1Matches = () => {
             <h3 className='deptTitle'>
                 K리그1
             </h3>
-            <div className='chooseR'>
-                <form onSubmit={()=>{
-                        navigate(`/main/matches/kleague1/${selectedValue.current.value}`);
-                        // window.location.reload();
-                        }}>
-                    <select name='round' ref={selectedValue} defaultValue={window.location.pathname.substring(23)} >
-                        <option value=""></option>
-                        {matches.map(data => {
-                            return(
-                                <option value={data.round} key={data.round}>{data.round}</option>
-                            )
-                        })}
-                    </select>
-                    <span> 라운드</span>
-                    <input type="submit" value={"조회"}></input>
-                </form>
-            </div>
             <ul className='roundNav'>
                 {matches.map(data => {
                     if(!data.isPlayed){

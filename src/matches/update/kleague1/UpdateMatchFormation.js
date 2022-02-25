@@ -7,37 +7,46 @@ function UpdateMatchFormation_KL1({round}) {
     const {id} = param;
     const navigate = useNavigate();
     const [lineup, setLineup] = useState({
-        GK_sta: null, GK_sta_isCap: false, GK_sub_time: null, GK_sub: null,
-        LB_sta: null, LB_sta_isCap: false, LB_sub_time: null, LB_sub: null,
-        LCD_sta: null, LCD_sta_isCap: false, LCD_sub_time: null, LCD_sub: null,
-        CD_sta: null, CD_sta_isCap: false, CD_sub_time: null, CD_sub: null,
-        RCD_sta: null, RCD_sta_isCap: false, RCD_sub_time: null, RCD_sub: null,
-        RB_sta: null, RB_sta_isCap: false, RB_sub_time: null, RB_sub: null,
-        LWB_sta: null, LWB_sta_isCap: false, LWB_sub_time: null, LWB_sub: null,
-        LDM_sta: null, LDM_sta_isCap: false, LDM_sub_time: null, LDM_sub: null,
-        CDM_sta: null, CDM_sta_isCap: false, CDM_sub_time: null, CDM_sub: null,
-        RDM_sta: null, RDM_sta_isCap: false, RDM_sub_time: null, RDM_sub: null,
-        RWB_sta: null, RWB_sta_isCap: false, RWB_sub_time: null, RWB_sub: null,
-        LM_sta: null, LM_sta_isCap: false, LM_sub_time: null, LM_sub: null,
-        LCM_sta: null, LCM_sta_isCap: false, LCM_sub_time: null, LCM_sub: null,
-        CM_sta: null, CM_sta_isCap: false, CM_sub_time: null, CM_sub: null,
-        RCM_sta: null, RCM_sta_isCap: false, RCM_sub_time: null, RCM_sub: null,
-        RM_sta: null, RM_sta_isCap: false, RM_sub_time: null, RM_sub: null,
-        LW_sta: null, LW_sta_isCap: false, LW_sub_time: null, LW_sub: null,
-        LAM_sta: null, LAM_sta_isCap: false, LAM_sub_time: null, LAM_sub: null,
-        CAM_sta: null, CAM_sta_isCap: false, CAM_sub_time: null, CAM_sub: null,
-        RAM_sta: null, RAM_sta_isCap: false, RAM_sub_time: null, RAM_sub: null,
-        RW_sta: null, RW_sta_isCap: false, RW_sub_time: null, RW_sub: null,
-        LF_sta: null, LF_sta_isCap: false, LF_sub_time: null, LF_sub: null,
-        CF_sta: null, CF_sta_isCap: false, CF_sub_time: null, CF_sub: null,
-        RF_sta: null, RF_sta_isCap: false, RF_sub_time: null, RF_sub: null
+        GK_sta: null, GK_sub_time: null, GK_sub: null,
+        LB_sta: null, LB_sub_time: null, LB_sub: null,
+        LCD_sta: null, LCD_sub_time: null, LCD_sub: null,
+        CD_sta: null, CD_sub_time: null, CD_sub: null,
+        RCD_sta: null, RCD_sub_time: null, RCD_sub: null,
+        RB_sta: null, RB_sub_time: null, RB_sub: null,
+        LWB_sta: null, LWB_sub_time: null, LWB_sub: null,
+        LDM_sta: null, LDM_sub_time: null, LDM_sub: null,
+        CDM_sta: null, CDM_sub_time: null, CDM_sub: null,
+        RDM_sta: null, RDM_sub_time: null, RDM_sub: null,
+        RWB_sta: null, RWB_sub_time: null, RWB_sub: null,
+        LM_sta: null, LM_sub_time: null, LM_sub: null,
+        LCM_sta: null, LCM_sub_time: null, LCM_sub: null,
+        CM_sta: null, CM_sub_time: null, CM_sub: null,
+        RCM_sta: null, RCM_sub_time: null, RCM_sub: null,
+        RM_sta: null, RM_sub_time: null, RM_sub: null,
+        LW_sta: null, LW_sub_time: null, LW_sub: null,
+        LAM_sta: null, LAM_sub_time: null, LAM_sub: null,
+        CAM_sta: null, CAM_sub_time: null, CAM_sub: null,
+        RAM_sta: null, RAM_sub_time: null, RAM_sub: null,
+        RW_sta: null, RW_sub_time: null, RW_sub: null,
+        LF_sta: null, LF_sub_time: null, LF_sub: null,
+        CF_sta: null, CF_sub_time: null, CF_sub: null,
+        RF_sta: null, RF_sub_time: null, RF_sub: null,
+        isCap: null
     })
     const onChange = (e) => {
-        const {name, value} = e.target;
-        setLineup({
-            ...lineup,
-            [name]: value
-        })
+        const {value, checked} = e.target;
+        if(checked){
+            setLineup({
+                ...lineup,
+                isCap: value
+            })
+        }else {
+            setLineup({
+                ...lineup,
+                isCap: null
+            })
+        }
+        console.log(lineup.isCap)
     }
     function uploadFormation (){
         axios.post(`http://localhost:8080/matchlineup/kl1/${id}/update`,lineup)
@@ -70,7 +79,7 @@ function UpdateMatchFormation_KL1({round}) {
                                     <p>
                                         <label htmlFor="LF_sta_isCap">주장</label>
                                         <span>
-                                            <input type="checkbox" name="LF_sta_isCap" id="LF_sta_isCap" value="true" className='capCheckbox' onChange={onChange} />
+                                            <input type="checkbox" name="isCap" id="LF_sta_isCap" value="LF" className='capCheckbox' onChange={onChange} disabled={!lineup.isCap||lineup.isCap==="LF"? false:true}/>
                                         </span>
                                     </p>
                                 </div>
@@ -95,7 +104,7 @@ function UpdateMatchFormation_KL1({round}) {
                                     <p>
                                         <label htmlFor="CF_sta_isCap">주장</label>
                                         <span>
-                                            <input type="checkbox" name="CF_sta_isCap" id="CF_sta_isCap" value="true" className='capCheckbox' onChange={onChange} />
+                                            <input type="checkbox" name="isCap" id="CF_sta_isCap" value="CF" className='capCheckbox' onChange={onChange} disabled={!lineup.isCap||lineup.isCap==="CF"? false:true}/>
                                         </span>
                                     </p>
                                 </div>
@@ -120,7 +129,7 @@ function UpdateMatchFormation_KL1({round}) {
                                     <p>
                                         <label htmlFor="RF_sta_isCap">주장</label>
                                         <span>
-                                            <input type="checkbox" name="RF_sta_isCap" id="RF_sta_isCap" value="true" className='capCheckbox' onChange={onChange} />
+                                            <input type="checkbox" name="isCap" id="RF_sta_isCap" value="RF" className='capCheckbox' onChange={onChange} disabled={!lineup.isCap||lineup.isCap==="RF"? false:true}/>
                                         </span>
                                     </p>
                                 </div>
@@ -149,7 +158,7 @@ function UpdateMatchFormation_KL1({round}) {
                                     <p>
                                         <label htmlFor="LW_sta_isCap">주장</label>
                                         <span>
-                                            <input type="checkbox" name="LW_sta_isCap" id="LW_sta_isCap" value="true" className='capCheckbox' onChange={onChange} />
+                                            <input type="checkbox" name="isCap" id="LW_sta_isCap" value="LW" className='capCheckbox' onChange={onChange} disabled={!lineup.isCap||lineup.isCap==="LW"? false:true}/>
                                         </span>
                                     </p>
                                 </div>
@@ -175,7 +184,7 @@ function UpdateMatchFormation_KL1({round}) {
                                     <p>
                                         <label htmlFor="LAM_sta_isCap">주장</label>
                                         <span>
-                                            <input type="checkbox" name="LAM_sta_isCap" id="LAM_sta_isCap" value="true" className='capCheckbox' onChange={onChange} />
+                                            <input type="checkbox" name="isCap" id="LAM_sta_isCap" value="LAM" className='capCheckbox' onChange={onChange} disabled={!lineup.isCap||lineup.isCap==="LAM"? false:true}/>
                                         </span>
                                     </p>
                                 </div>
@@ -200,7 +209,7 @@ function UpdateMatchFormation_KL1({round}) {
                                     <p>
                                         <label htmlFor="CAM_sta_isCap">주장</label>
                                         <span>
-                                            <input type="checkbox" name="CAM_sta_isCap" id="CAM_sta_isCap" value="true" className='capCheckbox' onChange={onChange} />
+                                            <input type="checkbox" name="isCap" id="CAM_sta_isCap" value="CAM" className='capCheckbox' onChange={onChange} disabled={!lineup.isCap||lineup.isCap==="CAM"? false:true}/>
                                         </span>
                                     </p>
                                 </div>
@@ -225,7 +234,7 @@ function UpdateMatchFormation_KL1({round}) {
                                     <p>
                                         <label htmlFor="RAM_sta_isCap">주장</label>
                                         <span>
-                                            <input type="checkbox" name="RAM_sta_isCap" id="RAM_sta_isCap" value="true" className='capCheckbox' onChange={onChange} />
+                                            <input type="checkbox" name="isCap" id="RAM_sta_isCap" value="RAM" className='capCheckbox' onChange={onChange} disabled={!lineup.isCap||lineup.isCap==="RAM"? false:true}/>
                                         </span>
                                     </p>
                                 </div>
@@ -251,7 +260,7 @@ function UpdateMatchFormation_KL1({round}) {
                                     <p>
                                         <label htmlFor="RW_sta_isCap">주장</label>
                                         <span>
-                                            <input type="checkbox" name="RW_sta_isCap" id="RW_sta_isCap" value="true" className='capCheckbox' onChange={onChange} />
+                                            <input type="checkbox" name="isCap" id="RW_sta_isCap" value="RW" className='capCheckbox' onChange={onChange} disabled={!lineup.isCap||lineup.isCap==="RW"? false:true}/>
                                         </span>
                                     </p>
                                 </div>
@@ -279,7 +288,7 @@ function UpdateMatchFormation_KL1({round}) {
                                     <p>
                                         <label htmlFor="LM_sta_isCap">주장</label>
                                         <span>
-                                            <input type="checkbox" name="LM_sta_isCap" id="LM_sta_isCap" value="true" className='capCheckbox' onChange={onChange} />
+                                            <input type="checkbox" name="isCap" id="LM_sta_isCap" value="LM" className='capCheckbox' onChange={onChange} disabled={!lineup.isCap||lineup.isCap==="LM"? false:true}/>
                                         </span>
                                     </p>
                                 </div>
@@ -305,7 +314,7 @@ function UpdateMatchFormation_KL1({round}) {
                                     <p>
                                         <label htmlFor="LCM_sta_isCap">주장</label>
                                         <span>
-                                            <input type="checkbox" name="LCM_sta_isCap" id="LCM_sta_isCap" value="true" className='capCheckbox' onChange={onChange} />
+                                            <input type="checkbox" name="isCap" id="LCM_sta_isCap" value="LCM" className='capCheckbox' onChange={onChange} disabled={!lineup.isCap||lineup.isCap==="LCM"? false:true}/>
                                         </span>
                                     </p>
                                 </div>
@@ -330,7 +339,7 @@ function UpdateMatchFormation_KL1({round}) {
                                     <p>
                                         <label htmlFor="CM_sta_isCap">주장</label>
                                         <span>
-                                            <input type="checkbox" name="CM_sta_isCap" id="CM_sta_isCap" value="true" className='capCheckbox' onChange={onChange} />
+                                            <input type="checkbox" name="isCap" id="CM_sta_isCap" value="CM" className='capCheckbox' onChange={onChange} disabled={!lineup.isCap||lineup.isCap==="CM"? false:true}/>
                                         </span>
                                     </p>
                                 </div>
@@ -355,7 +364,7 @@ function UpdateMatchFormation_KL1({round}) {
                                     <p>
                                         <label htmlFor="RCM_sta_isCap">주장</label>
                                         <span>
-                                            <input type="checkbox" name="RCM_sta_isCap" id="RCM_sta_isCap" value="true" className='capCheckbox' onChange={onChange} />
+                                            <input type="checkbox" name="isCap" id="RCM_sta_isCap" value="RCM" className='capCheckbox' onChange={onChange} disabled={!lineup.isCap||lineup.isCap==="RCM"? false:true}/>
                                         </span>
                                     </p>
                                 </div>
@@ -381,7 +390,7 @@ function UpdateMatchFormation_KL1({round}) {
                                     <p>
                                         <label htmlFor="RM_sta_isCap">주장</label>
                                         <span>
-                                            <input type="checkbox" name="RM_sta_isCap" id="RM_sta_isCap" value="true" className='capCheckbox' onChange={onChange} />
+                                            <input type="checkbox" name="isCap" id="RM_sta_isCap" value="RM" className='capCheckbox' onChange={onChange} disabled={!lineup.isCap||lineup.isCap==="RM"? false:true}/>
                                         </span>
                                     </p>
                                 </div>
@@ -409,7 +418,7 @@ function UpdateMatchFormation_KL1({round}) {
                                     <p>
                                         <label htmlFor="LWB_sta_isCap">주장</label>
                                         <span>
-                                            <input type="checkbox" name="LWB_sta_isCap" id="LWB_sta_isCap" value="true" className='capCheckbox' onChange={onChange} />
+                                            <input type="checkbox" name="isCap" id="LWB_sta_isCap" value="LWB" className='capCheckbox' onChange={onChange} disabled={!lineup.isCap||lineup.isCap==="LWB"? false:true}/>
                                         </span>
                                     </p>
                                 </div>
@@ -435,7 +444,7 @@ function UpdateMatchFormation_KL1({round}) {
                                     <p>
                                         <label htmlFor="LDM_sta_isCap">주장</label>
                                         <span>
-                                            <input type="checkbox" name="LDM_sta_isCap" id="LDM_sta_isCap" value="true" className='capCheckbox' onChange={onChange} />
+                                            <input type="checkbox" name="isCap" id="LDM_sta_isCap" value="LDM" className='capCheckbox' onChange={onChange} disabled={!lineup.isCap||lineup.isCap==="LDM"? false:true}/>
                                         </span>
                                     </p>
                                 </div>
@@ -460,7 +469,7 @@ function UpdateMatchFormation_KL1({round}) {
                                     <p>
                                         <label htmlFor="CDM_sta_isCap">주장</label>
                                         <span>
-                                            <input type="checkbox" name="CDM_sta_isCap" id="CDM_sta_isCap" value="true" className='capCheckbox' onChange={onChange} />
+                                            <input type="checkbox" name="isCap" id="CDM_sta_isCap" value="CDM" className='capCheckbox' onChange={onChange} disabled={!lineup.isCap||lineup.isCap==="CDM"? false:true}/>
                                         </span>
                                     </p>
                                 </div>
@@ -485,7 +494,7 @@ function UpdateMatchFormation_KL1({round}) {
                                     <p>
                                         <label htmlFor="RDM_sta_isCap">주장</label>
                                         <span>
-                                            <input type="checkbox" name="RDM_sta_isCap" id="RDM_sta_isCap" value="true" className='capCheckbox' onChange={onChange} />
+                                            <input type="checkbox" name="isCap" id="RDM_sta_isCap" value="RDM" className='capCheckbox' onChange={onChange} disabled={!lineup.isCap||lineup.isCap==="RDM"? false:true}/>
                                         </span>
                                     </p>
                                 </div>
@@ -511,7 +520,7 @@ function UpdateMatchFormation_KL1({round}) {
                                     <p>
                                         <label htmlFor="RWB_sta_isCap">주장</label>
                                         <span>
-                                            <input type="checkbox" name="RWB_sta_isCap" id="RWB_sta_isCap" value="true" className='capCheckbox' onChange={onChange} />
+                                            <input type="checkbox" name="isCap" id="RWB_sta_isCap" value="RWB" className='capCheckbox' onChange={onChange} disabled={!lineup.isCap||lineup.isCap==="RWB"? false:true}/>
                                         </span>
                                     </p>
                                 </div>
@@ -539,7 +548,7 @@ function UpdateMatchFormation_KL1({round}) {
                                     <p>
                                         <label htmlFor="LB_sta_isCap">주장</label>
                                         <span>
-                                            <input type="checkbox" name="LB_sta_isCap" id="LB_sta_isCap" value="true" className='capCheckbox' onChange={onChange} />
+                                            <input type="checkbox" name="isCap" id="LB_sta_isCap" value="LB" className='capCheckbox' onChange={onChange} disabled={!lineup.isCap||lineup.isCap==="LB"? false:true}/>
                                         </span>
                                     </p>
                                 </div>
@@ -565,7 +574,7 @@ function UpdateMatchFormation_KL1({round}) {
                                     <p>
                                         <label htmlFor="LCD_sta_isCap">주장</label>
                                         <span>
-                                            <input type="checkbox" name="LCD_sta_isCap" id="LCD_sta_isCap" value="true" className='capCheckbox' onChange={onChange} />
+                                            <input type="checkbox" name="isCap" id="LCD_sta_isCap" value="LCD" className='capCheckbox' onChange={onChange} disabled={!lineup.isCap||lineup.isCap==="LCD"? false:true}/>
                                         </span>
                                     </p>
                                 </div>
@@ -590,7 +599,7 @@ function UpdateMatchFormation_KL1({round}) {
                                     <p>
                                         <label htmlFor="CD_sta_isCap">주장</label>
                                         <span>
-                                            <input type="checkbox" name="CD_sta_isCap" id="CD_sta_isCap" value="true" className='capCheckbox' onChange={onChange} />
+                                            <input type="checkbox" name="isCap" id="CD_sta_isCap" value="CD" className='capCheckbox' onChange={onChange} disabled={!lineup.isCap||lineup.isCap==="CD"? false:true}/>
                                         </span>
                                     </p>
                                 </div>
@@ -615,7 +624,7 @@ function UpdateMatchFormation_KL1({round}) {
                                     <p>
                                         <label htmlFor="RCD_sta_isCap">주장</label>
                                         <span>
-                                            <input type="checkbox" name="RCD_sta_isCap" id="RCD_sta_isCap" value="true" className='capCheckbox' onChange={onChange} />
+                                            <input type="checkbox" name="isCap" id="RCD_sta_isCap" value="RCD" className='capCheckbox' onChange={onChange} disabled={!lineup.isCap||lineup.isCap==="RCD"? false:true}/>
                                         </span>
                                     </p>
                                 </div>
@@ -641,7 +650,7 @@ function UpdateMatchFormation_KL1({round}) {
                                     <p>
                                         <label htmlFor="RB_sta_isCap">주장</label>
                                         <span>
-                                            <input type="checkbox" name="RB_sta_isCap" id="RB_sta_isCap" value="true" className='capCheckbox' onChange={onChange} />
+                                            <input type="checkbox" name="isCap" id="RB_sta_isCap" value="RB" className='capCheckbox' onChange={onChange} disabled={!lineup.isCap||lineup.isCap==="RB"? false:true}/>
                                         </span>
                                     </p>
                                 </div>
@@ -670,7 +679,7 @@ function UpdateMatchFormation_KL1({round}) {
                                     <p>
                                         <label htmlFor="GK_sta_isCap">주장</label>
                                         <span>
-                                            <input type="checkbox" name="GK_sta_isCap" id="GK_sta_isCap" value="true" className='capCheckbox' onChange={onChange} />
+                                            <input type="checkbox" name="isCap" id="GK_sta_isCap" value="GK" className='capCheckbox' onChange={onChange} disabled={!lineup.isCap||lineup.isCap==="GK"? false:true}/>
                                         </span>
                                     </p>
                                 </div>
