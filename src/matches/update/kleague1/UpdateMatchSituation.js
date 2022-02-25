@@ -124,7 +124,7 @@ function UpdateMatchSituation_KL1({round}) {
     return (
         <div className='matchResultArea'>
             <UpdateMS />
-            <form onSubmit={onSubmit}>
+            {/* <form onSubmit={onSubmit}>
                 <div className='matchResult'>
                     경기 총 결과
                 </div>
@@ -146,7 +146,7 @@ function UpdateMatchSituation_KL1({round}) {
                         {makeSitList()}
                     </tbody>
                 </table>
-            </form>
+            </form> */}
         </div>
     );
 }

@@ -115,3 +115,19 @@ div.competitions {
         }
     }
 }
+.dataBoard {
+    display: flex;
+    background-color: #ccc;
+    padding: 20px;
+    p {
+        padding: 0 10px;
+        span {
+            padding: 0 4px;
+            font-size: 12px;
+            strong {
+                font-size: 14px;
+                font-weight: inherit;
+            }
+        }
+    }
+}
