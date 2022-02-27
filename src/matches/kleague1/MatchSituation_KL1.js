@@ -89,6 +89,14 @@ function MatchSituation_KL1() {
                         <ul>
                             {
                                 result.map(data => {
+                                    // 하프타임
+                                    if(data.HTline){
+                                        return(
+                                            <li className={'HT'} key={data.dataId}>
+                                                HALF TIME
+                                            </li>
+                                        )
+                                    }
                                     // 골 상황
                                     // 울산 선수의 골일 경우
                                     if(data.isUlsan && data.scorer) {
@@ -161,6 +169,60 @@ function MatchSituation_KL1() {
                                                 </li>
                                             )
                                         }
+                                    }
+                                    // 골 취소 상황
+                                    // 울산 선수의 골 취소
+                                    if(data.isUlsan && data.isCanceled) {
+                                        return(
+                                            <li className={!data.isAwaygame? 'atHome':'atAway'} key={data.dataId}>
+                                                <a href={data.refer_vid} target="_blank" rel="noreferrer">
+                                                    <span className='recordedTime'>{data.recordedTime}</span>
+                                                    <span>{data.isCanceled}</span>
+                                                    <span>(골 취소)</span>
+                                                    {data.refer_vid? <span className='externalLinkIcon'><VscLinkExternal/></span>:''}
+                                                </a>
+                                            </li>
+                                        )
+                                    }
+                                    // 상대 선수의 골 취소
+                                    if(!data.isUlsan && data.isCanceled) {
+                                        return(
+                                            <li className={!data.isAwaygame? 'atAway':'atHome'} key={data.dataId}>
+                                                <a href={data.refer_vid} target="_blank" rel="noreferrer">
+                                                    <span className='recordedTime'>{data.recordedTime}</span>
+                                                    <span>{data.isCanceled}</span>
+                                                    <span>(골 취소)</span>
+                                                    {data.refer_vid? <span className='externalLinkIcon'><VscLinkExternal/></span>:''}
+                                                </a>
+                                            </li>
+                                        )
+                                    }
+                                    // PK실축 상황
+                                    // 울산 선수의 PK 실축
+                                    if(data.isUlsan && data.missedPK) {
+                                        return(
+                                            <li className={!data.isAwaygame? 'atHome':'atAway'} key={data.dataId}>
+                                                <a href={data.refer_vid} target="_blank" rel="noreferrer">
+                                                    <span className='recordedTime'>{data.recordedTime}</span>
+                                                    <span>{data.missedPK}</span>
+                                                    <span>(PK 실축)</span>
+                                                    {data.refer_vid? <span className='externalLinkIcon'><VscLinkExternal/></span>:''}
+                                                </a>
+                                            </li>
+                                        )
+                                    }
+                                    // 상대 선수의 PK 실축
+                                    if(!data.isUlsan && data.missedPK) {
+                                        return(
+                                            <li className={!data.isAwaygame? 'atAway':'atHome'} key={data.dataId}>
+                                                <a href={data.refer_vid} target="_blank" rel="noreferrer">
+                                                    <span className='recordedTime'>{data.recordedTime}</span>
+                                                    <span>{data.missedPK}</span>
+                                                    <span>(PK 실축)</span>
+                                                    {data.refer_vid? <span className='externalLinkIcon'><VscLinkExternal/></span>:''}
+                                                </a>
+                                            </li>
+                                        )
                                     }
                                     // 경고 상황
                                     // 울산 선수의 경고
