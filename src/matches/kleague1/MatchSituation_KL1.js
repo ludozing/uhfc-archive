@@ -37,7 +37,7 @@ function MatchSituation_KL1() {
                 <div className='matchResultArea'>
                     <h4 className='sectionTitle'>Match Result</h4>
                     <div className='videoArea'>
-                        <iframe width="448" height="252" src={result[0].vid_url} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                        <iframe width="448" height="252" src={`https://www.youtube.com/embed/${result[0].vid_url.split('=')[1]}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                     </div>
                     {!result[0].isAwaygame ?
                             // 홈경기일 때
