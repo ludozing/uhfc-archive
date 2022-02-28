@@ -1,11 +1,12 @@
 import React from 'react';
 import axios from 'axios';
 import useAsync from '../../hooks/useAsync';
+import { API_URL } from '../../config/constants';
 
 function LeagueTable({round}) {
     async function getTable(){
         const response = await axios.get(
-            `http://localhost:8080/leaguetable/kl1/${round}`
+            `${API_URL}/leaguetable/kl1/${round}`
         )
         return response.data;
     }

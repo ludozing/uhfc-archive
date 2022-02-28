@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { API_URL } from '../../../config/constants';
 
 function UpdateMatchFormation_KL1({round}) {
     const param = useParams();
@@ -49,7 +50,7 @@ function UpdateMatchFormation_KL1({round}) {
         console.log(lineup.isCap)
     }
     function uploadFormation (){
-        axios.post(`http://localhost:8080/matchlineup/kl1/${id}/update`,lineup)
+        axios.post(`${API_URL}/matchlineup/kl1/${id}/update`,lineup)
         .then(res => console.log(res))
         .catch(err => console.error(err))
     }
@@ -697,7 +698,6 @@ function UpdateMatchFormation_KL1({round}) {
                     </tbody>
                 </table>
                 <div className='formBtns'>
-                    {/* <button className="formBtn" onClick={()=>navigate(-1)}>뒤로</button> */}
                     <input type={"reset"} className="formBtn" value="초기화"/>
                     <input type={"submit"} className="formBtn" value="다음"/>
                 </div>

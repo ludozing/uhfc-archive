@@ -2,11 +2,12 @@ import React from 'react';
 import axios from 'axios';
 import useAsync from '../../hooks/useAsync';
 import Sub_icon from '../images/sub_icon.jpg';
+import { API_URL } from '../../config/constants';
 
 function SubPlyr({b_no, time}) {
     async function getPlayer(){
         const response = await axios.get(
-            `http://localhost:8080/players/${b_no}`
+            `${API_URL}/players/${b_no}`
         )
         return response.data;
     }

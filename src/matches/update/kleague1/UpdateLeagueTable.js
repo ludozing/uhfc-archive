@@ -1,4 +1,5 @@
 import React from 'react';
+import { API_URL } from '../../../config/constants';
 
 function UpdateLeagueTable_KL1({round}) {
     return (

@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Table, TableBody, TableCell, TableRow } from '@material-ui/core';
+import { API_URL } from '../config/constants';
 
 function UpdateTimeline() {
     const navigate = useNavigate();
@@ -25,7 +26,7 @@ function UpdateTimeline() {
         navigate(-1);
     }
     function insertEvent(){
-        axios.post("http://localhost:8080/addEvent", formData)
+        axios.post(`${API_URL}/addEvent`, formData)
         .then(res => console.log(res))
         .catch(err => console.error(err))
     }

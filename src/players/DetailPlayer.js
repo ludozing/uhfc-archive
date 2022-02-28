@@ -6,6 +6,7 @@ import axios from 'axios';
 import {FaUndoAlt} from 'react-icons/fa';
 import './PlayerList.scss'
 import PlayerEvents from './PlayerEvents';
+import { API_URL } from '../config/constants';
 
 function dateFormat (k_date) {
     let dateData = k_date.split("-");
@@ -24,7 +25,7 @@ function DetailPlayer(props) {
     // 선택된 선수 정보 불러오기
     async function getPlayer(){
         const response = await axios.get(
-            `http://localhost:8080/players/${id}`
+            `${API_URL}/players/${id}`
         )
         return response.data;
     }
@@ -69,7 +70,6 @@ function DetailPlayer(props) {
                             <TableRow>
                                 <TableCell className='dp_dept'>생년월일</TableCell>
                                 <TableCell className='dp_value' colSpan={3}>{
-                                    // new Date(+new Date(player[0].b_day) + 3240 * 10000).toISOString().split("T")[0]
                                     dateFormat(new Date(+new Date(player[0].b_day) + 3240 * 10000).toISOString().split("T")[0])
                                 }</TableCell>
                             </TableRow>

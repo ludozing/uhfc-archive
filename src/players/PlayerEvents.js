@@ -4,13 +4,14 @@ import { TableCell, TableRow } from '@material-ui/core';
 import useAsync from '../hooks/useAsync';
 import axios from 'axios';
 import './PlayerList.scss';
+import { API_URL } from '../config/constants';
 
 function PlayerEvents({plyr_b_no}) {
     
     // 이벤트 데이터 받아오기
     async function getEvents(){
         const response = await axios.get(
-            `http://localhost:8080/events/${plyr_b_no}`
+            `${API_URL}/events/${plyr_b_no}`
         )
         return response.data;
     }
@@ -26,7 +27,6 @@ function PlayerEvents({plyr_b_no}) {
             let e_year = dateData[0]+"년";
             let e_month = (dateData[1].charAt(0)==='0'? dateData[1].charAt(1):dateData[1])+"월";
             let e_day = (dateData[2].charAt(0)==='0'? dateData[2].charAt(1):dateData[2])+"일"
-            // let e_date = dateData[0]+"년 "+(dateData[1].charAt(0)==='0'? dateData[1].charAt(1):dateData[1])+"월 "+(dateData[2].charAt(0)==='0'? dateData[2].charAt(1):dateData[2])+"일"
             let e_date = <p className='e_date'>
                 <span className='e_year'>{e_year}</span>
                 <span className='e_month'>{e_month}</span>

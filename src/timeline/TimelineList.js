@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import useAsync from '../hooks/useAsync';
 import './TimelineList.scss'
+import { API_URL } from '../config/constants';
 
 async function getEvents(){
     const response = await axios.get(
-        'http://localhost:8080/events'
+        `${API_URL}/events`
     )
     return response.data;
 }

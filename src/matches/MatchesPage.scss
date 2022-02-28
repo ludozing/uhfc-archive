@@ -311,9 +311,7 @@
                                         align-items: center;
                                     }
                                 }
-                                .isPK {
-                                    background: url(./images/isPK.png);
-                                }
+                                .isPK { background: url(./images/isPK.png); }
                                 .assist {
                                     font-size: 10px;
                                     color: #eee;
@@ -322,6 +320,8 @@
                                     font-size: 10px;
                                     color: #ff4848;
                                 }
+                                .isCanceled { background: url(./images/canceled_goal.png); }
+                                .isMissedPK { background: url(./images/missedPK.png); }
                             }
                             .recordedTime {
                                 position: absolute;

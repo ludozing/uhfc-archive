@@ -4,6 +4,7 @@ import useAsync from '../../hooks/useAsync';
 import StartPlyr from '../comps/StartPlyr';
 import { useParams } from 'react-router-dom';
 import SubPlyr from '../comps/SubPlyr';
+import { API_URL } from '../../config/constants';
 
 function MatchFormation_KL1() {
     const param = useParams();
@@ -11,7 +12,7 @@ function MatchFormation_KL1() {
     // 선택된 라운드 라인업 정보 불러오기
     async function getLineup(){
         const response = await axios.get(
-            `http://localhost:8080/matchlineup/kl1/${id}`
+            `${API_URL}/matchlineup/kl1/${id}`
         )
         return response.data;
     }

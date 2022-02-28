@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/uhfc-archive-client/static/css/main.fff51a02.css",
+    "main.js": "/uhfc-archive-client/static/js/main.83d2898a.js",
+    "static/js/787.e6d16272.chunk.js": "/uhfc-archive-client/static/js/787.e6d16272.chunk.js",
+    "static/media/sub_icon.jpg": "/uhfc-archive-client/static/media/sub_icon.e6bc7c81806a0d70746e.jpg",
+    "static/media/Football_field.svg.png": "/uhfc-archive-client/static/media/Football_field.svg.0e988ee055e7ec659ac1.png",
+    "index.html": "/uhfc-archive-client/index.html",
+    "main.fff51a02.css.map": "/uhfc-archive-client/static/css/main.fff51a02.css.map",
+    "main.83d2898a.js.map": "/uhfc-archive-client/static/js/main.83d2898a.js.map",
+    "787.e6d16272.chunk.js.map": "/uhfc-archive-client/static/js/787.e6d16272.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fff51a02.css",
+    "static/js/main.83d2898a.js"
+  ]
+}

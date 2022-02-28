@@ -5,7 +5,7 @@ import useAsync from '../../hooks/useAsync';
 import LeagueTable from './LeagueTable';
 import MatchFormation_KL1 from './MatchFormation_KL1';
 import { VscLinkExternal } from 'react-icons/vsc';
-
+import { API_URL } from '../../config/constants';
 
 function MatchSituation_KL1() {
     const param = useParams();
@@ -13,16 +13,12 @@ function MatchSituation_KL1() {
     // 선택된 라운드 정보 불러오기
     async function getResult(){
         const response = await axios.get(
-            `http://localhost:8080/matches/kl1/${id}`
+            `${API_URL}/matches/kl1/${id}`
         )
         return response.data;
     }
     const state = useAsync(getResult);
     const {loading, error, data: result} = state;
-
-    // useEffect(() => {
-    //     return () => setLoading(false);
-    //   }, []);
       
     if(loading) return <div>로딩중...</div>
     if(error) return <div>페이지를 나타낼 수 없습니다.</div>
@@ -106,9 +102,9 @@ function MatchSituation_KL1() {
                                                 <li className={!data.isAwaygame? 'gf atHome':'gf atAway'} key={data.dataId}>
                                                     <a href={data.refer_vid} target="_blank" rel="noreferrer">
                                                         <span className='recordedTime'>{data.recordedTime}</span>
+                                                        {data.isPK ? <span className='isPK icons'></span>:''}
                                                         <span>{data.scorer}</span>
                                                         {data.assist ? <span className='assist'>(A: {data.assist})</span>:''}
-                                                        {data.isPK ? <span className='isPK icons'></span>:''}
                                                         {data.refer_vid? <span className='externalLinkIcon'><VscLinkExternal/></span>:''}
                                                     </a>
                                                 </li>
@@ -148,9 +144,9 @@ function MatchSituation_KL1() {
                                                 >
                                                     <a href={data.refer_vid} target="_blank" rel="noreferrer">
                                                         <span className='recordedTime'>{data.recordedTime}</span>
+                                                        {data.isPK ? <span className='isPK icons'></span>:''}
                                                         <span>{data.scorer}</span>
                                                         {data.assist ? <span className='assist'>(A: {data.assist})</span>:''}
-                                                        {data.isPK ? <span className='isPK icons'></span>:''}
                                                         {data.refer_vid? <span className='externalLinkIcon'><VscLinkExternal/></span>:''}
                                                     </a>
                                                 </li>
@@ -177,8 +173,8 @@ function MatchSituation_KL1() {
                                             <li className={!data.isAwaygame? 'atHome':'atAway'} key={data.dataId}>
                                                 <a href={data.refer_vid} target="_blank" rel="noreferrer">
                                                     <span className='recordedTime'>{data.recordedTime}</span>
+                                                    <span className='isCanceled icons'>(골 취소)</span>
                                                     <span>{data.isCanceled}</span>
-                                                    <span>(골 취소)</span>
                                                     {data.refer_vid? <span className='externalLinkIcon'><VscLinkExternal/></span>:''}
                                                 </a>
                                             </li>
@@ -190,8 +186,8 @@ function MatchSituation_KL1() {
                                             <li className={!data.isAwaygame? 'atAway':'atHome'} key={data.dataId}>
                                                 <a href={data.refer_vid} target="_blank" rel="noreferrer">
                                                     <span className='recordedTime'>{data.recordedTime}</span>
+                                                    <span className='isCanceled icons'></span>
                                                     <span>{data.isCanceled}</span>
-                                                    <span>(골 취소)</span>
                                                     {data.refer_vid? <span className='externalLinkIcon'><VscLinkExternal/></span>:''}
                                                 </a>
                                             </li>
@@ -204,8 +200,8 @@ function MatchSituation_KL1() {
                                             <li className={!data.isAwaygame? 'atHome':'atAway'} key={data.dataId}>
                                                 <a href={data.refer_vid} target="_blank" rel="noreferrer">
                                                     <span className='recordedTime'>{data.recordedTime}</span>
+                                                    <span className='isMissedPK icons'></span>
                                                     <span>{data.missedPK}</span>
-                                                    <span>(PK 실축)</span>
                                                     {data.refer_vid? <span className='externalLinkIcon'><VscLinkExternal/></span>:''}
                                                 </a>
                                             </li>
@@ -217,8 +213,8 @@ function MatchSituation_KL1() {
                                             <li className={!data.isAwaygame? 'atAway':'atHome'} key={data.dataId}>
                                                 <a href={data.refer_vid} target="_blank" rel="noreferrer">
                                                     <span className='recordedTime'>{data.recordedTime}</span>
+                                                    <span className='isMissedPK icons'></span>
                                                     <span>{data.missedPK}</span>
-                                                    <span>(PK 실축)</span>
                                                     {data.refer_vid? <span className='externalLinkIcon'><VscLinkExternal/></span>:''}
                                                 </a>
                                             </li>

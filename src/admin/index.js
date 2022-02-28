@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './AdminLogin.scss';
 import { Table, TableBody, TableCell, TableRow } from '@material-ui/core';
 import axios from 'axios';
+import { API_URL } from '../config/constants';
 
 function AdminLogin(props) {
     const [ putPw, setPutPw ] = useState({
@@ -36,7 +37,7 @@ function AdminLogin(props) {
         // console.log(putPw)
     }
     const tryLogin = () => {
-        axios.post("http://localhost:8080/adminChk", null, {
+        axios.post(`${API_URL}/adminChk`, null, {
             params: {
                 'admin_pw': putPw.pw
             }

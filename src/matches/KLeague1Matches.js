@@ -3,11 +3,12 @@ import axios from 'axios';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import useAsync from '../hooks/useAsync';
 import MatchSituation_KL1 from './kleague1/MatchSituation_KL1';
+import { API_URL } from '../config/constants';
 
 // K리그 경기 결과를 받아와서 라운드 선택 li로 뿌려준다.
 async function getMatches(){
     const response = await axios.get(
-        'http://localhost:8080/matches/kl1'
+        `${API_URL}/matches/kl1`
     )
     return response.data;
 }
@@ -15,8 +16,6 @@ async function getMatches(){
 const KLeague1Matches = () => {
     const state = useAsync(getMatches);
     const {loading, error, data: matches} = state;
-    const navigate = useNavigate();
-    const selectedValue = useRef();
     if(loading) return <div>로딩중...</div>
     if(error) return <div>페이지를 나타낼 수 없습니다.</div>
     if(!matches) return null;

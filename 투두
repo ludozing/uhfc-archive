@@ -1,100 +1,9 @@
-; 1. event �ʿ� [match] �� �߰��ϱ�
-; 2. ��� ��� �������� ���̶���Ʈ ���� ���� �����
-; 3. matchsituation�� ���, ����, ��ü �߰��ϱ�
-; 4. �������̺� ���� �ϼ��ϱ�
-; 5. session ������ �α��� �����
-; 6. event �Է� �� �����
-7. matchresults ������Ʈ �� �����
-
-7-1. matchformation ������Ʈ �� ����� => submit(value: "����") Ŭ���� matchsituation ������ �Ѿ��
-    matchLineup ���̺��� ����ǹǷ�, 
-7-2. matchsituation ������Ʈ �� �����
-7-3. leaguetable ������Ʈ �� �����
+1. UpdateMS에 missedPK, isCanceled 입력 받을 form 만들어서 연결하기
+; 2. MatchSituation_KL1.js에 missedPK, isCanceled 아이콘 넣어서 출력하기
+3. github.io에서 react npm start 하는 법 / npm build 조사 더 해보기
+4. 
 
 
-
-
-
-
-
-
-; defaultValue={customer[0].c_name}
-
-defaultChecked = {prevLineup[0].LF_sta_isCap? true:false}
-defaultChecked = {prevLineup[0].CF_sta_isCap? true:false}
-defaultChecked = {prevLineup[0].RF_sta_isCap? true:false}
-defaultChecked = {prevLineup[0].LW_sta_isCap? true:false}
-defaultChecked = {prevLineup[0].LAM_sta_isCap? true:false}
-defaultChecked = {prevLineup[0].CAM_sta_isCap? true:false}
-defaultChecked = {prevLineup[0].RAM_sta_isCap? true:false}
-defaultChecked = {prevLineup[0].RW_sta_isCap? true:false}
-defaultChecked = {prevLineup[0].LM_sta_isCap? true:false}
-defaultChecked = {prevLineup[0].LCM_sta_isCap? true:false}
-defaultChecked = {prevLineup[0].CM_sta_isCap? true:false}
-defaultChecked = {prevLineup[0].RCM_sta_isCap? true:false}
-defaultChecked = {prevLineup[0].RM_sta_isCap? true:false}
-defaultChecked = {prevLineup[0].LWB_sta_isCap? true:false}
-defaultChecked = {prevLineup[0].LDM_sta_isCap? true:false}
-defaultChecked = {prevLineup[0].CDM_sta_isCap? true:false}
-defaultChecked = {prevLineup[0].RDM_sta_isCap? true:false}
-defaultChecked = {prevLineup[0].RWB_sta_isCap? true:false}
-defaultChecked = {prevLineup[0].LB_sta_isCap? true:false}
-defaultChecked = {prevLineup[0].LCD_sta_isCap? true:false}
-defaultChecked = {prevLineup[0].CD_sta_isCap? true:false}
-defaultChecked = {prevLineup[0].RCD_sta_isCap? true:false}
-defaultChecked = {prevLineup[0].RB_sta_isCap? true:false}
-defaultChecked = {prevLineup[0].GK_sta_isCap? true:false}
-
-defaultValue = {prevLineup[0].LF_sub_time}
-defaultValue = {prevLineup[0].CF_sub_time}
-defaultValue = {prevLineup[0].RF_sub_time}
-defaultValue = {prevLineup[0].LW_sub_time}
-defaultValue = {prevLineup[0].LAM_sub_time}
-defaultValue = {prevLineup[0].CAM_sub_time}
-defaultValue = {prevLineup[0].RAM_sub_time}
-defaultValue = {prevLineup[0].RW_sub_time}
-defaultValue = {prevLineup[0].LM_sub_time}
-defaultValue = {prevLineup[0].LCM_sub_time}
-defaultValue = {prevLineup[0].CM_sub_time}
-defaultValue = {prevLineup[0].RCM_sub_time}
-defaultValue = {prevLineup[0].RM_sub_time}
-defaultValue = {prevLineup[0].LWB_sub_time}
-defaultValue = {prevLineup[0].LDM_sub_time}
-defaultValue = {prevLineup[0].CDM_sub_time}
-defaultValue = {prevLineup[0].RDM_sub_time}
-defaultValue = {prevLineup[0].RWB_sub_time}
-defaultValue = {prevLineup[0].LB_sub_time}
-defaultValue = {prevLineup[0].LCD_sub_time}
-defaultValue = {prevLineup[0].CD_sub_time}
-defaultValue = {prevLineup[0].RCD_sub_time}
-defaultValue = {prevLineup[0].RB_sub_time}
-defaultValue = {prevLineup[0].GK_sub_time}
-
-
-GK_sta, GK_sta_isCap, GK_sub_time, GK_sub,
-LB_sta, LB_sta_isCap, LB_sub_time, LB_sub,
-LCD_sta, LCD_sta_isCap, LCD_sub_time, LCD_sub,
-CD_sta, CD_sta_isCap, CD_sub_time, CD_sub,
-RCD_sta, RCD_sta_isCap, RCD_sub_time, RCD_sub,
-RB_sta, RB_sta_isCap, RB_sub_time, RB_sub,
-LWB_sta, LWB_sta_isCap, LWB_sub_time, LWB_sub,
-LDM_sta, LDM_sta_isCap, LDM_sub_time, LDM_sub,
-CDM_sta, CDM_sta_isCap, CDM_sub_time, CDM_sub,
-RDM_sta, RDM_sta_isCap, RDM_sub_time, RDM_sub,
-RWB_sta, RWB_sta_isCap, RWB_sub_time, RWB_sub,
-LM_sta, LM_sta_isCap, LM_sub_time, LM_sub,
-LCM_sta, LCM_sta_isCap, LCM_sub_time, LCM_sub,
-CM_sta, CM_sta_isCap, CM_sub_time, CM_sub,
-RCM_sta, RCM_sta_isCap, RCM_sub_time, RCM_sub,
-RM_sta, RM_sta_isCap, RM_sub_time, RM_sub,
-LW_sta, LW_sta_isCap, LW_sub_time, LW_sub,
-LAM_sta, LAM_sta_isCap, LAM_sub_time, LAM_sub,
-CAM_sta, CAM_sta_isCap, CAM_sub_time, CAM_sub,
-RAM_sta, RAM_sta_isCap, RAM_sub_time, RAM_sub,
-RW_sta, RW_sta_isCap, RW_sub_time, RW_sub,
-LF_sta, LF_sta_isCap, LF_sub_time, LF_sub,
-CF_sta, CF_sta_isCap, CF_sub_time, CF_sub,
-RF_sta, RF_sta_isCap, RF_sub_time, RF_sub
 
 LF
 CF
@@ -120,26 +29,3 @@ CD
 RCD
 RB
 GK
-
- {s0_dept, s1_dept, s2_dept, s3_dept, s4_dept, s5_dept, s6_dept, s7_dept, s8_dept, s9_dept, s10_dept, s11_dept, s12_dept, s13_dept, s14_dept, s15_dept, s16_dept, s17_dept, s18_dept, s19_dept} = dept
-
- s${i}_
-
- matchResult_KL1_round: round,
- recordedTime: s${i}_time,
- ulsanScorer: s${i}_plA,
- ulsanAssist: s${i}_plB,
- againstScorer: s${i}_plA,
- againstAssist: s${i}_plB,
- isPK: s${i}_pk,
- isOG: s${i}_og,
- ulsanYellowcard: s${i}_plA,
- ulsanRedcard: s${i}_plA,
- againstYellowcard: s${i}_plA,
- againstRedcard: s${i}_plA,
- isSecondYellow: s${i}_2nd,
- refer_vid: s${i}_url,
- ulsanSubIn: s${i}_plA,
- ulsanSubOut: s${i}_plB,
- againstSubIn: s${i}_plA,
- againstSubOut: s${i}_plB

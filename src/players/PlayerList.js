@@ -2,10 +2,11 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import useAsync from '../hooks/useAsync';
 import './PlayerList.scss'
+import { API_URL } from '../config/constants';
 
 async function getPlayers(){
     const response = await axios.get(
-        'http://localhost:8080/players'
+        `${API_URL}/players`
     )
     return response.data;
 }
