@@ -1,152 +1,313 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import UpdateMS from './UpdateMS';
+import { useNavigate, useParams } from 'react-router-dom';
+import { API_URL } from '../../../config/constants';
+import axios from 'axios';
 
-function UpdateMatchSituation_KL1({round}) {
+function UpdateMatchSituation_KL1(props) {
     const navigate = useNavigate();
-    // 각 sitList의 dept를 관리해 sitList별 input의 disabled 여부를 결정
-    const [ dept, setDept ] = useState({
-        s0_dept: '', s1_dept: '', s2_dept: '', s3_dept: '', s4_dept: '', s5_dept: '', s6_dept: '', s7_dept: '', s8_dept: '', s9_dept: '', s10_dept: '', s11_dept: '', s12_dept: '', s13_dept: '', s14_dept: '', s15_dept: '', s16_dept: '', s17_dept: '', s18_dept: '', s19_dept: ''
-    });
-    // 구조분해할당으로 각 sitList의 dept들을 각각의 변수에 담음
-    const {s0_dept, s1_dept, s2_dept, s3_dept, s4_dept, s5_dept, s6_dept, s7_dept, s8_dept, s9_dept, s10_dept, s11_dept, s12_dept, s13_dept, s14_dept, s15_dept, s16_dept, s17_dept, s18_dept, s19_dept} = dept;
-    // dept를 담은 변수들을 deptArr라는 배열로 재구성해 for문 안에서 개별적으로 활용될 수 있도록 한다.
-    const deptArr = [s0_dept, s1_dept, s2_dept, s3_dept, s4_dept, s5_dept, s6_dept, s7_dept, s8_dept, s9_dept, s10_dept, s11_dept, s12_dept, s13_dept, s14_dept, s15_dept, s16_dept, s17_dept, s18_dept, s19_dept];
-    // for문으로 20개의 sitList를 생성
-    function makeSitList(){
-        let list_arr = [];
-        for (let i=0; i<20; i++) {
-            list_arr.push(
-                <tr key={i}>
-                    <td>
-                        {/* 상황 종류 */}
-                        <select name={`s${i}_dept`} onChange={(e)=>{setDept({
-                            ...dept,
-                            [e.target.name] : e.target.value
-                            })}}>
-                            <option value='' defaultValue hidden>선택</option>
-                            <option value="득점">득점</option>
-                            <option value="교체">교체</option>
-                            <option value="경고">경고</option>
-                            <option value="퇴장">퇴장</option>
-                        </select>
-                    </td>
-                    <td>
-                        {/* 상황 발생 시간 */}
-                        <input type={"text"} name={`s${i}_time`} className='s_time'  disabled={!deptArr[i]? true:false}/>
-                    </td>
-                    <td>
-                        {/* 소속 */}
-                        <p>
-                            <input type={"radio"} name={`s${i}_team`} value={"울산"} disabled={!deptArr[i]? true:false}/> 울산
-                        </p>
-                        <p>
-                            <input type={"radio"} name={`s${i}_team`} value={"상대"} disabled={!deptArr[i]? true:false}/> 상대
-                        </p>
-                    </td>
-                    <td>
-                        {/* 선수A */}
-                        <input type={"text"} name={`s${i}_plA`} className='s_plyrName' disabled={!deptArr[i]? true:false}/>
-                    </td>
-                    <td>
-                        {/* 선수B */}
-                        <input type={"text"} name={`s${i}_plB`} className='s_plyrName' disabled={deptArr[i] === '득점' || deptArr[i] === '교체' ? false:true}/>
-                    </td>
-                    <td>
-                        {/* isPK */}
-                        <input type={"checkbox"} name={`s${i}_pk`} disabled={deptArr[i]==='득점'?false:true}/>
-                    </td>
-                    <td>
-                        {/* isOG */}
-                        <input type={"checkbox"} name={`s${i}_og`} disabled={deptArr[i]==='득점'?false:true}/>
-                    </td>
-                    <td>
-                        {/* 두번째 경고인지? */}
-                        <input type={"checkbox"} name={`s${i}_2nd`} disabled={deptArr[i]==='경고'?false:true}/>
-                    </td>
-                    <td>
-                        <input type={"text"} name={`s${i}_url`} disabled={!deptArr[i]? true:false}/>
-                    </td>
-                </tr>
-            );
-        }
-        // console.log(list_arr);
-        return list_arr;
+    const param = useParams();
+    const {id} = param;
+    const [dataArr,setDataArr] = useState([]);
+    let [count, setCount] = useState(0);
+    const [matchResultObj, setMatchResultObj] = useState({r_gf:0, r_ga:0, r_vid_url:''});
+    const {r_gf, r_ga, r_vid_url} = matchResultObj;
+
+    const [ booleanData, setBooleanData ] = useState({
+        isPK: false,
+        isOG: false,
+        isSecond: false
+    })
+    const [ isUlsan, setIsUlsan ] = useState(true);
+    const onSelect = (e) => {
+        e.target.value === "울산"? setIsUlsan(true):setIsUlsan(false);
     }
-    // value를 입력받은 sitList(객체)들을 한 곳에 모아 전송하기 위한 배열 선언
-    const sitListArr = [];
-    // submit될 때 배열에 데이터들을 담아줄 함수 선언
-    function pushSitList(form){
-        // 1. for문으로 모든 sitList들을 확인해서
-        for(let i=0; i<20; i++){
-            // 2. 해당 sitList의 dept의 값에 따라
-            // 3-1. 입력받은 value들을 객체의 정확한 속성에 배치해
-            // 3-2. 그 객체를 sitListArr에 push
-            if(deptArr[i]==="득점"){
-                sitListArr.push({
-                    
-                })
-            }
-            else if(deptArr[i]==="교체"){
-                sitListArr.push({
-                    
-                })
-            }
-            else if(deptArr[i]==="경고"){
-                sitListArr.push({
-                    
-                })
-            }
-            else if(deptArr[i]==="퇴장"){
-                sitListArr.push({
-                    
-                })
-            }
-            // dept에 값이 없다면 객체로 만들 필요 없음
+    const onChange = (e) => {
+        const {name, checked} = e.target;
+        if(checked){
+            setBooleanData({
+                ...booleanData,
+                [name]: true
+            })
+        }else {
+            setBooleanData({
+                ...booleanData,
+                [name]: false
+            })
         }
     }
-
-    function insertSitList(){
-        // axios.push로 전송
-        
-    }
-
-    // form submit 시 메커니즘
-    function onSubmit(e){
+    const onSubmit = (e) => {
         e.preventDefault();
-        // sitListArr에 각 value가 담긴 sitList들을 push해 배열을 만든다.
-        pushSitList(e.target);
-        // 배열을 post방식으로 서버에 전송한다.
-        insertSitList();
-        // UpdateLeagueTable 페이지로 넘어간다.
-        navigate(`/main/matches/update/kleague1/${round}/leaguetable`)
+        let form = e.target;
+        let dataRow = {
+            data_no: count,
+            isUlsan: isUlsan, //
+            recordedTime: form.recordedTime.value,
+            scorer: form.scorer? (form.scorer.value? form.scorer.value:null):null,
+            assist: form.assist? (form.assist.value? form.assist.value:null):null,
+            isPK: booleanData.isPK, //
+            missedPK: form.missedPK? (form.missedPK.value? form.missedPK.value:null):null,
+            isOG: booleanData.isOG, //
+            isCanceled: form.isCanceled? (form.isCanceled.value? form.isCanceled.value:null):null,
+            yellowcard: form.yellowcard? (form.yellowcard.value? form.yellowcard.value:null):null,
+            isSecond: booleanData.isSecond, //
+            redcard: form.redcard? (form.redcard.value? form.redcard.value:null):null,
+            subIn: form.subIn? (form.subIn.value? form.subIn.value:null):null,
+            subOut: form.subOut? (form.subOut.value? form.subOut.value:null):null,
+            refer_vid: form.refer_vid? (form.refer_vid.value? form.refer_vid.value:null):null
+        }
+        setDataArr([
+            ...dataArr, dataRow
+        ]);
+        form.reset();
+        setIsUlsan(true);
+        setCount(count + 1);
+    }
+    function uploadAll(){
+        axios.post(`${API_URL}/situation/kl1/${id}/update`,[matchResultObj,dataArr])
+        .then(res=>console.log(res))
+        .catch(err=>console.error(err))
+    }
+    const postData = () => {
+        dataArr.sort((a,b)=>{return parseInt(a.recordedTime) - parseInt(b.recordedTime)})
+        console.log(dataArr)
+        console.log(matchResultObj)
+        uploadAll()
+        navigate(`/main/matches/update/kleague1/${id}/leaguetable`);
     }
     return (
-        <div className='matchResultArea'>
-            <UpdateMS />
-            {/* <form onSubmit={onSubmit}>
-                <div className='matchResult'>
-                    경기 총 결과
+        <div className='matchResultArea update'>
+            <div className='matchResult'>
+                <form onSubmit={(e) => {
+                    e.preventDefault();
+                    let form = e.target;
+                    setMatchResultObj({
+                        r_gf: form.gf.value,
+                        r_ga: form.ga.value,
+                        r_vid_url: form.vid_url.value? form.vid_url.value:null
+                    })
+                    console.log(matchResultObj)
+                }}>
+                    <p><span>울산</span><span><input type={"number"} name={"gf"} placeholder={"점수"}/></span></p>
+                    <p><span>상대</span><span><input type={"number"} name={"ga"} placeholder={"점수"}/></span></p>
+                    <p><span>하이라이트</span><span><input type={"text"} name={"vid_url"} placeholder={"URL"}/></span></p>
+                    <p><input type={"submit"} value={"확인"}/></p>
+                </form>                
+            </div>
+            <div className='matchSituationArea'>
+                <div className='dataInputArea'>
+                    {/* 하프타임 */}
+                    <form onSubmit={e=>{
+                        e.preventDefault();
+                        let dataRow = {
+                            data_no: count,
+                            recordedTime: "45.5",
+                            HTline: true
+                        }
+                        setDataArr([
+                            ...dataArr, dataRow
+                        ]);
+                        setCount(count + 1)        
+                    }} className={"htlineform"}>
+                        <div>
+                            <h4>
+                                하프 타임
+                            </h4>
+                            <input type={"submit"} value={"삽입"} />
+                        </div>
+                    </form>
+                    <form name={'score'} onSubmit={onSubmit} className={"dataRowForm"}>
+                        <div>
+                            <h4>득점</h4>
+                            <div>
+                                <p>
+                                    <span>시간</span>
+                                    <span>
+                                        <input type={"text"} name={"recordedTime"} placeholder={"RT'"}/>
+                                    </span>
+                                </p>
+                                <p>
+                                    <span>팀</span>
+                                    <span>
+                                        <select name={"isUlsan"} onChange={onSelect} >
+                                            <option value={"울산"}>울산</option>
+                                            <option value={"상대"}>상대</option>
+                                        </select>
+                                    </span>
+                                </p>
+                                <p>
+                                    <span>득점</span>
+                                    <span>
+                                        <input type={"text"} name={'scorer'}/>
+                                        
+                                    </span>
+                                </p>
+                                <p>
+                                    <span>도움</span>
+                                    <span>
+                                        <input type={"text"} name={'assist'}/>
+                                    </span>
+                                </p>
+                                <p>
+                                    <span>득점 취소</span>
+                                    <span>
+                                        <input type={"text"} name={'isCanceled'}/>
+                                    </span>
+                                </p>
+                                <p>
+                                    <span>PK 실축</span>
+                                    <span>
+                                        <input type={"text"} name={'missedPK'}/>
+                                    </span>
+                                </p>
+                                <p>
+                                    <span>isPK</span>
+                                    <span>
+                                        <input type={"checkbox"} name={'isPK'} onChange={onChange}/>                            
+                                    </span>
+                                </p>
+                                <p>
+                                    <span>isOG</span>
+                                    <span>
+                                        <input type={"checkbox"} name={'isOG'} onChange={onChange}/>
+                                    </span>
+                                </p>
+                                <p>
+                                    <span>URL</span>
+                                    <span>
+                                        <input type={"text"} name={'refer_vid'}/>
+                                    </span>
+                                </p>
+                            </div>
+                            <p>
+                                <input type={"submit"} value={"확인"} />
+                            </p>
+                        </div>
+                    </form>
+                    <form name={'substitution'} onSubmit={onSubmit} className={"dataRowForm"}>
+                        <div>
+                            <h4>교체</h4>
+                            <div>
+                                <p>
+                                    <span>시간</span>
+                                    <span>
+                                        <input type={"text"} name={"recordedTime"} placeholder={"RT'"}/>
+                                    </span>
+                                </p>
+                                <p>
+                                    <span>팀</span>
+                                    <span>
+                                        <select name={"isUlsan"} onChange={onSelect} >
+                                            <option value={true}>울산</option>
+                                            <option value={false}>상대</option>
+                                        </select>
+                                    </span>
+                                </p>
+                                <p>
+                                    <span>IN</span>
+                                    <span>
+                                        <input type={"text"} name={'subIn'}/>
+                                    </span>
+                                </p>
+                                <p>
+                                    <span>OUT</span>
+                                    <span>
+                                        <input type={"text"} name={'subOut'}/>
+                                    </span>
+                                </p>
+                                <p>
+                                    <span>URL</span>
+                                    <span>
+                                        <input type={"text"} name={'refer_vid'}/>
+                                    </span>
+                                </p>
+                            </div>
+                            <p>
+                                <input type={"submit"} value={"확인"} />
+                            </p>
+                        </div>
+                    </form>
+                    <form name={'yr'} onSubmit={onSubmit} className={"dataRowForm"}>
+                        <div>
+                            <h4>경고 및 퇴장</h4>
+                            <div>
+
+                                <p>
+                                    <span>시간</span>
+                                    <span>
+                                        <input type={"text"} name={"recordedTime"} placeholder={"RT'"}/>
+                                    </span>
+                                </p>
+                                <p>
+                                    <span>팀</span>
+                                    <span>
+                                        <select name={"isUlsan"} onChange={onSelect} >
+                                            <option value={true}>울산</option>
+                                            <option value={false}>상대</option>
+                                        </select>
+                                    </span>
+                                </p>
+                                <p>
+                                    <span>경고</span>
+                                    <span>
+                                        <input type={"text"} name={'yellowcard'}/>
+                                    </span>
+                                </p>
+                                <p>
+                                    <span>퇴장</span>
+                                    <span>
+                                        <input type={"text"} name={'redcard'}/>
+                                    </span>
+                                </p>
+                                <p>
+                                    <span>누적</span>
+                                    <span>
+                                        <input type={"checkbox"} name={'isSecond'} onChange={onChange}/>
+                                    </span>
+                                </p>
+                                <p>
+                                    <span>URL</span>
+                                    <span>
+                                        <input type={"text"} name={'refer_vid'}/>
+                                    </span>
+                                </p>
+                            </div>
+                            <p>
+                                <input type={"submit"} value={"확인"} />
+                            </p>
+                        </div>
+                    </form>
                 </div>
-                <table className='matchDetail'>
-                    <thead>
-                        <tr>
-                            <td>분류</td>
-                            <td>시간</td>
-                            <td>팀</td>
-                            <td>선수A</td>
-                            <td>선수B</td>
-                            <td>isPK</td>
-                            <td>isOG</td>
-                            <td>is2ndY</td>
-                            <td>URL</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {makeSitList()}
-                    </tbody>
-                </table>
-            </form> */}
+                <div className='dataBoardArea'>
+                    <div className='dataBoard'>
+                        <h4>-등록 예정 레코드-</h4>
+                        {
+                            <h4><span>울산</span> {r_gf} : {r_ga} <span>상대</span></h4>
+                        }
+                        <ul>
+                            {
+                                dataArr.map(data => {
+                                    if(data.HTline) return <li key={data.data_no} className={"dataRow"}><p style={{textAlign:'center', width:'100%', padding:'8px 0'}}>====하프 타임====</p></li>
+                                    else return(
+                                        <li key={data.data_no} className={"dataRow"}>
+                                            <p style={{width: '50px', textAlign: 'center'}}>{data.recordedTime}</p>
+                                            <p>{data.isUlsan? "울산":"상대"}</p>
+                                            {data.scorer? <p><span>(G)</span>{data.scorer}{data.isPK? <span>(PK)</span>:""}{data.isOG? <span>(OG)</span>:""}</p>:""}
+                                            {data.assist? <p><span>(A)</span>{data.assist}</p>:""}
+                                            {data.missedPK? <p><span>(PK실축)</span>{data.missedPK}</p>:""}
+                                            {data.isCanceled? <p><span>(골 취소)</span>{data.isCanceled}</p>:""}
+                                            {data.yellowcard? <p><span>(경고)</span>{data.yellowcard}{data.isSecond? <span style={{color:'red'}}>경고누적퇴장</span>:""}</p>:""}
+                                            {data.redcard? <p><span>(퇴장)</span>{data.redcard}</p>:""}
+                                            {data.subOut? <p>{data.subIn? <span>IN: <strong>{data.subIn}</strong></span>:""}<span>OUT: <strong>{data.subOut}</strong></span></p>:""}
+                                            {data.refer_vid? <p>링크 있음</p>:""}
+                                        </li>
+                                    )
+                                })
+                            }
+                        </ul>
+                    </div>
+                    <div><button onClick={postData}>등록</button></div>
+                </div>
+            </div>
         </div>
     );
 }
