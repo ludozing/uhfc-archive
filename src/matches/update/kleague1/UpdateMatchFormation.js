@@ -88,7 +88,7 @@ function UpdateMatchFormation_KL1({round}) {
                                 <div className='subInputs'>
                                     <label htmlFor="LF_sub">교체</label>
                                     <span>
-                                        <input type="text" name="LF_sub_time" className='subTimeInput' placeholder="T" onChange={onChange} />
+                                        <input type="text" name="LF_sub_time" className='subTimeInput' placeholder="T'" onChange={onChange} />
                                         <input type="number" name="LF_sub" className='subB_noInput' placeholder="No." onChange={onChange} />
                                     </span>
                                 </div>
@@ -113,7 +113,7 @@ function UpdateMatchFormation_KL1({round}) {
                                 <div className='subInputs'>
                                     <label htmlFor="CF_sub">교체</label>
                                     <span>
-                                        <input type="text" name="CF_sub_time" className='subTimeInput' placeholder="T" onChange={onChange} />
+                                        <input type="text" name="CF_sub_time" className='subTimeInput' placeholder="T'" onChange={onChange} />
                                         <input type="number" name="CF_sub" className='subB_noInput' placeholder="No." onChange={onChange} />
                                     </span>
                                 </div>
@@ -138,7 +138,7 @@ function UpdateMatchFormation_KL1({round}) {
                                 <div className='subInputs'>
                                     <label htmlFor="RF_sub">교체</label>
                                     <span>
-                                        <input type="text" name="RF_sub_time" className='subTimeInput' placeholder="T" onChange={onChange} />
+                                        <input type="text" name="RF_sub_time" className='subTimeInput' placeholder="T'" onChange={onChange} />
                                         <input type="number" name="RF_sub" className='subB_noInput' placeholder="No." onChange={onChange} />
                                     </span>
                                 </div>
@@ -167,7 +167,7 @@ function UpdateMatchFormation_KL1({round}) {
                                 <div className='subInputs'>
                                     <label htmlFor="LW_sub">교체</label>
                                     <span>
-                                        <input type="text" name="LW_sub_time" className='subTimeInput' placeholder="T" onChange={onChange} />
+                                        <input type="text" name="LW_sub_time" className='subTimeInput' placeholder="T'" onChange={onChange} />
                                         <input type="number" name="LW_sub" className='subB_noInput' placeholder="No." onChange={onChange} />
                                     </span>
                                 </div>
@@ -193,7 +193,7 @@ function UpdateMatchFormation_KL1({round}) {
                                 <div className='subInputs'>
                                     <label htmlFor="LAM_sub">교체</label>
                                     <span>
-                                        <input type="text" name="LAM_sub_time" className='subTimeInput' placeholder="T" onChange={onChange} />
+                                        <input type="text" name="LAM_sub_time" className='subTimeInput' placeholder="T'" onChange={onChange} />
                                         <input type="number" name="LAM_sub" className='subB_noInput' placeholder="No." onChange={onChange} />
                                     </span>
                                 </div>
@@ -218,7 +218,7 @@ function UpdateMatchFormation_KL1({round}) {
                                 <div className='subInputs'>
                                     <label htmlFor="CAM_sub">교체</label>
                                     <span>
-                                        <input type="text" name="CAM_sub_time" className='subTimeInput' placeholder="T" onChange={onChange} />
+                                        <input type="text" name="CAM_sub_time" className='subTimeInput' placeholder="T'" onChange={onChange} />
                                         <input type="number" name="CAM_sub" className='subB_noInput' placeholder="No." onChange={onChange} />
                                     </span>
                                 </div>
@@ -243,7 +243,7 @@ function UpdateMatchFormation_KL1({round}) {
                                 <div className='subInputs'>
                                     <label htmlFor="RAM_sub">교체</label>
                                     <span>
-                                        <input type="text" name="RAM_sub_time" className='subTimeInput' placeholder="T" onChange={onChange} />
+                                        <input type="text" name="RAM_sub_time" className='subTimeInput' placeholder="T'" onChange={onChange} />
                                         <input type="number" name="RAM_sub" className='subB_noInput' placeholder="No." onChange={onChange} />
                                     </span>
                                 </div>
@@ -269,7 +269,7 @@ function UpdateMatchFormation_KL1({round}) {
                                 <div className='subInputs'>
                                     <label htmlFor="RW_sub">교체</label>
                                     <span>
-                                        <input type="text" name="RW_sub_time" className='subTimeInput' placeholder="T" onChange={onChange} />
+                                        <input type="text" name="RW_sub_time" className='subTimeInput' placeholder="T'" onChange={onChange} />
                                         <input type="number" name="RW_sub" className='subB_noInput' placeholder="No." onChange={onChange} />
                                     </span>
                                 </div>
@@ -297,7 +297,7 @@ function UpdateMatchFormation_KL1({round}) {
                                 <div className='subInputs'>
                                     <label htmlFor="LM_sub">교체</label>
                                     <span>
-                                        <input type="text" name="LM_sub_time" className='subTimeInput' placeholder="T" onChange={onChange} />
+                                        <input type="text" name="LM_sub_time" className='subTimeInput' placeholder="T'" onChange={onChange} />
                                         <input type="number" name="LM_sub" className='subB_noInput' placeholder="No." onChange={onChange} />
                                     </span>
                                 </div>
@@ -323,7 +323,7 @@ function UpdateMatchFormation_KL1({round}) {
                                 <div className='subInputs'>
                                     <label htmlFor="LCM_sub">교체</label>
                                     <span>
-                                        <input type="text" name="LCM_sub_time" className='subTimeInput' placeholder="T" onChange={onChange} />
+                                        <input type="text" name="LCM_sub_time" className='subTimeInput' placeholder="T'" onChange={onChange} />
                                         <input type="number" name="LCM_sub" className='subB_noInput' placeholder="No." onChange={onChange} />
                                     </span>
                                 </div>
@@ -348,7 +348,7 @@ function UpdateMatchFormation_KL1({round}) {
                                 <div className='subInputs'>
                                     <label htmlFor="CM_sub">교체</label>
                                     <span>
-                                        <input type="text" name="CM_sub_time" className='subTimeInput' placeholder="T" onChange={onChange} />
+                                        <input type="text" name="CM_sub_time" className='subTimeInput' placeholder="T'" onChange={onChange} />
                                         <input type="number" name="CM_sub" className='subB_noInput' placeholder="No." onChange={onChange} />
                                     </span>
                                 </div>
@@ -373,7 +373,7 @@ function UpdateMatchFormation_KL1({round}) {
                                 <div className='subInputs'>
                                     <label htmlFor="RCM_sub">교체</label>
                                     <span>
-                                        <input type="text" name="RCM_sub_time" className='subTimeInput' placeholder="T" onChange={onChange} />
+                                        <input type="text" name="RCM_sub_time" className='subTimeInput' placeholder="T'" onChange={onChange} />
                                         <input type="number" name="RCM_sub" className='subB_noInput' placeholder="No." onChange={onChange} />
                                     </span>
                                 </div>
@@ -399,7 +399,7 @@ function UpdateMatchFormation_KL1({round}) {
                                 <div className='subInputs'>
                                     <label htmlFor="RM_sub">교체</label>
                                     <span>
-                                        <input type="text" name="RM_sub_time" className='subTimeInput' placeholder="T" onChange={onChange} />
+                                        <input type="text" name="RM_sub_time" className='subTimeInput' placeholder="T'" onChange={onChange} />
                                         <input type="number" name="RM_sub" className='subB_noInput' placeholder="No." onChange={onChange} />
                                     </span>
                                 </div>
@@ -427,7 +427,7 @@ function UpdateMatchFormation_KL1({round}) {
                                 <div className='subInputs'>
                                     <label htmlFor="LWB_sub">교체</label>
                                     <span>
-                                        <input type="text" name="LWB_sub_time" className='subTimeInput' placeholder="T" onChange={onChange} />
+                                        <input type="text" name="LWB_sub_time" className='subTimeInput' placeholder="T'" onChange={onChange} />
                                         <input type="number" name="LWB_sub" className='subB_noInput' placeholder="No." onChange={onChange} />
                                     </span>
                                 </div>
@@ -453,7 +453,7 @@ function UpdateMatchFormation_KL1({round}) {
                                 <div className='subInputs'>
                                     <label htmlFor="LDM_sub">교체</label>
                                     <span>
-                                        <input type="text" name="LDM_sub_time" className='subTimeInput' placeholder="T" onChange={onChange} />
+                                        <input type="text" name="LDM_sub_time" className='subTimeInput' placeholder="T'" onChange={onChange} />
                                         <input type="number" name="LDM_sub" className='subB_noInput' placeholder="No." onChange={onChange} />
                                     </span>
                                 </div>
@@ -478,7 +478,7 @@ function UpdateMatchFormation_KL1({round}) {
                                 <div className='subInputs'>
                                     <label htmlFor="CDM_sub">교체</label>
                                     <span>
-                                        <input type="text" name="CDM_sub_time" className='subTimeInput' placeholder="T" onChange={onChange} />
+                                        <input type="text" name="CDM_sub_time" className='subTimeInput' placeholder="T'" onChange={onChange} />
                                         <input type="number" name="CDM_sub" className='subB_noInput' placeholder="No." onChange={onChange} />
                                     </span>
                                 </div>
@@ -503,7 +503,7 @@ function UpdateMatchFormation_KL1({round}) {
                                 <div className='subInputs'>
                                     <label htmlFor="RDM_sub">교체</label>
                                     <span>
-                                        <input type="text" name="RDM_sub_time" className='subTimeInput' placeholder="T" onChange={onChange} />
+                                        <input type="text" name="RDM_sub_time" className='subTimeInput' placeholder="T'" onChange={onChange} />
                                         <input type="number" name="RDM_sub" className='subB_noInput' placeholder="No." onChange={onChange} />
                                     </span>
                                 </div>
@@ -529,7 +529,7 @@ function UpdateMatchFormation_KL1({round}) {
                                 <div className='subInputs'>
                                     <label htmlFor="RWB_sub">교체</label>
                                     <span>
-                                        <input type="text" name="RWB_sub_time" className='subTimeInput' placeholder="T" onChange={onChange} />
+                                        <input type="text" name="RWB_sub_time" className='subTimeInput' placeholder="T'" onChange={onChange} />
                                         <input type="number" name="RWB_sub" className='subB_noInput' placeholder="No." onChange={onChange} />
                                     </span>
                                 </div>
@@ -557,7 +557,7 @@ function UpdateMatchFormation_KL1({round}) {
                                 <div className='subInputs'>
                                     <label htmlFor="LB_sub">교체</label>
                                     <span>
-                                        <input type="text" name="LB_sub_time" className='subTimeInput' placeholder="T" onChange={onChange} />
+                                        <input type="text" name="LB_sub_time" className='subTimeInput' placeholder="T'" onChange={onChange} />
                                         <input type="number" name="LB_sub" className='subB_noInput' placeholder="No." onChange={onChange} />
                                     </span>
                                 </div>
@@ -583,7 +583,7 @@ function UpdateMatchFormation_KL1({round}) {
                                 <div className='subInputs'>
                                     <label htmlFor="LCD_sub">교체</label>
                                     <span>
-                                        <input type="text" name="LCD_sub_time" className='subTimeInput' placeholder="T" onChange={onChange} />
+                                        <input type="text" name="LCD_sub_time" className='subTimeInput' placeholder="T'" onChange={onChange} />
                                         <input type="number" name="LCD_sub" className='subB_noInput' placeholder="No." onChange={onChange} />
                                     </span>
                                 </div>
@@ -608,7 +608,7 @@ function UpdateMatchFormation_KL1({round}) {
                                 <div className='subInputs'>
                                     <label htmlFor="CD_sub">교체</label>
                                     <span>
-                                        <input type="text" name="CD_sub_time" className='subTimeInput' placeholder="T" onChange={onChange} />
+                                        <input type="text" name="CD_sub_time" className='subTimeInput' placeholder="T'" onChange={onChange} />
                                         <input type="number" name="CD_sub" className='subB_noInput' placeholder="No." onChange={onChange} />
                                     </span>
                                 </div>
@@ -633,7 +633,7 @@ function UpdateMatchFormation_KL1({round}) {
                                 <div className='subInputs'>
                                     <label htmlFor="RCD_sub">교체</label>
                                     <span>
-                                        <input type="text" name="RCD_sub_time" className='subTimeInput' placeholder="T" onChange={onChange} />
+                                        <input type="text" name="RCD_sub_time" className='subTimeInput' placeholder="T'" onChange={onChange} />
                                         <input type="number" name="RCD_sub" className='subB_noInput' placeholder="No." onChange={onChange} />
                                     </span>
                                 </div>
@@ -659,7 +659,7 @@ function UpdateMatchFormation_KL1({round}) {
                                 <div className='subInputs'>
                                     <label htmlFor="RB_sub">교체</label>
                                     <span>
-                                        <input type="text" name="RB_sub_time" className='subTimeInput' placeholder="T" onChange={onChange} />
+                                        <input type="text" name="RB_sub_time" className='subTimeInput' placeholder="T'" onChange={onChange} />
                                         <input type="number" name="RB_sub" className='subB_noInput' placeholder="No." onChange={onChange} />
                                     </span>
                                 </div>
@@ -688,7 +688,7 @@ function UpdateMatchFormation_KL1({round}) {
                                 <div className='subInputs'>
                                     <label htmlFor="GK_sub">교체</label>
                                     <span>
-                                        <input type="text" name="GK_sub_time" className='subTimeInput' placeholder="T" onChange={onChange} />
+                                        <input type="text" name="GK_sub_time" className='subTimeInput' placeholder="T'" onChange={onChange} />
                                         <input type="number" name="GK_sub" className='subB_noInput' placeholder="No." onChange={onChange} />
                                     </span>
                                 </div>

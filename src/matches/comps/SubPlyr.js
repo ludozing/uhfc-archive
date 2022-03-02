@@ -22,7 +22,7 @@ function SubPlyr({b_no, time}) {
             <div className='nameTag'>
                 <p className='sub luPlyrName'>{player[0].k_name}</p>
                 <img src={Sub_icon} alt='교체' className='subIcon' />
-                <span className='subTime'>{time}'</span>
+                <span className='subTime'>{time}</span>
                 {player[0].u22player ? <span className='u22plyr'>U22</span>:""}
             </div>
         </a>
