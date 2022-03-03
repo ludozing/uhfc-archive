@@ -56,6 +56,7 @@ function PlayerList(props) {
                                     </a>
                                 </li>
                             )
+                            else return null;
                         }
                         else if(DF) {
                             if(data.position==='DF')
@@ -69,6 +70,7 @@ function PlayerList(props) {
                                     </a>
                                 </li>
                             )
+                            else return null;
                         }
                         else if(MF) {
                             if(data.position==='MF')
@@ -82,6 +84,7 @@ function PlayerList(props) {
                                     </a>
                                 </li>
                             )
+                            else return null;
                         }
                         else if(FW) {
                             if(data.position==='FW')
@@ -95,6 +98,7 @@ function PlayerList(props) {
                                     </a>
                                 </li>
                             )
+                            else return null;
                         }
                         else {
                             if(data.position==='GK')

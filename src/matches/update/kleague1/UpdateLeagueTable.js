@@ -4,7 +4,7 @@ import axios from 'axios';
 import useAsync from '../../../hooks/useAsync';
 import LeagueTableInput from './LeagueTableInput';
 
-function UpdateLeagueTable_KL1({round}) {
+function UpdateLeagueTable({round}) {
     async function getTable(){
         const response = await axios.get(
             `${API_URL}/leaguetable/kl1/${round - 1}`
@@ -23,4 +23,4 @@ function UpdateLeagueTable_KL1({round}) {
     );
 }
 
-export default UpdateLeagueTable_KL1;
+export default UpdateLeagueTable;

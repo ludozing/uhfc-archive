@@ -97,7 +97,7 @@ function TimelineList(props) {
                                     </li>
                                 )
                             default:
-                                break;
+                                return null;
                         }
                     }
                     else if(laDEC){
@@ -136,9 +136,10 @@ function TimelineList(props) {
                                         </li>
                                     )
                                 default:
-                                    break;
+                                    return null;
                             }    
                         }
+                        else return null;
                     }
                     else if(JAN){
                         if(dateData[0]==='2022' && dateData[1]==='01'){
@@ -176,9 +177,10 @@ function TimelineList(props) {
                                         </li>
                                     )
                                 default:
-                                    break;
+                                    return null;
                             }    
                         }
+                        else return null;
                     }
                     else if(FEB){
                         if(dateData[0]==='2022' && dateData[1]==='02'){
@@ -216,9 +218,10 @@ function TimelineList(props) {
                                         </li>
                                     )
                                 default:
-                                    break;
+                                    return null;
                             }    
                         }
+                        else return null;
                     }
                     else if(MAR){
                         if(dateData[0]==='2022' && dateData[1]==='03'){
@@ -256,9 +259,10 @@ function TimelineList(props) {
                                         </li>
                                     )
                                 default:
-                                    break;
+                                    return null;
                             }    
                         }
+                        else return null;
                     }
                     else if(APR){
                         if(dateData[0]==='2022' && dateData[1]==='04'){
@@ -296,9 +300,10 @@ function TimelineList(props) {
                                         </li>
                                     )
                                 default:
-                                    break;
+                                    return null;
                             }    
                         }
+                        else return null;
                     }
                     else if(MAY){
                         if(dateData[0]==='2022' && dateData[1]==='05'){
@@ -336,9 +341,10 @@ function TimelineList(props) {
                                         </li>
                                     )
                                 default:
-                                    break;
+                                    return null;
                             }    
                         }
+                        else return null;
                     }
                     else if(JUN){
                         if(dateData[0]==='2022' && dateData[1]==='06'){
@@ -376,9 +382,10 @@ function TimelineList(props) {
                                         </li>
                                     )
                                 default:
-                                    break;
+                                    return null;
                             }    
                         }
+                        else return null;
                     }
                     else if(JUL){
                         if(dateData[0]==='2022' && dateData[1]==='07'){
@@ -416,9 +423,10 @@ function TimelineList(props) {
                                         </li>
                                     )
                                 default:
-                                    break;
+                                    return null;
                             }    
                         }
+                        else return null;
                     }
                     else if(AUG){
                         if(dateData[0]==='2022' && dateData[1]==='08'){
@@ -456,9 +464,10 @@ function TimelineList(props) {
                                         </li>
                                     )
                                 default:
-                                    break;
+                                    return null;
                             }    
                         }
+                        else return null;
                     }
                     else if(SEP){
                         if(dateData[0]==='2022' && dateData[1]==='09'){
@@ -496,9 +505,10 @@ function TimelineList(props) {
                                         </li>
                                     )
                                 default:
-                                    break;
+                                    return null;
                             }    
                         }
+                        else return null;
                     }
                     else if(OCT){
                         if(dateData[0]==='2022' && dateData[1]==='10'){
@@ -536,9 +546,10 @@ function TimelineList(props) {
                                         </li>
                                     )
                                 default:
-                                    break;
+                                    return null;
                             }    
                         }
+                        else return null;
                     }
                     else if(NOV){
                         if(dateData[0]==='2022' && dateData[1]==='11'){
@@ -576,9 +587,10 @@ function TimelineList(props) {
                                         </li>
                                     )
                                 default:
-                                    break;
+                                    return null;
                             }    
                         }
+                        else return null;
                     }
                     else if(DEC){
                         if(dateData[0]==='2022' && dateData[1]==='12'){
@@ -616,11 +628,12 @@ function TimelineList(props) {
                                         </li>
                                     )
                                 default:
-                                    break;
+                                    return null;
                             }    
                         }
+                        else return null;
                     }
-
+                    else return null;
                 })}
             </ul>
         </div>

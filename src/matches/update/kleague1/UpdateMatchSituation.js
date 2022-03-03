@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { API_URL } from '../../../config/constants';
 import axios from 'axios';
 
-function UpdateMatchSituation_KL1(props) {
+function UpdateMatchSituation(props) {
     const navigate = useNavigate();
     const param = useParams();
     const {id} = param;
@@ -80,6 +80,7 @@ function UpdateMatchSituation_KL1(props) {
             else if(tdA < tdB) return -1;
             else if(rtA > rtB) return 1;
             else if(rtA < rtB) return -1;
+            else return null;
         })
         // console.log(dataArr)
         // console.log(matchResultObj)
@@ -361,4 +362,4 @@ function UpdateMatchSituation_KL1(props) {
     );
 }
 
-export default UpdateMatchSituation_KL1;
+export default UpdateMatchSituation;

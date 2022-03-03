@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { API_URL } from '../../../config/constants';
 
-function UpdateMatchFormation_KL1({round}) {
+function UpdateMatchFormation({round}) {
     const param = useParams();
     const {id} = param;
     const navigate = useNavigate();
@@ -706,4 +706,4 @@ function UpdateMatchFormation_KL1({round}) {
     );
 }
 
-export default UpdateMatchFormation_KL1;
+export default UpdateMatchFormation;

@@ -66,7 +66,7 @@ function PlayerEvents({plyr_b_no}) {
                         </TableRow>
                     )
                 default:
-                    break;
+                    return null;
             }    
         })
     )
