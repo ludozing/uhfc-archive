@@ -69,8 +69,8 @@ function UpdateTimeline() {
                         <TableRow>
                             <TableCell colSpan={2}>
                                 <div className='formBtnsArea'>
-                                    <input className="formBtns" type="reset" value="초기화" />
-                                    <input className="formBtns" type="submit" value="등록" />
+                                    <input className="formBtn" type="reset" value="초기화" />
+                                    <input className="formBtn" type="submit" value="등록" />
                                 </div>
                             </TableCell>
                         </TableRow>

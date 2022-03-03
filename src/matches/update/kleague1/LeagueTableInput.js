@@ -48,7 +48,7 @@ function LeagueTableInput({table, round}) {
     }
     return (
         <form onSubmit={onSubmit}>
-            <table className='leagueTable'>
+            <table className='leagueTable form'>
                 <thead>
                     <tr>
                         <th>팀</th>

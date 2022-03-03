@@ -12,14 +12,14 @@ function UpdateMatchSituation_KL1(props) {
     const [matchResultObj, setMatchResultObj] = useState({r_gf:0, r_ga:0, r_vid_url:''});
     const {r_gf, r_ga, r_vid_url} = matchResultObj;
 
-    const [ booleanData, setBooleanData ] = useState({
-        isPK: false,
-        isOG: false,
-        isSecond: false
-    })
+    const [ booleanData, setBooleanData ] = useState({isPK: false, isOG: false, isSecond: false})
     const [ isUlsan, setIsUlsan ] = useState(true);
     const onSelect = (e) => {
         e.target.value === "울산"? setIsUlsan(true):setIsUlsan(false);
+    }
+    const [ is2ndHalf, setIs2ndHalf ] = useState(0);
+    const onTimeline = (e) => {
+        setIs2ndHalf(e.target.value);
     }
     const onChange = (e) => {
         const {name, checked} = e.target;
@@ -40,6 +40,7 @@ function UpdateMatchSituation_KL1(props) {
         let form = e.target;
         let dataRow = {
             data_no: count,
+            is2ndHalf: is2ndHalf, //
             isUlsan: isUlsan, //
             recordedTime: form.recordedTime.value,
             scorer: form.scorer? (form.scorer.value? form.scorer.value:null):null,
@@ -60,6 +61,8 @@ function UpdateMatchSituation_KL1(props) {
         ]);
         form.reset();
         setIsUlsan(true);
+        setIs2ndHalf(0);
+        setBooleanData({isPK: false, isOG: false, isSecond: false});
         setCount(count + 1);
     }
     function uploadAll(){
@@ -68,9 +71,18 @@ function UpdateMatchSituation_KL1(props) {
         .catch(err=>console.error(err))
     }
     const postData = () => {
-        dataArr.sort((a,b)=>{return parseInt(a.recordedTime) - parseInt(b.recordedTime)})
-        console.log(dataArr)
-        console.log(matchResultObj)
+        dataArr.sort((a,b)=>{
+            let tdA = a.is2ndHalf
+            let tdB = b.is2ndHalf
+            let rtA = parseInt(a.recordedTime);
+            let rtB = parseInt(b.recordedTime);
+            if(tdA > tdB) return 1;
+            else if(tdA < tdB) return -1;
+            else if(rtA > rtB) return 1;
+            else if(rtA < rtB) return -1;
+        })
+        // console.log(dataArr)
+        // console.log(matchResultObj)
         uploadAll()
         navigate(`/main/matches/update/kleague1/${id}/leaguetable`);
     }
@@ -87,9 +99,12 @@ function UpdateMatchSituation_KL1(props) {
                     })
                     console.log(matchResultObj)
                 }}>
-                    <p><span>울산</span><span><input type={"number"} name={"gf"} placeholder={"점수"}/></span></p>
-                    <p><span>상대</span><span><input type={"number"} name={"ga"} placeholder={"점수"}/></span></p>
-                    <p><span>하이라이트</span><span><input type={"text"} name={"vid_url"} placeholder={"URL"}/></span></p>
+                    <ul className='scoreInput'>
+                        <li><p>울산</p><p><input type={"number"} name={"gf"}/></p></li>
+                        <li>vs</li>
+                        <li><p>상대</p><p><input type={"number"} name={"ga"}/></p></li>
+                    </ul>
+                    <p className='highlight'><span>하이라이트</span><span><input type={"text"} name={"vid_url"} placeholder={"URL"}/></span></p>
                     <p><input type={"submit"} value={"확인"}/></p>
                 </form>                
             </div>
@@ -100,6 +115,7 @@ function UpdateMatchSituation_KL1(props) {
                         e.preventDefault();
                         let dataRow = {
                             data_no: count,
+                            is2ndHalf: 0.5,
                             recordedTime: "45.5",
                             HTline: true
                         }
@@ -115,10 +131,20 @@ function UpdateMatchSituation_KL1(props) {
                             <input type={"submit"} value={"삽입"} />
                         </div>
                     </form>
+                    {/* 득점 정보 폼 */}
                     <form name={'score'} onSubmit={onSubmit} className={"dataRowForm"}>
                         <div>
                             <h4>득점</h4>
                             <div>
+                                <p>
+                                    <span>분류</span>
+                                    <span>
+                                        <select name={"is2ndHalf"} onChange={onTimeline}>
+                                            <option value={0}>전반전</option>
+                                            <option value={1}>후반전</option>
+                                        </select>
+                                    </span>
+                                </p>
                                 <p>
                                     <span>시간</span>
                                     <span>
@@ -183,10 +209,20 @@ function UpdateMatchSituation_KL1(props) {
                             </p>
                         </div>
                     </form>
+                    {/* 교체 정보 폼 */}
                     <form name={'substitution'} onSubmit={onSubmit} className={"dataRowForm"}>
                         <div>
                             <h4>교체</h4>
                             <div>
+                                <p>
+                                    <span>분류</span>
+                                    <span>
+                                        <select name={"is2ndHalf"} onChange={onTimeline}>
+                                            <option value={0}>전반전</option>
+                                            <option value={1}>후반전</option>
+                                        </select>
+                                    </span>
+                                </p>
                                 <p>
                                     <span>시간</span>
                                     <span>
@@ -226,11 +262,20 @@ function UpdateMatchSituation_KL1(props) {
                             </p>
                         </div>
                     </form>
+                    {/* 경고 및 퇴장 정보 폼 */}
                     <form name={'yr'} onSubmit={onSubmit} className={"dataRowForm"}>
                         <div>
                             <h4>경고 및 퇴장</h4>
                             <div>
-
+                                <p>
+                                    <span>분류</span>
+                                    <span>
+                                        <select name={"is2ndHalf"} onChange={onTimeline}>
+                                            <option value={0}>전반전</option>
+                                            <option value={1}>후반전</option>
+                                        </select>
+                                    </span>
+                                </p>
                                 <p>
                                     <span>시간</span>
                                     <span>
@@ -281,7 +326,10 @@ function UpdateMatchSituation_KL1(props) {
                     <div className='dataBoard'>
                         <h4>-등록 예정 레코드-</h4>
                         {
-                            <h4><span>울산</span> {r_gf} : {r_ga} <span>상대</span></h4>
+                            <div className='resultData'>
+                                <h4><span>울산</span> {r_gf} : {r_ga} <span>상대</span></h4>
+                                <p>{r_vid_url}</p>
+                            </div>
                         }
                         <ul>
                             {
@@ -290,6 +338,7 @@ function UpdateMatchSituation_KL1(props) {
                                     else return(
                                         <li key={data.data_no} className={"dataRow"}>
                                             <p style={{width: '50px', textAlign: 'center'}}>{data.recordedTime}</p>
+                                            <p>{data.is2ndHalf===0? "전반전":"후반전"}</p>
                                             <p>{data.isUlsan? "울산":"상대"}</p>
                                             {data.scorer? <p><span>(G)</span>{data.scorer}{data.isPK? <span>(PK)</span>:""}{data.isOG? <span>(OG)</span>:""}</p>:""}
                                             {data.assist? <p><span>(A)</span>{data.assist}</p>:""}

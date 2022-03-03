@@ -116,6 +116,36 @@ div.competitions {
     }
 }
 .matchResultArea.update{
+    .matchResult {
+        width: 400px;
+        margin: 10px auto 20px auto;
+        background-color: #CCC;
+        text-align: center;
+        padding: 20px;
+        font-size: 16px;
+        .scoreInput {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+            li {
+                padding: 10px;
+                input {
+                    width: 80px;
+                    height: 50px;
+                    text-align: center;
+                    line-height: 50px;
+                    font-size: 30px;
+                    font-family: var(--digital-font);
+                }
+            }
+        }
+        .highlight {
+            margin-bottom: 10px;
+            span {
+                padding: 10px;
+            }
+        }
+    }
     .matchSituationArea {
         display: flex;
         justify-content: space-between;
@@ -210,6 +240,18 @@ div.competitions {
                     text-align: center;
                     font-size: 20px;
                     margin-bottom: 20px;
+                }
+                .resultData {
+                    h4 {
+                        text-align: center;
+                        font-size: 18px;
+                        margin-bottom: 10px;
+                    }
+                    p {
+                        text-align: center;
+                        font-size: 12px;
+                        margin-bottom: 20px;
+                    }
                 }
                 .dataRow{
                     display: flex;

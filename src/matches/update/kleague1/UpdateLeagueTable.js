@@ -17,7 +17,7 @@ function UpdateLeagueTable_KL1({round}) {
     if(error) return <span>ERROR!</span>
     if(!table) return null;
     return (
-        <div className='leagueTableArea'>
+        <div className='leagueTableArea update'>
             <LeagueTableInput table={table} round={round}/>
         </div>
     );
