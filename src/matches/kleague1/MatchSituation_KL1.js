@@ -26,6 +26,7 @@ function MatchSituation_KL1() {
     return (
         <div className='matchSituation'>
             <h4 className='matchTitle'>
+                <p>R{result[0].round}</p>
                 {!result[0].isAwaygame ? <p className='h_a home'>HOME</p> : <p className='h_a away'>AWAY</p>}
                 <p>vs {result[0].against}</p>
             </h4>
