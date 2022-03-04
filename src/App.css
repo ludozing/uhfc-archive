@@ -158,6 +158,8 @@ header>div {
   border: 1px solid var(--yellow-color);
   border-radius: 8px;
   cursor: pointer;
+}
+.subMenu li * {
   color: #333;
 }
 .subMenu li:hover, .subMenu li.on {
