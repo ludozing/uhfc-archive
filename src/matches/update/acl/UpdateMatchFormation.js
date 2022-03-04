@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import {useNavigate} from 'react-router-dom';
+// import {useNavigate} from 'react-router-dom';
 
-function UpdateMatchFormation_ACL({round}) {
-    const navigate = useNavigate();
+function UpdateMatchFormation({round}) {
+    // const navigate = useNavigate();
     const [lineup, setLineup] = useState({
         GK_sta: '', GK_sta_isCap: false, GK_sub_time: '', GK_sub: '',
         LB_sta: '', LB_sta_isCap: false, LB_sub_time: '', LB_sub: '',
@@ -671,4 +671,4 @@ function UpdateMatchFormation_ACL({round}) {
     );
 }
 
-export default UpdateMatchFormation_ACL;
+export default UpdateMatchFormation;

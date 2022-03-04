@@ -7,6 +7,7 @@ import {FaUndoAlt} from 'react-icons/fa';
 import './PlayerList.scss'
 import PlayerEvents from './PlayerEvents';
 import { API_URL } from '../config/constants';
+import Loading from '../components/Loading';
 
 function dateFormat (k_date) {
     let dateData = k_date.split("-");
@@ -33,7 +34,7 @@ function DetailPlayer(props) {
 
     const state = useAsync(getPlayer);
     const {loading, error, data: player} = state;
-    if(loading) return <div>로딩중...</div>
+    if(loading) return <Loading />
     if(error) return <div>페이지를 나타낼 수 없습니다.</div>
     if(!player) return null;
     return (

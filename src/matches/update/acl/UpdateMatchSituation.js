@@ -1,6 +1,6 @@
 import React from 'react';
 
-function UpdateMatchSituation_ACL({round}) {
+function UpdateMatchSituation({round}) {
     return (
         <div className='matchResultArea'>
             <div className='matchResult'>
@@ -10,4 +10,4 @@ function UpdateMatchSituation_ACL({round}) {
     );
 }
 
-export default UpdateMatchSituation_ACL;
+export default UpdateMatchSituation;

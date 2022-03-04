@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Routes, Route } from 'react-router-dom';
 import './MatchesPage.scss';
-import Competitions from './comps/Competitions';
+import Competitions from './Competitions';
 import UpdateMatchResults from './update';
 
 function MatchesPage(props) {

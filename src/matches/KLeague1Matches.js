@@ -1,9 +1,10 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import axios from 'axios';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import useAsync from '../hooks/useAsync';
-import MatchSituation_KL1 from './kleague1/MatchSituation_KL1';
+import MatchSituation from './kleague1/MatchSituation';
 import { API_URL } from '../config/constants';
+import Loading from '../components/Loading';
 
 // K리그 경기 결과를 받아와서 라운드 선택 li로 뿌려준다.
 async function getMatches(){
@@ -16,7 +17,7 @@ async function getMatches(){
 const KLeague1Matches = () => {
     const state = useAsync(getMatches);
     const {loading, error, data: matches} = state;
-    if(loading) return <div>로딩중...</div>
+    if(loading) return <Loading />
     if(error) return <div>페이지를 나타낼 수 없습니다.</div>
     if(!matches) return null;
     return (
@@ -38,10 +39,11 @@ const KLeague1Matches = () => {
                     else if(data.gf < data.ga) {
                         return <li className="roundNum lose" key={data.round}><a href={`/main/matches/kleague1/${data.round}`}>{data.round}</a></li>
                     }
+                    else return null;
                 })}
             </ul>
             <Routes>
-                <Route path={"/:id"} element={<MatchSituation_KL1 />} />
+                <Route path={"/:id"} element={<MatchSituation />} />
             </Routes>
         </div>
     );

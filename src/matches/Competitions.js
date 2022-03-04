@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
 import { Link, Routes, Route } from 'react-router-dom';
-import KLeague1Matches from '../KLeague1Matches';
-import ACLMatches from '../ACLMatches';
-import FACupMatches from '../FACupMatches';
+import KLeague1Matches from './KLeague1Matches';
+import ACLMatches from './ACLMatches';
+import FACupMatches from './FACupMatches';
 
 function Competitions(props) {
     const defaultState = {
-        KL1: false,
+        KL1: true,
         ACL: false,
         FAC: false
     }
+    const clearState = {KL1: false, ACL: false, FAC: false}
     const [ clicked, setClicked ] = useState(defaultState);
     function onClicked(props){
         return(
             setClicked({
-                ...defaultState, [props]: true
+                ...clearState, [props]: true
             })
         )
     }

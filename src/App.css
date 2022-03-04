@@ -244,3 +244,46 @@ footer .contact a:hover {
 .forAdmin.updateBtns:active {
   background-color: var(--blue-color-td);
 }
+.loadingPage {
+  width: 100%;
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* text-align: center; */
+}
+.loadingPage p {
+  width: 135px;
+  font-size: 20px;
+  color: #aaa;
+}
+.animationArea {
+  width: 400px;
+  height: 300px;
+  position: relative;
+}
+.burningMita {
+  width: 200px;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-duration: 1s;
+  animation-name: upNdown;
+  animation-iteration-count: infinite;
+}
+@keyframes upNdown {
+  0% {
+    transform: translate(-50%, -50%);
+  }
+  25% {
+    transform: translate(-50%, -75%);
+  }
+  50% {
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    transform: translate(-50%, -50%);
+  }
+}

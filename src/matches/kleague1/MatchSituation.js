@@ -3,11 +3,11 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import useAsync from '../../hooks/useAsync';
 import LeagueTable from './LeagueTable';
-import MatchFormation_KL1 from './MatchFormation_KL1';
+import MatchFormation from './MatchFormation';
 import { VscLinkExternal } from 'react-icons/vsc';
 import { API_URL } from '../../config/constants';
 
-function MatchSituation_KL1() {
+function MatchSituation() {
     const param = useParams();
     const {id} = param;
     // 선택된 라운드 정보 불러오기
@@ -33,7 +33,7 @@ function MatchSituation_KL1() {
             <div className='matchDetail'>                
                 <div className='formationArea'>
                     <h4 className='sectionTitle'>Starting XI</h4>
-                    <MatchFormation_KL1 />
+                    <MatchFormation />
                 </div>
                 <div className='matchResultArea'>
                     <h4 className='sectionTitle'>Match Result</h4>
@@ -96,7 +96,7 @@ function MatchSituation_KL1() {
                                     }
                                     // 골 상황
                                     // 울산 선수의 골일 경우
-                                    if(data.isUlsan && data.scorer) {
+                                    else if(data.isUlsan && data.scorer) {
                                         // 득점 선수 정보 출력
                                         if(!data.isOG){
                                             return (
@@ -130,9 +130,10 @@ function MatchSituation_KL1() {
                                                 </li>
                                             )
                                         }
+                                        else return null;
                                     }
                                     // 상대 선수의 골일 경우
-                                    if(!data.isUlsan && data.scorer) {
+                                    else if(!data.isUlsan && data.scorer) {
                                         // 득점 선수 정보 출력
                                         if(!data.isOG){
                                             return (
@@ -166,10 +167,11 @@ function MatchSituation_KL1() {
                                                 </li>
                                             )
                                         }
+                                        else return null;
                                     }
                                     // 골 취소 상황
                                     // 울산 선수의 골 취소
-                                    if(data.isUlsan && data.isCanceled) {
+                                    else if(data.isUlsan && data.isCanceled) {
                                         return(
                                             <li className={!data.isAwaygame? 'atHome':'atAway'} key={data.dataId}>
                                                 <a href={data.refer_vid} target="_blank" rel="noreferrer">
@@ -182,7 +184,7 @@ function MatchSituation_KL1() {
                                         )
                                     }
                                     // 상대 선수의 골 취소
-                                    if(!data.isUlsan && data.isCanceled) {
+                                    else if(!data.isUlsan && data.isCanceled) {
                                         return(
                                             <li className={!data.isAwaygame? 'atAway':'atHome'} key={data.dataId}>
                                                 <a href={data.refer_vid} target="_blank" rel="noreferrer">
@@ -196,7 +198,7 @@ function MatchSituation_KL1() {
                                     }
                                     // PK실축 상황
                                     // 울산 선수의 PK 실축
-                                    if(data.isUlsan && data.missedPK) {
+                                    else if(data.isUlsan && data.missedPK) {
                                         return(
                                             <li className={!data.isAwaygame? 'atHome':'atAway'} key={data.dataId}>
                                                 <a href={data.refer_vid} target="_blank" rel="noreferrer">
@@ -209,7 +211,7 @@ function MatchSituation_KL1() {
                                         )
                                     }
                                     // 상대 선수의 PK 실축
-                                    if(!data.isUlsan && data.missedPK) {
+                                    else if(!data.isUlsan && data.missedPK) {
                                         return(
                                             <li className={!data.isAwaygame? 'atAway':'atHome'} key={data.dataId}>
                                                 <a href={data.refer_vid} target="_blank" rel="noreferrer">
@@ -223,7 +225,7 @@ function MatchSituation_KL1() {
                                     }
                                     // 경고 상황
                                     // 울산 선수의 경고
-                                    if(data.isUlsan && data.yellowcard) {
+                                    else if(data.isUlsan && data.yellowcard) {
                                         return(
                                             <li className={!data.isAwaygame? 'atHome':'atAway'} key={data.dataId}>
                                                 <a href={data.refer_vid} target="_blank" rel="noreferrer">
@@ -242,7 +244,7 @@ function MatchSituation_KL1() {
                                         )
                                     }
                                     // 울산 선수의 퇴장
-                                    if(data.isUlsan && data.redcard) {
+                                    else if(data.isUlsan && data.redcard) {
                                         return(
                                             <li className={!data.isAwaygame? 'atHome':'atAway'} key={data.dataId}>
                                                 <a href={data.refer_vid} target="_blank" rel="noreferrer">
@@ -255,7 +257,7 @@ function MatchSituation_KL1() {
                                         )
                                     }
                                     // 상대 선수의 경고
-                                    if(!data.isUlsan && data.yellowcard) {
+                                    else if(!data.isUlsan && data.yellowcard) {
                                         return(
                                             <li className={!data.isAwaygame? 'atAway':'atHome'} key={data.dataId}>
                                                 <a href={data.refer_vid} target="_blank" rel="noreferrer">
@@ -274,7 +276,7 @@ function MatchSituation_KL1() {
                                         )
                                     }
                                     // 상대 선수의 퇴장
-                                    if(!data.isUlsan && data.redcard) {
+                                    else if(!data.isUlsan && data.redcard) {
                                         return(
                                             <li className={!data.isAwaygame? 'atAway':'atHome'} key={data.dataId}>
                                                 <a href={data.refer_vid} target="_blank" rel="noreferrer">
@@ -288,7 +290,7 @@ function MatchSituation_KL1() {
                                     }
                                     // 교체 상황
                                     // 울산 선수의 교체
-                                    if(data.isUlsan && data.subOut) {
+                                    else if(data.isUlsan && data.subOut) {
                                         return(
                                             <li className={!data.isAwaygame? 'atHome':'atAway'} key={data.dataId}>
                                                 <a href={data.refer_vid} target="_blank" rel="noreferrer">
@@ -302,7 +304,7 @@ function MatchSituation_KL1() {
                                         )
                                     }
                                     // 상대 선수의 교체
-                                    if(!data.isUlsan && data.subOut) {
+                                    else if(!data.isUlsan && data.subOut) {
                                         return(
                                             <li className={!data.isAwaygame? 'atAway':'atHome'} key={data.dataId}>
                                                 <a href={data.refer_vid} target="_blank" rel="noreferrer">
@@ -315,6 +317,7 @@ function MatchSituation_KL1() {
                                             </li>
                                         )
                                     }
+                                    else return null;
                                 })
                             }
                         </ul>
@@ -329,4 +332,4 @@ function MatchSituation_KL1() {
     )
 }
 
-export default MatchSituation_KL1;
+export default MatchSituation;

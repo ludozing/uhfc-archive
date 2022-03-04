@@ -1,6 +1,6 @@
 import React from 'react';
 
-function UpdateLeagueTable_ACL({round}) {
+function UpdateLeagueTable({round}) {
     return (
         <div className='matchResultArea'>
             <div className='leagueTableArea'>
@@ -10,4 +10,4 @@ function UpdateLeagueTable_ACL({round}) {
     );
 }
 
-export default UpdateLeagueTable_ACL;
+export default UpdateLeagueTable;

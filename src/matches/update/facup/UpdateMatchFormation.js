@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 // import {useNavigate} from 'react-router-dom';
 
-function UpdateMatchFormation_FAC({round}) {
+function UpdateMatchFormation({round}) {
     // const navigate = useNavigate();
     const [lineup, setLineup] = useState({
         GK_sta: '', GK_sta_isCap: false, GK_sub_time: '', GK_sub: '',
@@ -671,4 +671,4 @@ function UpdateMatchFormation_FAC({round}) {
     );
 }
 
-export default UpdateMatchFormation_FAC;
+export default UpdateMatchFormation;

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Routes, Route, useParams } from 'react-router-dom';
-import UpdateMatchFormation_FAC from './UpdateMatchFormation';
-import UpdateMatchSituation_FAC from './UpdateMatchSituation';
-import UpdateLeagueTable_FAC from './UpdateLeagueTable';
+import UpdateMatchFormation from './UpdateMatchFormation';
+import UpdateMatchSituation from './UpdateMatchSituation';
+import UpdateLeagueTable from './UpdateLeagueTable';
 
 function UpdateFACup(props) {
     const param = useParams();
@@ -11,9 +11,9 @@ function UpdateFACup(props) {
         <div className='contentArea'>
             <h3 className='deptTitle'>FA컵</h3>
             <Routes>
-                <Route path='/' element={<UpdateMatchFormation_FAC round={id} />} />
-                <Route path='/situation' element={<UpdateMatchSituation_FAC round={id} />} />
-                <Route path='/leaguetable' element={<UpdateLeagueTable_FAC round={id} />} />
+                <Route path='/' element={<UpdateMatchFormation round={id} />} />
+                <Route path='/situation' element={<UpdateMatchSituation round={id} />} />
+                <Route path='/leaguetable' element={<UpdateLeagueTable round={id} />} />
             </Routes>
         </div>
     );

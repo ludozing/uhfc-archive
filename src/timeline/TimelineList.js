@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import useAsync from '../hooks/useAsync';
 import './TimelineList.scss'
 import { API_URL } from '../config/constants';
+import Loading from '../components/Loading';
 
 async function getEvents(){
     const response = await axios.get(
@@ -27,12 +28,11 @@ function TimelineList(props) {
         )
     }
     let { ALL, laDEC, JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC } = filtered;
-    if(loading) return <div>로딩중...</div>
+    if(loading) return <Loading />
     if(error) return <div>페이지를 나타낼 수 없습니다.</div>
     if(!events) return null;
     return (
-        <div className='timeline contentArea'>
-            <h2 className='contentTitle'>TIMELINE</h2>
+        <div className={"timelineArea"}>
             {sessionStorage.admin_pw? <Link to={"/main/timeline/add"} className="forAdmin updateBtns" >UPDATE</Link>:""}
             <ul className='timelinePageMenu subMenu'>
                 <li key="ALL" onClick={()=>onFiltered("ALL")} className={ALL?"on":""}>전체</li>

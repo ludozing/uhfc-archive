@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import SubPlyr from '../comps/SubPlyr';
 import { API_URL } from '../../config/constants';
 
-function MatchFormation_KL1() {
+function MatchFormation() {
     const param = useParams();
     const {id} = param;
     // 선택된 라운드 라인업 정보 불러오기
@@ -160,4 +160,4 @@ function MatchFormation_KL1() {
     );
 }
 
-export default MatchFormation_KL1;
+export default MatchFormation;

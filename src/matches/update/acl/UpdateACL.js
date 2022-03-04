@@ -1,8 +1,8 @@
 import React from 'react';
 import { Routes, Route, useParams } from 'react-router-dom';
-import UpdateMatchFormation_ACL from './UpdateMatchFormation';
-import UpdateMatchSituation_ACL from './UpdateMatchSituation';
-import UpdateLeagueTable_ACL from './UpdateLeagueTable';
+import UpdateMatchFormation from './UpdateMatchFormation';
+import UpdateMatchSituation from './UpdateMatchSituation';
+import UpdateLeagueTable from './UpdateLeagueTable';
 
 function UpdateACL(props) {
     const param = useParams();
@@ -11,9 +11,9 @@ function UpdateACL(props) {
         <div className="contentArea">
             <h3 className='deptTitle'>ACL</h3>
             <Routes>
-                <Route path='/' element={<UpdateMatchFormation_ACL round={id} />} />
-                <Route path='/situation' element={<UpdateMatchSituation_ACL round={id} />} />
-                <Route path='/leaguetable' element={<UpdateLeagueTable_ACL round={id} />} />
+                <Route path='/' element={<UpdateMatchFormation round={id} />} />
+                <Route path='/situation' element={<UpdateMatchSituation round={id} />} />
+                <Route path='/leaguetable' element={<UpdateLeagueTable round={id} />} />
             </Routes>
         </div>
     );

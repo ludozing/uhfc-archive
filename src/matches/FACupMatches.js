@@ -7,6 +7,7 @@ const FACupMatches = () => {
             <ul className='miniMenu'>
                 <li>16강</li>
             </ul>
+            <div className='preparing'>경기 일정 발표 이후에 업데이트될 예정입니다.</div>
         </div>
     );
 };
