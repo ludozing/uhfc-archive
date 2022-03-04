@@ -163,6 +163,7 @@ header>div {
 .subMenu li:hover a, .subMenu li.on a {color: #fff}
 .subMenu li:hover, .subMenu li.on {
   background-color: var(--blue-color);
+  color: #fff;
 }
 .deptTitle {
   text-align: center;
